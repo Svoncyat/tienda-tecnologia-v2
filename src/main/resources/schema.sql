@@ -359,7 +359,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id_rol`, `nombre`, `descripcion`, `activo`) VALUES
-(1, 'Administrador', 'Tiene permiso a todo', 1);
+(1, 'Administrador', 'Tiene permiso a todo', 1),
+(2, 'Vendedor', 'Puede realizar ventas y gestionar clientes', 1),
+(3, 'Almacenero', 'Gestiona inventario y productos', 1);
 
 -- --------------------------------------------------------
 
@@ -383,7 +385,10 @@ INSERT INTO `rol_permiso` (`id_rol`, `id_permiso`) VALUES
 (1, 4),
 (1, 5),
 (1, 6),
-(1, 7);
+(1, 7),
+(2, 3),
+(2, 7),
+(3, 5);
 
 -- --------------------------------------------------------
 
@@ -414,8 +419,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `dni`, `fecha_nacimiento`, `genero`, `estado_civil`, `telefono`, `email`, `username`, `password_hash`, `fecha_ingreso`, `id_rol`, `foto_perfil`, `activo`) VALUES
-(1, 'Belther', 'Rodas', '76610558', '2003-11-12', 'Masculino', 'S', '931760815', 'belther@gmail.com', 'belther', 'belther', '2025-07-07', 1, 'io', 1),
-(2, 'Juan', 'Pérez', '12345678', '1995-05-15', 'Masculino', 'Soltero', '987654321', 'juan.perez@example.com', 'juanperez', '123', '2025-07-08', 1, 'perfil1.jpg', 1);
+(1, 'Pepe', 'Lucho', '79610558', '2003-11-12', 'Masculino', 'Soltero', '931760815', 'pepe@gmail.com', 'pepe', 'pepe', '2025-07-07', 1, 'io', 1),
+(2, 'Juan', 'Pérez', '12345678', '1995-05-15', 'Masculino', 'Soltero', '987654321', 'juan.perez@example.com', 'juanperez', '123', '2025-07-08', 1, 'perfil1.jpg', 1),
+(3, 'María', 'González', '87654321', '1990-03-22', 'Femenino', 'Casado', '912345678', 'maria.gonzalez@uwutech.com', 'mariag', 'maria123', '2025-07-09', 1, 'perfil_maria.jpg', 1),
+(4, 'Carlos', 'Rodríguez', '45612378', '1988-08-10', 'Masculino', 'Soltero', '965874123', 'carlos.rodriguez@uwutech.com', 'carlosr', 'carlos123', '2025-07-09', 2, 'perfil_carlos.jpg', 1),
+(5, 'Ana', 'Torres', '78945612', '1992-03-15', 'Femenino', 'Soltero', '978451236', 'ana.torres@uwutech.com', 'anat', 'ana123', '2025-07-09', 3, 'perfil_ana.jpg', 1),
+(6, 'Luis', 'Mendoza', '15975348', '1985-12-20', 'Masculino', 'Casado', '951236874', 'luis.mendoza@uwutech.com', 'luism', 'luis123', '2025-07-09', 2, 'perfil_luis.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -698,13 +707,13 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`

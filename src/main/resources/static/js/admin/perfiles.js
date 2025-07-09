@@ -1,51 +1,277 @@
 // =============================================== 
-// FUNCIONALIDAD MODAL AGREGAR USUARIO
+// GESTIÓN DE USUARIOS CON INTEGRACIÓN BACKEND
 // =============================================== 
 
-// Array para almacenar usuarios
-let usuarios = [
-    {
-        id: 1,
-        nombres: 'Juan Carlos',
-        apellidos: 'Pérez González',
-        dni: '12345678',
-        usuario: 'jperez',
-        email: 'juan.perez@uwutech.com',
-        rol: 'administrador',
-        estado: 'Activo',
-        fechaIngreso: '2023-01-15',
-        ultimoAcceso: '2025-06-27 08:30'
-    },
-    {
-        id: 2,
-        nombres: 'María Elena',
-        apellidos: 'García Ruiz',
-        dni: '87654321',
-        usuario: 'mgarcia',
-        email: 'maria.garcia@uwutech.com',
-        rol: 'vendedor',
-        estado: 'Activo',
-        fechaIngreso: '2023-03-20',
-        ultimoAcceso: '2025-06-26 15:45'
-    },
-    {
-        id: 3,
-        nombres: 'Luis Alberto',
-        apellidos: 'Rodríguez Silva',
-        dni: '11223344',
-        usuario: 'lrodriguez',
-        email: 'luis.rodriguez@uwutech.com',
-        rol: 'almacenero',
-        estado: 'Inactivo',
-        fechaIngreso: '2022-11-10',
-        ultimoAcceso: '2025-06-20 10:15'
+// Variables globales
+let usuarios = [];
+let usuariosFiltrados = [];
+let roles = [];
+let editandoUsuarioId = null;
+
+// =============================================== 
+// UTILIDADES Y VALIDACIONES
+// =============================================== 
+
+function mostrarMensaje(mensaje, tipo = 'info') {
+    // Crear elemento de mensaje
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `mensaje-${tipo}`;
+    messageDiv.textContent = mensaje;
+    messageDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 10000;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    `;
+    
+    // Estilos según el tipo
+    if (tipo === 'success') {
+        messageDiv.style.backgroundColor = '#28a745';
+    } else if (tipo === 'error') {
+        messageDiv.style.backgroundColor = '#dc3545';
+    } else {
+        messageDiv.style.backgroundColor = '#007bff';
     }
-];
+    
+    document.body.appendChild(messageDiv);
+    
+    // Remover mensaje después de 3 segundos
+    setTimeout(() => {
+        messageDiv.style.opacity = '0';
+        setTimeout(() => {
+            if (messageDiv.parentNode) {
+                messageDiv.parentNode.removeChild(messageDiv);
+            }
+        }, 300);
+    }, 3000);
+}
 
-// Variable para usuarios filtrados
-let usuariosFiltrados = [...usuarios];
+function formatearFecha(fecha) {
+    if (!fecha) return 'N/A';
+    return new Date(fecha).toLocaleDateString('es-ES');
+}
 
-// Función para filtrar usuarios
+function limpiarFormulario() {
+    const formularios = ['modalAgregarUsuario', 'modalEditarUsuario'];
+    
+    formularios.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            const inputs = modal.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="date"]');
+            const selects = modal.querySelectorAll('select');
+            
+            inputs.forEach(input => input.value = '');
+            selects.forEach(select => select.selectedIndex = 0);
+            
+            // Resetear upload boxes
+            const uploadBoxes = modal.querySelectorAll('.upload-box');
+            uploadBoxes.forEach(box => {
+                if (box.id.includes('perfil') || box.id.includes('Perfil')) {
+                    box.innerHTML = '<i class="fas fa-user-circle"></i><span>Perfil</span>';
+                } else {
+                    box.innerHTML = '<i class="fas fa-upload"></i><span>Subir Imagen</span>';
+                }
+            });
+        }
+    });
+    
+    editandoUsuarioId = null;
+}
+
+// =============================================== 
+// FUNCIONES PARA INTERACTUAR CON EL BACKEND
+// =============================================== 
+
+async function cargarUsuarios() {
+    try {
+        const response = await fetch('/api/usuarios');
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+        usuarios = await response.json();
+        filtrarUsuarios();
+    } catch (error) {
+        console.error('Error al cargar usuarios:', error);
+        mostrarMensaje('Error al cargar la lista de usuarios', 'error');
+    }
+}
+
+async function cargarRoles() {
+    try {
+        const response = await fetch('/api/roles');
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+        roles = await response.json();
+        actualizarSelectoresRol();
+    } catch (error) {
+        console.error('Error al cargar roles:', error);
+        roles = []; // Fallback a array vacío
+    }
+}
+
+function actualizarSelectoresRol() {
+    const selectores = ['id-roles', 'rol', 'editRol'];
+    
+    selectores.forEach(selectorId => {
+        const select = document.getElementById(selectorId);
+        if (select) {
+            // Mantener la primera opción si existe
+            const primeraOpcion = select.children[0];
+            select.innerHTML = '';
+            
+            if (primeraOpcion) {
+                select.appendChild(primeraOpcion);
+            }
+            
+            // Agregar roles desde el backend
+            roles.forEach(rol => {
+                const option = document.createElement('option');
+                option.value = rol.id_rol;
+                option.textContent = rol.nombre;
+                select.appendChild(option);
+            });
+        }
+    });
+}
+
+async function crearUsuario(datosUsuario) {
+    try {
+        // Mapear campos del frontend al backend
+        const usuarioBackend = {
+            nombres: datosUsuario.nombres,
+            apellidos: datosUsuario.apellidos,
+            dni: datosUsuario.dni,
+            fechaNacimiento: datosUsuario.fechaNacimiento,
+            genero: datosUsuario.genero ? datosUsuario.genero.charAt(0).toUpperCase() + datosUsuario.genero.slice(1) : null,
+            estadoCivil: datosUsuario.estadoCivil,
+            telefono: datosUsuario.telefono,
+            email: datosUsuario.email,
+            username: datosUsuario.usuario,
+            passwordHash: datosUsuario.contrasena,
+            fechaIngreso: datosUsuario.fechaIngreso,
+            rol: datosUsuario.rol ? { id_rol: parseInt(datosUsuario.rol) } : null,
+            activo: true
+        };
+
+        const response = await fetch('/api/usuarios', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(usuarioBackend)
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
+        }
+        
+        const nuevoUsuario = await response.json();
+        mostrarMensaje('Usuario creado exitosamente', 'success');
+        await cargarUsuarios(); // Recargar la lista
+        return nuevoUsuario;
+    } catch (error) {
+        console.error('Error al crear usuario:', error);
+        mostrarMensaje(error.message || 'Error al crear el usuario', 'error');
+        throw error;
+    }
+}
+
+async function actualizarUsuario(id, datosUsuario) {
+    try {
+        // Mapear campos del frontend al backend
+        const usuarioBackend = {
+            nombres: datosUsuario.nombres,
+            apellidos: datosUsuario.apellidos,
+            dni: datosUsuario.dni,
+            fechaNacimiento: datosUsuario.fechaNacimiento,
+            genero: datosUsuario.genero ? datosUsuario.genero.charAt(0).toUpperCase() + datosUsuario.genero.slice(1) : null,
+            estadoCivil: datosUsuario.estadoCivil,
+            telefono: datosUsuario.telefono,
+            email: datosUsuario.email,
+            username: datosUsuario.usuario,
+            fechaIngreso: datosUsuario.fechaIngreso,
+            rol: datosUsuario.rol ? { id_rol: parseInt(datosUsuario.rol) } : null,
+            activo: datosUsuario.estado === 'Activo'
+        };
+
+        const response = await fetch(`/api/usuarios/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(usuarioBackend)
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
+        }
+        
+        const usuarioActualizado = await response.json();
+        mostrarMensaje('Usuario actualizado exitosamente', 'success');
+        await cargarUsuarios(); // Recargar la lista
+        return usuarioActualizado;
+    } catch (error) {
+        console.error('Error al actualizar usuario:', error);
+        mostrarMensaje(error.message || 'Error al actualizar el usuario', 'error');
+        throw error;
+    }
+}
+
+async function eliminarUsuario(id) {
+    if (!confirm('¿Está seguro de que desea eliminar este usuario?')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/usuarios/${id}`, {
+            method: 'DELETE'
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
+        }
+        
+        mostrarMensaje('Usuario eliminado exitosamente', 'success');
+        await cargarUsuarios(); // Recargar la lista
+    } catch (error) {
+        console.error('Error al eliminar usuario:', error);
+        mostrarMensaje(error.message || 'Error al eliminar el usuario', 'error');
+    }
+}
+
+async function cambiarEstadoUsuario(id) {
+    try {
+        const response = await fetch(`/api/usuarios/${id}/estado`, {
+            method: 'PATCH'
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
+        }
+        
+        mostrarMensaje('Estado del usuario actualizado', 'success');
+        await cargarUsuarios(); // Recargar la lista
+    } catch (error) {
+        console.error('Error al cambiar estado del usuario:', error);
+        mostrarMensaje(error.message || 'Error al cambiar el estado del usuario', 'error');
+    }
+}
+
+// =============================================== 
+// FUNCIONES DE FILTRADO Y VISUALIZACIÓN
+// =============================================== 
+
 function filtrarUsuarios() {
     const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
     const rolFilter = document.getElementById('id-roles').value;
@@ -54,17 +280,19 @@ function filtrarUsuarios() {
     usuariosFiltrados = usuarios.filter(usuario => {
         // Filtro de búsqueda (nombre, apellido, usuario, email o DNI)
         const matchesSearch = searchTerm === '' || 
-            usuario.nombres.toLowerCase().includes(searchTerm) ||
-            usuario.apellidos.toLowerCase().includes(searchTerm) ||
-            usuario.usuario.toLowerCase().includes(searchTerm) ||
-            usuario.email.toLowerCase().includes(searchTerm) ||
-            usuario.dni.includes(searchTerm);
+            (usuario.nombres && usuario.nombres.toLowerCase().includes(searchTerm)) ||
+            (usuario.apellidos && usuario.apellidos.toLowerCase().includes(searchTerm)) ||
+            (usuario.username && usuario.username.toLowerCase().includes(searchTerm)) ||
+            (usuario.email && usuario.email.toLowerCase().includes(searchTerm)) ||
+            (usuario.dni && usuario.dni.includes(searchTerm));
         
         // Filtro de rol
-        const matchesRol = rolFilter === '' || usuario.rol === rolFilter;
+        const usuarioRolId = usuario.rol ? usuario.rol.id_rol.toString() : '';
+        const matchesRol = rolFilter === '' || usuarioRolId === rolFilter;
         
         // Filtro de estado
-        const matchesEstado = estadoFilter === '' || usuario.estado.toLowerCase() === estadoFilter.toLowerCase();
+        const usuarioEstado = usuario.activo ? 'activo' : 'inactivo';
+        const matchesEstado = estadoFilter === '' || usuarioEstado === estadoFilter.toLowerCase();
         
         return matchesSearch && matchesRol && matchesEstado;
     });
@@ -72,7 +300,6 @@ function filtrarUsuarios() {
     mostrarUsuarios();
 }
 
-// Función para mostrar usuarios en la tabla
 function mostrarUsuarios() {
     const tablaUsuarios = document.getElementById('tabla-usuarios');
     if (!tablaUsuarios) return;
@@ -94,25 +321,28 @@ function mostrarUsuarios() {
     usuariosFiltrados.forEach((usuario, index) => {
         const fila = document.createElement('tr');
         
+        // Determinar el nombre del rol para mostrar
+        const rolMostrar = usuario.rol ? usuario.rol.nombre : 'Sin rol';
+        const estadoMostrar = usuario.activo ? 'Activo' : 'Inactivo';
+        
         fila.innerHTML = `
             <td>${index + 1}</td>
-            <td>${usuario.nombres} ${usuario.apellidos}</td>
-            <td>${usuario.usuario}</td>
-            <td>${usuario.email}</td>
-            <td><span class="badge badge-${usuario.rol}">${usuario.rol}</span></td>
-            <td><span class="status status-${usuario.estado.toLowerCase()}">${usuario.estado}</span></td>
-            <td>${usuario.ultimoAcceso}</td>
+            <td>${(usuario.nombres || '') + ' ' + (usuario.apellidos || '')}</td>
+            <td>${usuario.username || ''}</td>
+            <td>${usuario.email || ''}</td>
+            <td><span class="badge badge-${rolMostrar.toLowerCase()}">${rolMostrar}</span></td>
+            <td><span class="status status-${estadoMostrar.toLowerCase()}">${estadoMostrar}</span></td>
+            <td>Nunca</td>
             <td class="acciones">
-                <button class="btn-toggle-estado" onclick="toggleEstadoUsuario(${usuario.id})" title="Cambiar Estado">
+                <button class="btn-toggle-estado" onclick="cambiarEstadoUsuario(${usuario.id_usuario})" title="Cambiar Estado">
                     <i class="fa-solid fa-eye"></i>
                 </button>
-                <button class="btn-editar" onclick="editarUsuario(${usuario.id})" title="Editar">
+                <button class="btn-editar" onclick="editarUsuario(${usuario.id_usuario})" title="Editar">
                     <i class="fa-regular fa-pen-to-square"></i>
                 </button>
-                <button class="btn-eliminar" onclick="eliminarUsuario(${usuario.id})" title="Eliminar">
+                <button class="btn-eliminar" onclick="eliminarUsuario(${usuario.id_usuario})" title="Eliminar">
                     <i class="fa-regular fa-trash-can"></i>
                 </button>
-                
             </td>
         `;
         
@@ -120,45 +350,14 @@ function mostrarUsuarios() {
     });
 }
 
-// Función para agregar nuevo usuario
-function agregarUsuario(datosUsuario) {
-    const nuevoId = Math.max(...usuarios.map(u => u.id), 0) + 1;
-    const fechaActual = new Date().toISOString().slice(0, 16).replace('T', ' ');
-    
-    const nuevoUsuario = {
-        id: nuevoId,
-        ...datosUsuario,
-        estado: 'Activo',
-        ultimoAcceso: 'Nunca'
-    };
-    
-    usuarios.push(nuevoUsuario);
-    filtrarUsuarios(); // Actualizar con filtros aplicados
-}
+// =============================================== 
+// FUNCIONES DE GESTIÓN DE USUARIOS
+// =============================================== 
 
-// Función para eliminar usuario
-function eliminarUsuario(id) {
-    if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
-        usuarios = usuarios.filter(usuario => usuario.id !== id);
-        filtrarUsuarios(); // Actualizar con filtros aplicados
-    }
-}
-
-// Función para cambiar estado del usuario
-function toggleEstadoUsuario(id) {
-    const usuario = usuarios.find(u => u.id === id);
-    if (usuario) {
-        usuario.estado = usuario.estado === 'Activo' ? 'Inactivo' : 'Activo';
-        filtrarUsuarios(); // Actualizar con filtros aplicados
-    }
-}
-
-// Función para editar usuario
 function editarUsuario(id) {
-    console.log('Editando usuario con ID:', id);
-    const usuario = usuarios.find(u => u.id === id);
+    const usuario = usuarios.find(u => u.id_usuario == id);
     if (!usuario) {
-        alert('Usuario no encontrado');
+        mostrarMensaje('Usuario no encontrado', 'error');
         return;
     }
     
@@ -171,25 +370,41 @@ function editarUsuario(id) {
     document.body.style.overflow = 'hidden';
     
     // Guardar el ID del usuario que se está editando
-    window.usuarioEditandoId = id;
-    console.log('ID guardado en window.usuarioEditandoId:', window.usuarioEditandoId);
+    editandoUsuarioId = id;
 }
 
-// Función para cargar datos del usuario en el modal de edición
 function cargarDatosUsuarioEnModal(usuario) {
-    document.getElementById('editNombres').value = usuario.nombres || '';
-    document.getElementById('editApellidos').value = usuario.apellidos || '';
-    document.getElementById('editDni').value = usuario.dni || '';
-    document.getElementById('editFechaNacimiento').value = usuario.fechaNacimiento || '';
-    document.getElementById('editGenero').value = usuario.genero || '';
-    document.getElementById('editEstadoCivil').value = usuario.estadoCivil || '';
-    document.getElementById('editTelefono').value = usuario.telefono || '';
-    document.getElementById('editEmail').value = usuario.email || '';
-    document.getElementById('editUsuario').value = usuario.usuario || '';
-    document.getElementById('editFechaIngreso').value = usuario.fechaIngreso || '';
-    document.getElementById('editRol').value = usuario.rol || '';
-    document.getElementById('editEstado').value = usuario.estado || '';
+    const campos = {
+        'editNombres': usuario.nombres,
+        'editApellidos': usuario.apellidos,
+        'editDni': usuario.dni,
+        'editFechaNacimiento': usuario.fechaNacimiento,
+        'editGenero': usuario.genero ? usuario.genero.toLowerCase() : '',
+        'editEstadoCivil': usuario.estadoCivil,
+        'editTelefono': usuario.telefono,
+        'editEmail': usuario.email,
+        'editUsuario': usuario.username,
+        'editFechaIngreso': usuario.fechaIngreso,
+        'editRol': usuario.rol ? usuario.rol.id_rol : '',
+        'editEstado': usuario.activo ? 'Activo' : 'Inactivo'
+    };
+    
+    Object.entries(campos).forEach(([campoId, valor]) => {
+        const elemento = document.getElementById(campoId);
+        if (elemento) {
+            elemento.value = valor || '';
+        }
+    });
 }
+
+// =============================================== 
+// FUNCIONES GLOBALES PARA USO EN EL HTML
+// =============================================== 
+
+// Funciones globales que pueden ser llamadas desde onclick en el HTML
+window.editarUsuario = editarUsuario;
+window.eliminarUsuario = eliminarUsuario;
+window.cambiarEstadoUsuario = cambiarEstadoUsuario;
 
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos del modal agregar
@@ -387,7 +602,7 @@ document.addEventListener('DOMContentLoaded', function() {
             editUserImage.click();
         });
 
-        editUserImage.addEventListener('change', function(e) {
+        userImage.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();

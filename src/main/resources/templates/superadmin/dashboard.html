@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Sistema de Gestión de Tiendas</title>
-    <link rel="stylesheet" href="./css/super-admin.css">
+    <link rel="stylesheet" href="@{/css/superadmin/superadmin.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -18,23 +18,23 @@
             <!-- No mostrar botones de agregar/eliminar empresa en el tablero -->
             
             <nav class="sidebar-nav">
-                <a href="./dashboard.html" class="nav-item active">
+                <a href="@{/superadmin/dashboard}" class="nav-item active">
                     <i class="fas fa-home"></i>
                     Tablero
                 </a>
-                <a href="./Gestion.html" class="nav-item">
+                <a href="@{/superadmin/Gestion}" class="nav-item">
                     <i class="fas fa-store"></i>
                     Tiendas
                 </a>
-                <a href="./mensajes.html" class="nav-item">
+                <a href="@{/superadmin/mensajes}" class="nav-item">
                     <i class="fas fa-users"></i>
                     Usuarios
                 </a>
-                <a href="./reportes.html" class="nav-item">
+                <a href="@{/superadmin/reportes}" class="nav-item">
                     <i class="fas fa-chart-bar"></i>
                     Informes
                 </a>
-                <a href="./config.html" class="nav-item">
+                <a href="@{/superadmin/config}" class="nav-item">
                     <i class="fas fa-cog"></i>
                     Configuración
                 </a>
@@ -170,7 +170,7 @@
                         </div>
                         <div style="padding: 1.5rem;">
                             <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                                <a href="./Gestion.html" class="btn btn-primary" style="justify-content: space-between;">
+                                <a href="@{/superadmin/Gestion}" class="btn btn-primary" style="justify-content: space-between;">
                                     <div style="display: flex; align-items: center; gap: 0.75rem;">
                                         <i class="fas fa-store"></i>
                                         <span>Gestionar Tiendas</span>
@@ -178,7 +178,7 @@
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
                                 
-                                <a href="./mensajes.html" class="btn btn-secondary" style="justify-content: space-between;">
+                                <a href="@{/superadmin/mensajes}" class="btn btn-secondary" style="justify-content: space-between;">
                                     <div style="display: flex; align-items: center; gap: 0.75rem;">
                                         <i class="fas fa-users"></i>
                                         <span>Gestionar Usuarios</span>
@@ -186,7 +186,7 @@
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
                                 
-                                <a href="./reportes.html" class="btn btn-secondary" style="justify-content: space-between;">
+                                <a href="@{/superadmin/reportes}" class="btn btn-secondary" style="justify-content: space-between;">
                                     <div style="display: flex; align-items: center; gap: 0.75rem;">
                                         <i class="fas fa-chart-bar"></i>
                                         <span>Ver Reportes</span>
@@ -238,6 +238,6 @@
     <!-- Backdrop -->
     <div id="backdrop" class="modal hidden"></div>
 
-    <script src="./js/super-admin.js"></script>
+    <script src="@{/js/superadmin/superadmin.js}"></script>
 </body>
 </html>

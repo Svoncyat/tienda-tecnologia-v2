@@ -69,6 +69,10 @@ const ClienteAPI = {
     
     async crear(clienteData) {
         try {
+            console.log('=== Enviando datos a API ===');
+            console.log('URL:', API_BASE_URL);
+            console.log('Datos:', JSON.stringify(clienteData, null, 2));
+            
             const response = await fetch(API_BASE_URL, {
                 method: 'POST',
                 headers: {
@@ -77,7 +81,11 @@ const ClienteAPI = {
                 body: JSON.stringify(clienteData)
             });
             
+            console.log('Response status:', response.status);
+            console.log('Response headers:', [...response.headers.entries()]);
+            
             const data = await response.json();
+            console.log('Response data:', data);
             
             if (data.success) {
                 Utils.mostrarNotificacion('Cliente creado exitosamente');
@@ -86,8 +94,12 @@ const ClienteAPI = {
                 throw new Error(data.message || 'Error al crear cliente');
             }
         } catch (error) {
-            console.error('Error al crear cliente:', error);
-            Utils.mostrarError(error.message);
+            console.error('Error en ClienteAPI.crear:', error);
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                Utils.mostrarError('Error de conexión con el servidor');
+            } else {
+                Utils.mostrarError(error.message || 'Error desconocido al crear cliente');
+            }
             throw error;
         }
     },
@@ -214,35 +226,18 @@ function buscarClientes() {
 // ====== MODALES ======
 const Modal = {
     abrir: (modalId) => {
-        console.log('Intentando abrir modal:', modalId); // Debug
         const modal = document.getElementById(modalId);
         if (modal) {
-            console.log('Modal encontrado, abriendo...'); // Debug
             modal.style.display = 'flex';
-            modal.classList.add('show');
             document.body.style.overflow = 'hidden';
-            
-            // Asegurar que el modal esté visible
-            setTimeout(() => {
-                modal.style.opacity = '1';
-            }, 10);
-        } else {
-            console.error('Modal no encontrado:', modalId);
         }
     },
     
     cerrar: (modalId) => {
-        console.log('Cerrando modal:', modalId); // Debug
         const modal = document.getElementById(modalId);
         if (modal) {
-            modal.classList.remove('show');
-            modal.style.opacity = '0';
+            modal.style.display = 'none';
             document.body.style.overflow = 'auto';
-            
-            // Ocultar después de la transición
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300);
         }
     },
     
@@ -284,6 +279,8 @@ async function cargarClientes() {
 
 async function agregarCliente() {
     try {
+        console.log('=== Inicio agregarCliente ===');
+        
         // Obtener datos del formulario
         const tipoCliente = document.getElementById('tipoCliente').value;
         const tipoDocumento = document.getElementById('tipoDocumento').value;
@@ -294,6 +291,11 @@ async function agregarCliente() {
         const email = document.getElementById('email').value;
         const telefono = document.getElementById('telefono').value;
         const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+        
+        console.log('Datos del formulario:', {
+            tipoCliente, tipoDocumento, numeroDocumento, nombres, apellidos, 
+            razonSocial, email, telefono, fechaNacimiento
+        });
         
         // Validaciones básicas
         if (!tipoCliente || !tipoDocumento || !numeroDocumento) {
@@ -315,26 +317,36 @@ async function agregarCliente() {
         const clienteData = {
             tipo_cliente: tipoCliente,
             tipo_documento: tipoDocumento,
-            numero_documento: numeroDocumento,
-            nombres: nombres || null,
-            apellidos: apellidos || null,
-            razon_social: razonSocial || null,
-            correo: email || null,
-            telefono: telefono || null,
+            numero_documento: numeroDocumento.trim(),
+            nombres: nombres.trim() || null,
+            apellidos: apellidos.trim() || null,
+            razon_social: razonSocial.trim() || null,
+            correo: email.trim() || null,
+            telefono: telefono.trim() || null,
             fecha_nacimiento: fechaNacimiento || null
         };
         
+        console.log('Datos a enviar:', clienteData);
+        
         // Enviar a la API
-        await ClienteAPI.crear(clienteData);
+        const result = await ClienteAPI.crear(clienteData);
+        console.log('Resultado de la API:', result);
         
         // Cerrar modal y recargar datos
         Modal.cerrar('modalAgregarUsuario');
         Modal.limpiarFormulario('modalAgregarUsuario');
         await cargarClientes();
         
+        console.log('=== Cliente agregado exitosamente ===');
+        
     } catch (error) {
-        console.error('Error al agregar cliente:', error);
-        // El error ya se mostró en ClienteAPI.crear
+        console.error('Error completo al agregar cliente:', error);
+        // El error ya se mostró en ClienteAPI.crear, pero podemos agregar más información
+        if (error.message) {
+            Utils.mostrarError(`Error: ${error.message}`);
+        } else {
+            Utils.mostrarError('Error desconocido al agregar cliente');
+        }
     }
 }
 
@@ -347,23 +359,24 @@ async function editarCliente(id) {
             return;
         }
         
-        // Llenar el formulario de edición con los IDs correctos del modal editar
-        document.getElementById('editTipoCliente').value = cliente.tipo_cliente;
-        document.getElementById('editTipoDocumento').value = cliente.tipo_documento;
-        document.getElementById('editNumeroDocumento').value = cliente.numero_documento;
-        document.getElementById('editNombres').value = cliente.nombres || '';
-        document.getElementById('editApellidos').value = cliente.apellidos || '';
-        document.getElementById('editRazonSocial').value = cliente.razon_social || '';
-        document.getElementById('editEmail').value = cliente.correo || '';
-        document.getElementById('editTelefono').value = cliente.telefono || '';
-        document.getElementById('editFechaNacimiento').value = cliente.fecha_nacimiento || '';
+        // Llenar el formulario de edición
+        // Por ahora, mostraremos la información en el modal de agregar
+        document.getElementById('tipoCliente').value = cliente.tipo_cliente;
+        document.getElementById('tipoDocumento').value = cliente.tipo_documento;
+        document.getElementById('numeroDocumento').value = cliente.numero_documento;
+        document.getElementById('nombres').value = cliente.nombres || '';
+        document.getElementById('apellidos').value = cliente.apellidos || '';
+        document.getElementById('razonSocial').value = cliente.razon_social || '';
+        document.getElementById('email').value = cliente.correo || '';
+        document.getElementById('telefono').value = cliente.telefono || '';
+        document.getElementById('fechaNacimiento').value = cliente.fecha_nacimiento || '';
         
-        // Cambiar el comportamiento del botón del modal editar
-        const btnGuardar = document.getElementById('btnGuardarEditarUsuario');
-        btnGuardar.onclick = () => actualizarCliente(id);
+        // Cambiar el comportamiento del botón
+        const btnAgregar = document.getElementById('btnAgregarUsuario');
+        btnAgregar.textContent = 'Actualizar';
+        btnAgregar.onclick = () => actualizarCliente(id);
         
-        // Abrir el modal de edición
-        Modal.abrir('modalEditarUsuario');
+        Modal.abrir('modalAgregarUsuario');
         
     } catch (error) {
         console.error('Error al editar cliente:', error);
@@ -373,18 +386,18 @@ async function editarCliente(id) {
 
 async function actualizarCliente(id) {
     try {
-        // Obtener datos del formulario del modal de edición
-        const tipoCliente = document.getElementById('editTipoCliente').value;
-        const tipoDocumento = document.getElementById('editTipoDocumento').value;
-        const numeroDocumento = document.getElementById('editNumeroDocumento').value;
-        const nombres = document.getElementById('editNombres').value;
-        const apellidos = document.getElementById('editApellidos').value;
-        const razonSocial = document.getElementById('editRazonSocial').value;
-        const email = document.getElementById('editEmail').value;
-        const telefono = document.getElementById('editTelefono').value;
-        const fechaNacimiento = document.getElementById('editFechaNacimiento').value;
+        // Obtener datos del formulario (mismo código que agregarCliente)
+        const tipoCliente = document.getElementById('tipoCliente').value;
+        const tipoDocumento = document.getElementById('tipoDocumento').value;
+        const numeroDocumento = document.getElementById('numeroDocumento').value;
+        const nombres = document.getElementById('nombres').value;
+        const apellidos = document.getElementById('apellidos').value;
+        const razonSocial = document.getElementById('razonSocial').value;
+        const email = document.getElementById('email').value;
+        const telefono = document.getElementById('telefono').value;
+        const fechaNacimiento = document.getElementById('fechaNacimiento').value;
         
-        // Validaciones
+        // Mismas validaciones que agregarCliente
         if (!tipoCliente || !tipoDocumento || !numeroDocumento) {
             Utils.mostrarError('Los campos Tipo de Cliente, Tipo de Documento y Número de Documento son obligatorios');
             return;
@@ -416,9 +429,13 @@ async function actualizarCliente(id) {
         // Actualizar via API
         await ClienteAPI.actualizar(id, clienteData);
         
-        // Cerrar modal de edición y recargar datos
-        Modal.cerrar('modalEditarUsuario');
-        Modal.limpiarFormulario('modalEditarUsuario');
+        // Restablecer botón y cerrar modal
+        const btnAgregar = document.getElementById('btnAgregarUsuario');
+        btnAgregar.textContent = 'Agregar';
+        btnAgregar.onclick = agregarCliente;
+        
+        Modal.cerrar('modalAgregarUsuario');
+        Modal.limpiarFormulario('modalAgregarUsuario');
         await cargarClientes();
         
     } catch (error) {
@@ -463,30 +480,6 @@ function verCliente(id) {
 
 // ====== EVENTOS ======
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM cargado, inicializando eventos...'); // Debug
-    
-    // Verificar elementos críticos
-    const verificarElementos = () => {
-        const btnAgregar = document.querySelector('.btn-agregar-usuario');
-        const modal = document.getElementById('modalAgregarUsuario');
-        const btnCerrar = document.getElementById('closeModalUsuario');
-        const modalEditar = document.getElementById('modalEditarUsuario');
-        const btnCerrarEditar = document.getElementById('closeModalEditarUsuario');
-        
-        console.log('Verificación de elementos:');
-        console.log('- Botón agregar:', btnAgregar ? '✓' : '✗');
-        console.log('- Modal agregar:', modal ? '✓' : '✗');
-        console.log('- Botón cerrar agregar:', btnCerrar ? '✓' : '✗');
-        console.log('- Modal editar:', modalEditar ? '✓' : '✗');
-        console.log('- Botón cerrar editar:', btnCerrarEditar ? '✓' : '✗');
-        
-        return btnAgregar && modal && btnCerrar && modalEditar && btnCerrarEditar;
-    };
-    
-    if (!verificarElementos()) {
-        console.warn('Algunos elementos críticos no fueron encontrados');
-    }
-    
     // Cargar clientes al inicio
     cargarClientes();
     
@@ -501,30 +494,10 @@ document.addEventListener('DOMContentLoaded', function() {
         btnBuscar.addEventListener('click', buscarClientes);
     }
     
-    // Modal agregar cliente - Con manejo robusto
-    const configurarModalAgregar = () => {
-        const btnAgregarUsuario = document.querySelector('.btn-agregar-usuario');
-        if (btnAgregarUsuario) {
-            // Remover listeners previos si existen
-            btnAgregarUsuario.removeEventListener('click', abrirModalAgregar);
-            
-            // Agregar nuevo listener
-            btnAgregarUsuario.addEventListener('click', abrirModalAgregar);
-            console.log('Event listener del modal configurado correctamente');
-        } else {
-            console.error('No se encontró el botón .btn-agregar-usuario');
-            // Intentar de nuevo después de un breve delay
-            setTimeout(configurarModalAgregar, 1000);
-        }
-    };
-    
-    // Función para abrir el modal
-    const abrirModalAgregar = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('Botón Agregar Cliente clickeado'); // Debug
-        
-        try {
+    // Modal agregar cliente
+    const btnAgregarUsuario = document.querySelector('.btn-agregar-usuario');
+    if (btnAgregarUsuario) {
+        btnAgregarUsuario.addEventListener('click', () => {
             Modal.limpiarFormulario('modalAgregarUsuario');
             Modal.abrir('modalAgregarUsuario');
             
@@ -534,40 +507,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 btnSubmit.textContent = 'Agregar';
                 btnSubmit.onclick = agregarCliente;
             }
-        } catch (error) {
-            console.error('Error al abrir modal:', error);
-        }
-    };
-    
-    // Configurar el modal
-    configurarModalAgregar();
-    
-    // Event listeners para modal de edición
-    const btnCerrarModalEditar = document.getElementById('closeModalEditarUsuario');
-    if (btnCerrarModalEditar) {
-        btnCerrarModalEditar.addEventListener('click', () => {
-            Modal.cerrar('modalEditarUsuario');
         });
     }
     
-    const btnCancelarEditar = document.getElementById('btnCancelarEditarUsuario');
-    if (btnCancelarEditar) {
-        btnCancelarEditar.addEventListener('click', () => {
-            Modal.cerrar('modalEditarUsuario');
-        });
-    }
-    
-    // Cerrar modal de edición al hacer clic fuera
-    const modalEditarOverlay = document.getElementById('modalEditarUsuario');
-    if (modalEditarOverlay) {
-        modalEditarOverlay.addEventListener('click', (e) => {
-            if (e.target === modalEditarOverlay) {
-                Modal.cerrar('modalEditarUsuario');
-            }
-        });
-    }
-    
-    // Botones de cerrar modal agregar
+    // Botones de cerrar modal
     const btnCerrarModal = document.getElementById('closeModalUsuario');
     if (btnCerrarModal) {
         btnCerrarModal.addEventListener('click', () => {
@@ -597,40 +540,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btnAgregarModalUsuario) {
         btnAgregarModalUsuario.addEventListener('click', agregarCliente);
     }
-    
-    // Prueba inicial del modal después de cargar todo
-    setTimeout(() => {
-        console.log('Realizando prueba inicial del modal...');
-        const modal = document.getElementById('modalAgregarUsuario');
-        const btn = document.querySelector('.btn-agregar-usuario');
-        
-        if (modal && btn) {
-            console.log('✓ Modal y botón están presentes y listos');
-            console.log('Para probar el modal manualmente, ejecuta: probarModal()');
-        } else {
-            console.error('✗ Faltan elementos críticos para el modal');
-        }
-    }, 2000);
 });
 
 // Hacer funciones globales para uso en HTML
 window.verCliente = verCliente;
 window.editarCliente = editarCliente;
 window.eliminarCliente = eliminarCliente;
-
-// ====== FUNCIÓN DE PRUEBA PARA EL MODAL ======
-window.probarModal = function() {
-    console.log('Probando modal...');
-    const modal = document.getElementById('modalAgregarUsuario');
-    const btn = document.querySelector('.btn-agregar-usuario');
-    
-    console.log('Modal encontrado:', modal);
-    console.log('Botón encontrado:', btn);
-    
-    if (modal && btn) {
-        console.log('Simulando click en el botón...');
-        btn.click();
-    } else {
-        console.error('No se encontraron los elementos necesarios');
-    }
-};

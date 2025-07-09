@@ -24,16 +24,14 @@
 
   <title>uwuTech | Tu Tienda de Tecnología de Confianza</title>
 
-  <link rel="icon" href="../shared/assets/favicon.svg">
-  <link rel="canonical" href="https://uwutech.com">
+  <link rel="icon" th:href="@{/images/favicon.svg}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://uwutech.com">
   <meta property="og:title" content="uwuTech | Tu Tienda de Tecnología de Confianza">
   <meta property="og:description"
     content="Encuentra los mejores productos tecnológicos con garantía y soporte especializado.">
-  <meta property="og:image" content="../shared/assets/logo.svg">
+  <meta property="og:image" th:src="@{/images/logo.svg}">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
@@ -41,13 +39,12 @@
   <meta property="twitter:title" content="uwuTech | Tu Tienda de Tecnología de Confianza">
   <meta property="twitter:description"
     content="Encuentra los mejores productos tecnológicos con garantía y soporte especializado.">
-  <meta property="twitter:image" content="../shared/assets/logo.svg">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="./css/public-site.css" />
+  <link rel="stylesheet" th:href="@{/css/shared/normalize.css}">
+  <link rel="stylesheet" th:href="@{/css/shared/font-awesome.css}">
+  <link rel="stylesheet" th:href="@{/css/shared/variables.css}" />
+  <link rel="stylesheet" th:href="@{/css/shared/global.css}" />
+  <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}" />
 </head>
 
 <body>
@@ -63,8 +60,8 @@
           <p>Tu tienda de tecnología de confianza. Descubre los mejores productos tecnológicos con garantía extendida,
             soporte especializado y los precios más competitivos del mercado.</p>
           <div class="hero-buttons">
-            <a href="./pages/productos.html" class="btn btn-primary">Ver Productos</a>
-            <a href="./pages/servicios.html" class="btn btn-secondary">Nuestros Servicios</a>
+            <a th:href="@{/public-site/productos}" class="btn btn-primary">Ver Productos</a>
+            <a th:href="@{/public-site/servicios}" class="btn btn-secondary">Nuestros Servicios</a>
           </div>
         </div>
       </div>
@@ -136,7 +133,7 @@
               <h3 class="product-name">Laptop Dell Inspiron 15</h3>
               <div class="product-price">$2.499.000</div>
               <p class="product-description">Intel Core i5, 8GB RAM, 512GB SSD. Perfecta para trabajo y estudio.</p>
-              <a href="./pages/productos.html" class="btn btn-primary">Ver Detalles</a>
+              <a th:href="@{/public-site/productos}" class="btn btn-primary">Ver Detalles</a>
             </div>
           </div>
 
@@ -146,7 +143,7 @@
               <h3 class="product-name">PC Gamer Custom</h3>
               <div class="product-price">$3.999.000</div>
               <p class="product-description">AMD Ryzen 7, RTX 4060, 16GB RAM. Lista para los juegos más exigentes.</p>
-              <a href="./pages/productos.html" class="btn btn-primary">Ver Detalles</a>
+              <a th:href="@{/public-site/productos}" class="btn btn-primary">Ver Detalles</a>
             </div>
           </div>
 
@@ -157,7 +154,7 @@
               <div class="product-price">$299.000</div>
               <p class="product-description">Switches Cherry MX, iluminación RGB, perfecto para gaming y productividad.
               </p>
-              <a href="./pages/productos.html" class="btn btn-primary">Ver Detalles</a>
+              <a th:href="@{/public-site/productos}" class="btn btn-primary">Ver Detalles</a>
             </div>
           </div>
 
@@ -167,13 +164,13 @@
               <h3 class="product-name">Mouse Gaming Pro</h3>
               <div class="product-price">$159.000</div>
               <p class="product-description">Sensor óptico de alta precisión, 12000 DPI, diseño ergonómico.</p>
-              <a href="./pages/productos.html" class="btn btn-primary">Ver Detalles</a>
+              <a th:href="@{/public-site/productos}" class="btn btn-primary">Ver Detalles</a>
             </div>
           </div>
         </div>
 
         <div class="text-center mt-2">
-          <a href="./pages/productos.html" class="btn btn-secondary">Ver Todos los Productos</a>
+          <a th:href="@{/public-site/productos}" class="btn btn-secondary">Ver Todos los Productos</a>
         </div>
       </div>
     </section>
@@ -209,7 +206,7 @@
         </div>
 
         <div class="text-center mt-2">
-          <a href="./pages/servicios.html" class="btn btn-secondary">Ver Todos los Servicios</a>
+          <a th:href="@{/public-site/servicios}" class="btn btn-secondary">Ver Todos los Servicios</a>
         </div>
       </div>
     </section>
@@ -221,8 +218,8 @@
           <h2>¿Listo para encontrar tu próximo equipo?</h2>
           <p>Únete a miles de clientes satisfechos que confían en uwuTech para sus necesidades tecnológicas</p>
           <div class="hero-buttons">
-            <a href="./pages/contacto.html" class="btn btn-primary">Contáctanos</a>
-            <a href="./pages/productos.html" class="btn btn-secondary">Explorar Catálogo</a>
+            <a th:href="@{/public-site/contacto}" class="btn btn-primary">Contáctanos</a>
+            <a th:href="@{/public-site/productos}" class="btn btn-secondary">Explorar Catálogo</a>
           </div>
         </div>
       </div>
@@ -232,9 +229,9 @@
   <!-- Footer -->
   <div data-component="footer" data-app="public-site"></div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="../shared/js/global.js"></script>
-  <script src="./js/public-site.js"></script>
+  <script th:src="@{/js/shared/jquery-3.7.1.js}"></script>
+  <script th:src="@{/js/shared/global.js}"></script>
+  <script th:src="@{/js/public-site/public-site.js}"></script>
 </body>
 
 </html>

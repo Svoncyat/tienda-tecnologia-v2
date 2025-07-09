@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios - Sistema de Gestión de Tiendas</title>
-    <link rel="stylesheet" href="./css/super-admin.css">
+    <link rel="stylesheet" href="@{/css/superadmin/superadmin.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -27,23 +27,23 @@
             </div>
             
             <nav class="sidebar-nav">
-                <a href="./dashboard.html" class="nav-item">
+                <a href="@{/superadmin/dashboard}" class="nav-item">
                     <i class="fas fa-home"></i>
                     Tablero
                 </a>
-                <a href="./Gestion.html" class="nav-item">
+                <a href="@{/superadmin/Gestion/}" class="nav-item">
                     <i class="fas fa-store"></i>
                     Tiendas
                 </a>
-                <a href="./mensajes.html" class="nav-item active">
+                <a href="@{/superadmin/mensajes}" class="nav-item active">
                     <i class="fas fa-users"></i>
                     Usuarios
                 </a>
-                <a href="./reportes.html" class="nav-item">
+                <a href="@{/superadmin/reportes}" class="nav-item">
                     <i class="fas fa-chart-bar"></i>
                     Informes
                 </a>
-                <a href="./config.html" class="nav-item">
+                <a href="@{/superadmin/config}" class="nav-item">
                     <i class="fas fa-cog"></i>
                     Configuración
                 </a>
@@ -364,6 +364,6 @@
         </div>
     </div>
 
-    <script src="./js/super-admin.js"></script>
+    <script src="@{/js/superadmin/superadmin.js}"></script>
 </body>
 </html>

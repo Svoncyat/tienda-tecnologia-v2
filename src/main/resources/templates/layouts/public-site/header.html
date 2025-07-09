@@ -3,17 +3,17 @@
         <div class="container">
             <div class="nav-content">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="../shared/assets/isotype.svg" alt="uwuTech Logo" class="logo-img">
+                    <a th:href="@{/public-site}">
+                        <img src="@{/images/favicon.svg}" alt="uwuTech Logo" class="logo-img">
                         <span class="logo-text">uwuTech</span>
                     </a>
                 </div>
 
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="./pages/productos.html" class="nav-link">Productos</a></li>
-                    <li><a href="./pages/servicios.html" class="nav-link">Servicios</a></li>
-                    <li><a href="./pages/contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a th:href="@{/public-site}" class="nav-link">Inicio</a></li>
+                    <li><a th:href="@{/public-site/productos}" class="nav-link">Productos</a></li>
+                    <li><a th:href="@{/public-site/servicios}" class="nav-link">Servicios</a></li>
+                    <li><a th:href="@{/public-site/contacto}" class="nav-link">Contacto</a></li>
                 </ul>
 
                 <div class="nav-actions">                    <!-- Auth buttons for unauthenticated users -->
@@ -23,7 +23,7 @@
                     </div>
 
                     <!-- Favorites Button -->
-                    <a href="./pages/favoritos.html" class="icon-btn" id="favorites-btn" aria-label="Favoritos">
+                    <a th:href="@{/public-site/favoritos}" class="icon-btn" id="favorites-btn" aria-label="Favoritos">
                         <i class="fa-solid fa-heart"></i>
                         <span class="counter" id="favorites-counter">0</span>
                     </a>
@@ -31,7 +31,7 @@
                     <div class="divider"></div>
 
                     <!-- Cart Button -->
-                    <a href="./pages/carrito.html" class="icon-btn" id="cart-btn" aria-label="Carrito">
+                    <a th:href="@{/public-site/carrito}" class="icon-btn" id="cart-btn" aria-label="Carrito">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="counter" id="cart-counter">0</span>
                     </a>
@@ -46,9 +46,9 @@
                             </svg>
                         </button>
                         <div class="dropdown-menu" id="user-menu">
-                            <a href="./pages/perfil.html" class="dropdown-item">Mi Perfil</a>
-                            <a href="./pages/pedidos.html" class="dropdown-item">Mis Pedidos</a>
-                            <a href="./pages/favoritos.html" class="dropdown-item">Mis Favoritos</a>
+                            <a th:href="@{/public-site/perfil}" class="dropdown-item">Mi Perfil</a>
+                            <a th:href="@{/public-site/pedidos}" class="dropdown-item">Mis Pedidos</a>
+                            <a th:href="@{/public-site/favoritos}" class="dropdown-item">Mis Favoritos</a>
                             <hr class="dropdown-divider">
                             <button class="dropdown-item" id="logout-btn">Cerrar Sesión</button>
                         </div>
@@ -67,12 +67,12 @@
         <div class="mobile-menu">
             <div class="container">
                 <ul class="mobile-nav-links">
-                    <li><a href="index.html" class="mobile-nav-link">Inicio</a></li>
-                    <li><a href="./pages/productos.html" class="mobile-nav-link">Productos</a></li>
-                    <li><a href="./pages/servicios.html" class="mobile-nav-link">Servicios</a></li>
-                    <li><a href="./pages/contacto.html" class="mobile-nav-link">Contacto</a></li>
-                    <li><a href="./pages/favoritos.html" class="mobile-nav-link">Mis Favoritos</a></li>
-                    <li><a href="./pages/carrito.html" class="mobile-nav-link">Mi Carrito</a></li>
+                    <li><a th:href="@{/public-site}" class="mobile-nav-link">Inicio</a></li>
+                    <li><a th:href="@{/public-site/productos}" class="mobile-nav-link">Productos</a></li>
+                    <li><a th:href="@{/public-site/servicios}" class="mobile-nav-link">Servicios</a></li>
+                    <li><a th:href="@{/public-site/contacto}" class="mobile-nav-link">Contacto</a></li>
+                    <li><a th:href="@{/public-site/favoritos}" class="mobile-nav-link">Mis Favoritos</a></li>
+                    <li><a th:href="@{/public-site/carrito}" class="mobile-nav-link">Mi Carrito</a></li>
                 </ul>
                 <div class="mobile-actions" id="mobile-auth-buttons-guest">
                     <button class="btn btn-secondary mobile-btn" id="mobile-login-btn">Iniciar Sesión</button>
@@ -83,8 +83,8 @@
                         <span id="mobile-user-name">Usuario</span>
                     </div>
                     <div class="mobile-user-actions">
-                        <a href="./pages/perfil.html" class="btn btn-outline mobile-btn">Mi Perfil</a>
-                        <a href="./pages/pedidos.html" class="btn btn-outline mobile-btn">Mis Pedidos</a>
+                        <a th:href="@{/public-site/perfil}" class="btn btn-outline mobile-btn">Mi Perfil</a>
+                        <a th:href="@{/public-site/pedidos}" class="btn btn-outline mobile-btn">Mis Pedidos</a>
                         <button class="btn btn-secondary mobile-btn" id="mobile-logout-btn">Cerrar Sesión</button>
                     </div>
                 </div>

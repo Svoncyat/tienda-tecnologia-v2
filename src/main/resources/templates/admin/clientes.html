@@ -264,9 +264,8 @@
                             <label for="tipoCliente">Tipo de Cliente</label>
                             <select id="tipoCliente" name="tipoCliente">
                                 <option value="" disabled selected>Seleccionar Tipo</option>
-                                <option value="persona-natural">Persona Natural</option>
-                                <option value="persona-juridica">Persona Jurídica</option>
-                                <option value="empresa">Empresa</option>
+                                <option value="PERSONA_NATURAL">Persona Natural</option>
+                                <option value="EMPRESA">Empresa</option>
                             </select>
                         </div>
                         
@@ -274,10 +273,10 @@
                             <label for="tipoDocumento">Tipo de Documento</label>
                             <select id="tipoDocumento" name="tipoDocumento">
                                 <option value="" disabled selected>Seleccionar</option>
-                                <option value="dni">DNI</option>
-                                <option value="ce">Carnet de Extranjería</option>
-                                <option value="ruc">RUC</option>
-                                <option value="pasaporte">Pasaporte</option>
+                                <option value="DNI">DNI</option>
+                                <option value="CE">Carnet de Extranjería</option>
+                                <option value="RUC">RUC</option>
+                                <option value="PASAPORTE">Pasaporte</option>
                             </select>
                         </div>
                         
@@ -322,29 +321,6 @@
                             <input type="date" id="fechaNacimiento" name="fechaNacimiento">
                         </div>
                     </div>
-                    
-                    <div class="form-row-dos">
-                        <div class="form-group-nuevo">
-                            <label for="genero">Género:</label>
-                            <select id="genero" name="genero">
-                                <option value="" disabled selected>Seleccionar</option>
-                                <option value="masculino">Masculino</option>
-                                <option value="femenino">Femenino</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group-nuevo">
-                            <label for="estadoCivil">Estado Civil:</label>
-                            <select id="estadoCivil" name="estadoCivil">
-                                <option value="" disabled selected>Seleccionar</option>
-                                <option value="soltero">Soltero</option>
-                                <option value="casado">Casado</option>
-                                <option value="divorciado">Divorciado</option>
-                                <option value="viudo">Viudo</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
             
@@ -381,9 +357,8 @@
                             <label for="editTipoCliente">Tipo de Cliente</label>
                             <select id="editTipoCliente" name="editTipoCliente">
                                 <option value="" disabled>Seleccionar Tipo</option>
-                                <option value="persona-natural">Persona Natural</option>
-                                <option value="persona-juridica">Persona Jurídica</option>
-                                <option value="empresa">Empresa</option>
+                                <option value="PERSONA_NATURAL">Persona Natural</option>
+                                <option value="EMPRESA">Empresa</option>
                             </select>
                         </div>
                         
@@ -391,10 +366,10 @@
                             <label for="editTipoDocumento">Tipo de Documento</label>
                             <select id="editTipoDocumento" name="editTipoDocumento">
                                 <option value="" disabled>Seleccionar</option>
-                                <option value="dni">DNI</option>
-                                <option value="ce">Carnet de Extranjería</option>
-                                <option value="ruc">RUC</option>
-                                <option value="pasaporte">Pasaporte</option>
+                                <option value="DNI">DNI</option>
+                                <option value="CE">Carnet de Extranjería</option>
+                                <option value="RUC">RUC</option>
+                                <option value="PASAPORTE">Pasaporte</option>
                             </select>
                         </div>
                         
@@ -437,29 +412,6 @@
                         <div class="form-group-nuevo">
                             <label for="editFechaNacimiento">Fecha de Nacimiento</label>
                             <input type="date" id="editFechaNacimiento" name="editFechaNacimiento">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row-dos">
-                        <div class="form-group-nuevo">
-                            <label for="editGenero">Género:</label>
-                            <select id="editGenero" name="editGenero">
-                                <option value="">Seleccionar</option>
-                                <option value="masculino">Masculino</option>
-                                <option value="femenino">Femenino</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group-nuevo">
-                            <label for="editEstadoCivil">Estado Civil:</label>
-                            <select id="editEstadoCivil" name="editEstadoCivil">
-                                <option value="">Seleccionar</option>
-                                <option value="soltero">Soltero</option>
-                                <option value="casado">Casado</option>
-                                <option value="divorciado">Divorciado</option>
-                                <option value="viudo">Viudo</option>
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -548,18 +500,6 @@
                     
                     <div class="form-row-dos">
                         <div class="form-group-nuevo">
-                            <label>Género</label>
-                            <div class="info-field" id="viewGenero">-</div>
-                        </div>
-                        
-                        <div class="form-group-nuevo">
-                            <label>Estado Civil</label>
-                            <div class="info-field" id="viewEstadoCivil">-</div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row-dos">
-                        <div class="form-group-nuevo">
                             <label>Estado</label>
                             <div class="info-field" id="viewEstado">-</div>
                         </div>
@@ -596,6 +536,6 @@
     <div data-component="footer" data-app="store-admin"></div>
     
     <script th:src="@{/js/admin/store-admin.js}"></script>
-    <script th:src="@{/js/admin/clientes.js}"></script>
+    <script th:src="@{/js/admin/clientes_new.js}"></script>
 </body>
 </html>

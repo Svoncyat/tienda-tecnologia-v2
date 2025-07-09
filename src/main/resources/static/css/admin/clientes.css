@@ -159,6 +159,13 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    display: flex !important;
+    opacity: 1;
 }
 
 /* Modal content usando estructura del sistema */
