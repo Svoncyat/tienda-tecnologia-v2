@@ -32,8 +32,8 @@ function inicializarElementos() {
     modalproductos = document.getElementById('modal-agregar-producto');
     btnAgregarProducto = document.querySelector('#agregar-producto');
     spanCloseproductos = document.querySelector('#modal-agregar-producto .close');
-    btnGuardarProducto = document.getElementById('guardar-producto'); // ID correcto
-    btnCancelarAgregar = document.getElementById('cancelar-agregar'); // ID correcto
+    btnGuardarProducto = document.getElementById('btn-guardar-producto');
+    btnCancelarAgregar = document.getElementById('btn-cancelar-agregar');
     
     // Debug: Verificar que los elementos existen
     console.log('Modal producto:', modalproductos);

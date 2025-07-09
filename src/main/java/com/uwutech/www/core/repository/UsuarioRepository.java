@@ -29,10 +29,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     
     // Método para buscar por rol usando @Query (recomendado)
     @Query("SELECT u FROM Usuario u WHERE u.rol.id_rol = :rolId")
-    List<Usuario> findByRolId(@Param("rolId") Integer rolId);
-    
-    // Método Spring Data JPA usando propertyPath correcto
-    List<Usuario> findByRol_IdRol(Integer idRol);
+    List<Usuario> findByRol_Id_rol(@Param("rolId") Integer id_rol);
     
     // Método para buscar por texto en múltiples campos
     @Query("SELECT u FROM Usuario u WHERE " +

@@ -340,3 +340,8 @@
     vertical-align: middle;
     background: var(--color-blanco, #FFF); 
 }
+
+/* Ocultar input de archivo */
+.file-input {
+    display: none;
+}

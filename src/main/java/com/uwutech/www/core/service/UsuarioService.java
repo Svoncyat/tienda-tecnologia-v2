@@ -133,6 +133,6 @@ public class UsuarioService {
     }
     
     public List<Usuario> getUsuariosPorRol(Integer idRol) {
-        return usuarioRepository.findByRolId(idRol);
+        return usuarioRepository.findByRol_Id_rol(idRol);
     }
 }
