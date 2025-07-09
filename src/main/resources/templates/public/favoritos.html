@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5W978QP8P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-Q5W978QP8P");
+    </script>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tus productos favoritos en uwuTech - Gestiona tu lista de deseos y productos que te interesan." />
+    <meta name="keywords" content="favoritos, lista de deseos, uwutech, productos tecnológicos" />
+    
+    <title>Mis Favoritos | uwuTech</title>
+
+    <link rel="icon" href="../../shared/assets/favicon.svg">
+    <link rel="canonical" href="https://uwutech.com/favoritos">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../../shared/css/variables.css" />
+    <link rel="stylesheet" href="../../shared/css/global.css" />
+    <link rel="stylesheet" href="../css/public-site.css" />
+    <link rel="stylesheet" href="../css/pages/favoritos.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <div data-component="header" data-app="public-site"></div>
+    
+    <!-- Auth Modals -->
+    <div data-component="auth-modals" data-app="public-site"></div>
+    
+    <main style="margin-top: 80px;">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="../index.html">Inicio</a>
+                    <span>›</span>
+                    <span>Mis Favoritos</span>
+                </div>
+                <h1>Mis Productos Favoritos</h1>
+                <p>Guarda y gestiona los productos que más te interesan</p>
+            </div>
+        </section>
+
+        <!-- Favorites Content -->
+        <section class="favorites-section">
+            <div class="container">
+                <!-- Favorites Header -->
+                <div class="favorites-header">
+                    <div class="favorites-info">
+                        <span id="favorites-count">0 productos</span> en tu lista de favoritos
+                    </div>
+                    <div class="favorites-actions">
+                        <div class="view-options">
+                            <button class="view-btn active" data-view="grid" title="Vista en cuadrícula">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </button>
+                            <button class="view-btn" data-view="list" title="Vista en lista">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <button class="btn btn-outline btn-sm" id="clear-favorites-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3,6 5,6 21,6"></polyline>
+                                <path d="m19,6 v14 a2,2 0 0,1 -2,2 H7 a2,2 0 0,1 -2,-2 V6 m3,0 V4 a2,2 0 0,1 2,-2 h4 a2,2 0 0,1 2,2 v2"></path>
+                            </svg>
+                            Limpiar favoritos
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Filters -->
+                <div class="favorites-filters">
+                    <div class="filter-group">
+                        <label for="category-filter">Categoría:</label>
+                        <select id="category-filter">
+                            <option value="all">Todas las categorías</option>
+                            <option value="laptops">Laptops</option>
+                            <option value="desktops">PCs de Escritorio</option>
+                            <option value="gaming">Gaming</option>
+                            <option value="peripherals">Periféricos</option>
+                            <option value="components">Componentes</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort-filter">Ordenar por:</label>
+                        <select id="sort-filter">
+                            <option value="date-desc">Agregado recientemente</option>
+                            <option value="date-asc">Agregado hace tiempo</option>
+                            <option value="name-asc">Nombre A-Z</option>
+                            <option value="name-desc">Nombre Z-A</option>
+                            <option value="price-asc">Precio menor a mayor</option>
+                            <option value="price-desc">Precio mayor a menor</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Favorites Grid/List -->
+                <div id="favorites-container" class="favorites-grid">
+                    <!-- Los favoritos se cargarán dinámicamente -->
+                </div>
+                
+                <!-- Empty Favorites State -->
+                <div id="empty-favorites" class="empty-favorites" style="display: none;">
+                    <div class="empty-favorites-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <h3>No tienes productos favoritos</h3>
+                    <p>¡Explora nuestro catálogo y marca los productos que más te gusten!</p>
+                    <a href="productos.html" class="btn btn-primary">Explorar Productos</a>
+                </div>
+                
+                <!-- Share Favorites -->
+                <div class="share-favorites" id="share-favorites" style="display: none;">
+                    <h3>Comparte tu lista de favoritos</h3>
+                    <div class="share-options">
+                        <button class="btn btn-social btn-whatsapp" id="share-whatsapp">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.488"/>
+                            </svg>
+                            WhatsApp
+                        </button>
+                        <button class="btn btn-social btn-facebook" id="share-facebook">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            Facebook
+                        </button>
+                        <button class="btn btn-outline btn-sm" id="copy-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m9 12 2 2 4-4"></path>
+                                <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1h-6c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1z"></path>
+                                <path d="M3 12c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h6c.552 0 1-.448 1-1v-6c0-.552-.448-1-1-1z"></path>
+                            </svg>
+                            Copiar enlace
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-component="footer" data-app="public-site"></div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/global.js"></script>
+    <script src="../../shared/js/notifications.js"></script>
+    <script src="../../shared/js/auth.js"></script>
+    <script src="../../shared/js/cart.js"></script>
+    <script src="../../shared/js/favorites.js"></script>
+    <script src="../js/public-site.js"></script>
+    <script src="../js/pages/favoritos.js"></script>
+</body>
+
+</html>

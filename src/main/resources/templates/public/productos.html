@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5W978QP8P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-Q5W978QP8P");
+  </script>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catálogo completo de productos uwuTech - Laptops, PCs, periféricos y componentes con la mejor calidad y precios." />
+  <meta name="keywords" content="laptops, computadores, PC gaming, periféricos, componentes, uwutech productos" />
+  
+  <title>Productos | uwuTech - Catálogo Completo</title>
+
+  <link rel="icon" href="../../shared/assets/favicon.svg">
+  <link rel="canonical" href="https://uwutech.com/productos">  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="../css/public-site.css" />
+  <link rel="stylesheet" href="../css/pages/productos.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <div data-component="header" data-app="public-site"></div>
+  
+  <main style="margin-top: 80px;">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="../index.html">Inicio</a>
+          <span>›</span>
+          <span>Productos</span>
+        </div>
+        <h1>Nuestros Productos</h1>
+        <p>Descubre nuestra amplia gama de productos tecnológicos de las mejores marcas</p>
+      </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="filters-section">
+      <div class="container">
+        <div class="filters-bar">
+          <div class="search-products">
+            <input type="text" id="product-search" placeholder="Buscar productos..." />
+            <button type="button" class="search-product-btn">🔍</button>
+          </div>
+          
+          <div class="filter-categories">
+            <button class="filter-btn active" data-category="all">Todos</button>
+            <button class="filter-btn" data-category="laptops">Laptops</button>
+            <button class="filter-btn" data-category="desktops">PCs</button>
+            <button class="filter-btn" data-category="gaming">Gaming</button>
+            <button class="filter-btn" data-category="peripherals">Periféricos</button>
+            <button class="filter-btn" data-category="components">Componentes</button>
+          </div>
+          
+          <div class="sort-options">
+            <select id="sort-products">
+              <option value="name">Ordenar por nombre</option>
+              <option value="price-low">Precio: menor a mayor</option>
+              <option value="price-high">Precio: mayor a menor</option>
+              <option value="rating">Mejor valorados</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-catalog">
+      <div class="container">
+        <div class="products-grid" id="products-container">
+          <!-- Los productos se cargarán dinámicamente con JavaScript -->
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="pagination-btn" data-page="prev">‹ Anterior</button>
+          <div class="pagination-numbers">
+            <button class="pagination-btn active" data-page="1">1</button>
+            <button class="pagination-btn" data-page="2">2</button>
+            <button class="pagination-btn" data-page="3">3</button>
+          </div>
+          <button class="pagination-btn" data-page="next">Siguiente ›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2>¿No encontraste lo que buscabas?</h2>
+          <p>Suscríbete a nuestro newsletter y sé el primero en conocer nuestros nuevos productos y ofertas especiales</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Tu email" required>
+            <button type="submit" class="btn btn-primary">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <div data-component="footer" data-app="public-site"></div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../shared/js/global.js"></script>
+  <script src="../js/public-site.js"></script>
+  <script src="../js/pages/productos.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tiendas - Sistema de Gestión</title>
+    <link rel="stylesheet" href="./css/super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h1>Gestión de Tiendas</h1>
+            </div>
+            
+            <div class="sidebar-buttons">
+                <button id="add-company-btn" class="sidebar-button">
+                    <i class="fas fa-plus"></i>
+                    Agregar Empresa
+                </button>
+                <button id="delete-company-btn" class="sidebar-button">
+                    <i class="fas fa-trash-alt"></i>
+                    Eliminar Empresa
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    Tablero
+                </a>
+                <a href="./Gestion.html" class="nav-item active">
+                    <i class="fas fa-store"></i>
+                    Tiendas
+                </a>
+                <a href="./mensajes.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    Usuarios
+                </a>
+                <a href="./reportes.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    Informes
+                </a>
+                <a href="./config.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    Configuración
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h4 id="user-name">Usuario Admin</h4>
+                        <p id="user-role">Super Administrador</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mobile Header -->
+            <header class="mobile-header">
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Gestión de Tiendas</h1>
+                <div></div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">Gestión de Tiendas</h1>
+                    <p class="page-subtitle">Administra todas las tiendas del sistema</p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon green">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="active-stores-count">2</h3>
+                                <p>Tiendas Activas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon red">
+                                <i class="fas fa-store-slash"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="inactive-stores-count">1</h3>
+                                <p>Tiendas Inactivas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="total-stores-count">3</h3>
+                                <p>Total de Tiendas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="action-bar">
+                    <h2 style="font-size: 1.5rem; font-weight: 600; color: var(--text-primary); margin: 0;">Tiendas</h2>
+                    <div class="filter-controls">
+                        <div class="dropdown">
+                            <button id="filter-btn" class="dropdown-toggle">
+                                <i class="fas fa-filter"></i>
+                                Filtrar
+                            </button>
+                            <div id="filter-dropdown" class="dropdown-menu">
+                                <div class="dropdown-item" data-filter="all">Todas las tiendas</div>
+                                <div class="dropdown-item" data-filter="active">Solo activas</div>
+                                <div class="dropdown-item" data-filter="inactive">Solo inactivas</div>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button id="sort-btn" class="dropdown-toggle">
+                                <i class="fas fa-sort"></i>
+                                Ordenar
+                            </button>
+                            <div id="sort-dropdown" class="dropdown-menu">
+                                <div class="dropdown-item" data-sort="name-asc">Nombre A-Z</div>
+                                <div class="dropdown-item" data-sort="name-desc">Nombre Z-A</div>
+                                <div class="dropdown-item" data-sort="status-active">Activas primero</div>
+                                <div class="dropdown-item" data-sort="status-inactive">Inactivas primero</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Store Grid -->
+                <div id="store-grid" class="store-grid">
+                    <!-- Stores will be rendered here by JavaScript -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Backdrop -->
+    <div id="backdrop" class="modal hidden"></div>
+
+    <!-- Add Company Modal -->
+    <div id="add-company-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Agregar Nueva Empresa</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-company-form">
+                    <div class="form-section">
+                        <h4 class="section-title">Información de Empresa</h4>
+                        <div class="form-row">
+                            <label class="form-label">Nombre de la Empresa</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Dirección</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h4 class="section-title">Administrador de la Empresa</h4>
+                        <div class="form-row">
+                            <label class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary modal-close">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Empresa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Company Modal -->
+    <div id="delete-company-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Eliminar Empresa</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="delete-company-form">
+                    <div class="form-row">
+                        <label class="form-label">Seleccionar empresa a eliminar:</label>
+                        <select class="form-select" required>
+                            <option value="">Seleccione una empresa...</option>
+                        </select>
+                    </div>
+                    <div class="warning-box">
+                        <i class="fas fa-exclamation-triangle warning-icon"></i>
+                        <div class="warning-content">
+                            <strong>Advertencia:</strong> Esta acción no se puede deshacer. Se eliminará permanentemente la empresa seleccionada.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary modal-close">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar Empresa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Confirmation Modal -->
+    <div id="status-confirmation-modal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3 id="status-modal-title" class="modal-title">Cambiar Estado de Tienda</h3>
+            </div>
+            <div class="modal-body">
+                <p id="status-modal-message">¿Está seguro de que desea cambiar el estado de esta tienda?</p>
+                <div class="modal-footer">
+                    <button id="status-cancel-btn" class="btn btn-secondary">Cancelar</button>
+                    <button id="status-confirm-btn" class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/super-admin.js"></script>
+</body>
+</html>

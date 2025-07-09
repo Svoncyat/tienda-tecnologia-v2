@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - Sistema de Gestión de Tiendas</title>
+    <link rel="stylesheet" href="./css/super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h1>Gestión de Tiendas</h1>
+            </div>
+            
+            <div class="sidebar-buttons">
+                <button class="sidebar-button">
+                    <i class="fas fa-plus"></i>
+                    Agregar Usuario
+                </button>
+                <button class="sidebar-button">
+                    <i class="fas fa-trash-alt"></i>
+                    Eliminar Usuario
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    Tablero
+                </a>
+                <a href="./Gestion.html" class="nav-item">
+                    <i class="fas fa-store"></i>
+                    Tiendas
+                </a>
+                <a href="./mensajes.html" class="nav-item active">
+                    <i class="fas fa-users"></i>
+                    Usuarios
+                </a>
+                <a href="./reportes.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    Informes
+                </a>
+                <a href="./config.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    Configuración
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h4 id="user-name">Usuario Admin</h4>
+                        <p id="user-role">Super Administrador</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mobile Header -->
+            <header class="mobile-header">
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Gestión de Usuarios</h1>
+                <div></div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">Gestión de Usuarios</h1>
+                    <p class="page-subtitle">Administra todos los usuarios del sistema</p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="total-users-count">0</h3>
+                                <p>Total de Usuarios</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon green">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="active-users-count">0</h3>
+                                <p>Usuarios Activos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon yellow">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="admin-users-count">0</h3>
+                                <p>Administradores</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="manager-users-count">0</h3>
+                                <p>Gerentes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="action-bar">
+                    <div class="action-buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Agregar Usuario
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i>
+                            Eliminar Usuario
+                        </button>
+                    </div>
+                    <div class="filter-controls">
+                        <div style="position: relative; margin-right: 0.5rem;">
+                            <input type="text" placeholder="Buscar usuarios..." style="padding: 0.5rem 0.5rem 0.5rem 2.5rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); font-size: 0.875rem; width: 250px;">
+                            <i class="fas fa-search" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);"></i>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle">
+                                <i class="fas fa-filter"></i>
+                                Filtros
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem;">
+                    <!-- User Card 1 -->
+                    <div class="stat-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                <div>
+                                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem;">Juan Pérez</h3>
+                                    <p style="color: var(--text-secondary); font-size: 0.875rem;">Tienda Centro</p>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <span style="background: #e0e7ff; color: #3730a3; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">Admin</span>
+                                    <span class="status-badge active">Activo</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div class="info-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>ubuntuajuan@gmail.com</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+1 555-111-2222</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Último acceso: 2024-01-15 10:30</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                                <button class="btn btn-danger" style="padding: 0.5rem 0.75rem; font-size: 0.8125rem;">Desactivar</button>
+                                <button style="background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0.25rem;">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Card 2 -->
+                    <div class="stat-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                <div>
+                                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem;">María García</h3>
+                                    <p style="color: var(--text-secondary); font-size: 0.875rem;">Sucursal Norte</p>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <span style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">Gerente</span>
+                                    <span class="status-badge active">Activo</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div class="info-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>maria@sucursalnorte.com</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+1 555-333-4444</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Último acceso: 2024-01-14 15:45</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                                <button class="btn btn-danger" style="padding: 0.5rem 0.75rem; font-size: 0.8125rem;">Desactivar</button>
+                                <button style="background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0.25rem;">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Card 3 -->
+                    <div class="stat-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                <div>
+                                    <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem;">Carlos López</h3>
+                                    <p style="color: var(--text-secondary); font-size: 0.875rem;">Ubicación Oeste</p>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <span style="background: #f3f4f6; color: #374151; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">Empleado</span>
+                                    <span class="status-badge inactive">Inactivo</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div class="info-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>carlos@ubicacionoeste.com</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+1 555-555-6666</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Último acceso: 2024-01-10 09:20</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                                <button class="btn btn-primary" style="padding: 0.5rem 0.75rem; font-size: 0.8125rem;">Activar</button>
+                                <button style="background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0.25rem;">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Backdrop -->
+    <div id="backdrop" class="modal hidden"></div>
+
+    <!-- Add User Modal -->
+    <div id="add-user-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Agregar Nuevo Usuario</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-user-form">
+                    <div class="form-section">
+                        <h4 class="section-title">Información del Usuario</h4>
+                        <div class="form-row">
+                            <label class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Rol</label>
+                            <select class="form-select" required>
+                                <option value="">Seleccione un rol...</option>
+                                <option value="Administrador">Administrador</option>
+                                <option value="Editor">Editor</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Tienda</label>
+                            <select class="form-select" required>
+                                <option value="">Seleccione una tienda...</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary modal-close">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete User Modal -->
+    <div id="delete-user-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Eliminar Usuario</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="delete-user-form">
+                    <div class="form-row">
+                        <label class="form-label">Seleccionar usuario a eliminar:</label>
+                        <select class="form-select" required>
+                            <option value="">Seleccione un usuario...</option>
+                        </select>
+                    </div>
+                    <div class="warning-box">
+                        <i class="fas fa-exclamation-triangle warning-icon"></i>
+                        <div class="warning-content">
+                            <strong>Advertencia:</strong> Esta acción no se puede deshacer. Se eliminará permanentemente el usuario seleccionado.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary modal-close">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/super-admin.js"></script>
+</body>
+</html>

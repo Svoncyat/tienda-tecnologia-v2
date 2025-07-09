@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - Sistema de Gestión de Tiendas</title>
+    <link rel="stylesheet" href="./css/super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h1>Gestión de Tiendas</h1>
+            </div>
+            
+            <div class="sidebar-buttons">
+                <button class="sidebar-button">
+                    <i class="fas fa-download"></i>
+                    Generar Reporte
+                </button>
+                <button class="sidebar-button">
+                    <i class="fas fa-file-export"></i>
+                    Exportar Datos
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    Tablero
+                </a>
+                <a href="./Gestion.html" class="nav-item">
+                    <i class="fas fa-store"></i>
+                    Tiendas
+                </a>
+                <a href="./mensajes.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    Usuarios
+                </a>
+                <a href="./reportes.html" class="nav-item active">
+                    <i class="fas fa-chart-bar"></i>
+                    Informes
+                </a>
+                <a href="./config.html" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    Configuración
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h4 id="user-name">Usuario Admin</h4>
+                        <p id="user-role">Super Administrador</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mobile Header -->
+            <header class="mobile-header">
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Informes y Reportes</h1>
+                <div></div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">Informes y Reportes</h1>
+                    <p class="page-subtitle">Análisis detallado del sistema de gestión</p>
+                </div>
+
+                <!-- Report Controls -->
+                <div class="stat-card" style="margin-bottom: 2rem;">
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                        <h2 style="font-size: 1.125rem; font-weight: 600;">Configuración de Reporte</h2>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                            <div>
+                                <label class="form-label">Tipo de Reporte</label>
+                                <select class="form-select">
+                                    <option>Tiendas</option>
+                                    <option>Suscripciones</option>
+                                    <option>Usuarios</option>
+                                    <option>Ingresos</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Período</label>
+                                <select class="form-select">
+                                    <option>Última semana</option>
+                                    <option>Último mes</option>
+                                    <option>Último trimestre</option>
+                                    <option>Último año</option>
+                                    <option>Personalizado</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Fecha Inicio</label>
+                                <input type="date" class="form-input">
+                            </div>
+                            <div>
+                                <label class="form-label">Fecha Fin</label>
+                                <input type="date" class="form-input">
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-chart-bar"></i>
+                                Generar Reporte
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-file-pdf"></i>
+                                Exportar PDF
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-file-excel"></i>
+                                Exportar Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>5</h3>
+                                <p>Total Tiendas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>3</h3>
+                                <p>Tiendas Activas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon yellow">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>1</h3>
+                                <p>Pendientes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-icon red">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>1</h3>
+                                <p>Inactivas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <!-- Subscription Trends Chart -->
+                    <div class="stat-card">
+                        <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                            <h3 style="font-size: 1.125rem; font-weight: 600;">Tendencias de Suscripciones</h3>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div style="height: 250px; display: flex; items-end; justify-content: space-between; gap: 0.5rem;">
+                                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1px;">
+                                        <div style="width: 100%; background: #3b82f6; height: 40px; border-radius: 2px 2px 0 0;" title="Nuevas: 5"></div>
+                                        <div style="width: 100%; background: #10b981; height: 60px;" title="Renovadas: 12"></div>
+                                        <div style="width: 100%; background: #ef4444; height: 20px; border-radius: 0 0 2px 2px;" title="Expiradas: 2"></div>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">Ene</span>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1px;">
+                                        <div style="width: 100%; background: #3b82f6; height: 50px; border-radius: 2px 2px 0 0;" title="Nuevas: 8"></div>
+                                        <div style="width: 100%; background: #10b981; height: 75px;" title="Renovadas: 15"></div>
+                                        <div style="width: 100%; background: #ef4444; height: 10px; border-radius: 0 0 2px 2px;" title="Expiradas: 1"></div>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">Feb</span>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1px;">
+                                        <div style="width: 100%; background: #3b82f6; height: 35px; border-radius: 2px 2px 0 0;" title="Nuevas: 6"></div>
+                                        <div style="width: 100%; background: #10b981; height: 90px;" title="Renovadas: 18"></div>
+                                        <div style="width: 100%; background: #ef4444; height: 30px; border-radius: 0 0 2px 2px;" title="Expiradas: 3"></div>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">Mar</span>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1px;">
+                                        <div style="width: 100%; background: #3b82f6; height: 55px; border-radius: 2px 2px 0 0;" title="Nuevas: 9"></div>
+                                        <div style="width: 100%; background: #10b981; height: 70px;" title="Renovadas: 14"></div>
+                                        <div style="width: 100%; background: #ef4444; height: 20px; border-radius: 0 0 2px 2px;" title="Expiradas: 2"></div>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">Abr</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; font-size: 0.875rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 0.75rem; height: 0.75rem; background: #3b82f6; border-radius: 2px;"></div>
+                                    <span>Nuevas</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 0.75rem; height: 0.75rem; background: #10b981; border-radius: 2px;"></div>
+                                    <span>Renovadas</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 0.75rem; height: 0.75rem; background: #ef4444; border-radius: 2px;"></div>
+                                    <span>Expiradas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Distribution -->
+                    <div class="stat-card">
+                        <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                            <h3 style="font-size: 1.125rem; font-weight: 600;">Distribución por Estado</h3>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; justify-content: center; height: 250px;">
+                                <div style="position: relative; width: 200px; height: 200px;">
+                                    <div style="position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(#10b981 0deg 216deg, #f59e0b 216deg 288deg, #ef4444 288deg 360deg);"></div>
+                                    <div style="position: absolute; inset: 4rem; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center;">
+                                        <div style="text-align: center;">
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary);">5</div>
+                                            <div style="font-size: 0.875rem; color: var(--text-secondary);">Total</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; text-align: center; font-size: 0.875rem;">
+                                <div>
+                                    <div style="width: 1rem; height: 1rem; background: #10b981; border-radius: 2px; margin: 0 auto 0.25rem;"></div>
+                                    <div style="font-weight: 500;">3</div>
+                                    <div style="color: var(--text-secondary);">Activas</div>
+                                </div>
+                                <div>
+                                    <div style="width: 1rem; height: 1rem; background: #f59e0b; border-radius: 2px; margin: 0 auto 0.25rem;"></div>
+                                    <div style="font-weight: 500;">1</div>
+                                    <div style="color: var(--text-secondary);">Pendientes</div>
+                                </div>
+                                <div>
+                                    <div style="width: 1rem; height: 1rem; background: #ef4444; border-radius: 2px; margin: 0 auto 0.25rem;"></div>
+                                    <div style="font-weight: 500;">1</div>
+                                    <div style="color: var(--text-secondary);">Inactivas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="stat-card" style="margin-top: 2rem;">
+                    <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                        <h3 style="font-size: 1.125rem; font-weight: 600;">Datos Detallados</h3>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead style="background: var(--background-color);">
+                                <tr>
+                                    <th style="padding: 0.75rem; text-align: left; font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">ID</th>
+                                    <th style="padding: 0.75rem; text-align: left; font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Nombre</th>
+                                    <th style="padding: 0.75rem; text-align: left; font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Estado</th>
+                                    <th style="padding: 0.75rem; text-align: left; font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Fecha Registro</th>
+                                    <th style="padding: 0.75rem; text-align: left; font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Fecha Expiración</th>
+                                    <th style="padding: 0.75rem; text-align: left; font-size: 0.75rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: white; border-top: 1px solid var(--border-color);">
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">1</td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem; font-weight: 500;">Tienda A</td>
+                                    <td style="padding: 1rem 0.75rem;"><span class="status-badge active">Activa</span></td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">15 Oct 2023</td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">15 Oct 2024</td>
+                                    <td style="padding: 1rem 0.75rem;"><button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Ver Detalles</button></td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">2</td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem; font-weight: 500;">Tienda B</td>
+                                    <td style="padding: 1rem 0.75rem;"><span style="background: #fef3c7; color: var(--warning-color); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500;">Pendiente</span></td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">1 Nov 2023</td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">-</td>
+                                    <td style="padding: 1rem 0.75rem;"><button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Ver Detalles</button></td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">3</td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem; font-weight: 500;">Tienda C</td>
+                                    <td style="padding: 1rem 0.75rem;"><span class="status-badge inactive">Inactiva</span></td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">10 Sep 2023</td>
+                                    <td style="padding: 1rem 0.75rem; font-size: 0.875rem;">10 Oct 2023</td>
+                                    <td style="padding: 1rem 0.75rem;"><button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">Ver Detalles</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Backdrop -->
+    <div id="backdrop" class="modal hidden"></div>
+
+    <script src="./js/super-admin.js"></script>
+</body>
+</html>

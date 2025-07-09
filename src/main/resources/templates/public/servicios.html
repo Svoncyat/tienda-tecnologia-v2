@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios Técnicos - uwuTech | Reparación y Soporte Especializado</title>
+    <meta name="description" content="Servicios técnicos especializados de uwuTech: reparación de equipos, soporte técnico, mantenimiento preventivo, instalación y configuración. Técnicos certificados.">
+    <meta name="keywords" content="servicios técnicos, reparación computadoras, soporte técnico, mantenimiento, instalación, configuración, uwuTech">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Servicios Técnicos - uwuTech">
+    <meta property="og:description" content="Servicios técnicos especializados: reparación, soporte, mantenimiento y más">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uwutech.com/servicios">
+    <meta property="og:image" content="../../shared/assets/logo.svg">
+      <!-- Favicon -->
+    <link rel="icon" href="../../shared/assets/favicon.svg" type="image/svg+xml">
+      <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../../shared/css/variables.css">
+    <link rel="stylesheet" href="../../shared/css/global.css">
+    <link rel="stylesheet" href="../css/public-site.css">
+    <link rel="stylesheet" href="../css/pages/servicios.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</head>
+<body>    <!-- Header Component -->
+    <div data-component="header" data-app="public-site"></div>
+
+    <!-- Main Content -->
+    <main >
+        <!-- Hero Section -->
+        <section class="services-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Servicios Técnicos Especializados</h1>
+                    <p class="hero-description">
+                        Soluciones técnicas completas para empresas y particulares. 
+                        Nuestro equipo de técnicos certificados está aquí para resolver 
+                        todos tus problemas tecnológicos.
+                    </p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary" id="contact-btn">
+                            Solicitar Servicio
+                        </button>
+                        <a class="btn btn-secondary" href="#services-grid">
+                            Ver Servicios
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Clientes Satisfechos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Soporte Disponible</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Satisfacción</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="services-grid">
+            <div class="container" id="services-grid">
+                <div class="section-header">
+                    <h2 class="section-title">Nuestros Servicios</h2>
+                    <p class="section-subtitle">
+                        Ofrecemos una amplia gama de servicios técnicos para cubrir todas tus necesidades tecnológicas
+                    </p>
+                </div>
+
+                <div class="services-container">
+                    <!-- Reparación de Equipos -->
+                    <div class="service-card" data-service="reparacion">
+                        <div class="service-icon">🔧</div>
+                        <h3 class="service-title">Reparación de Equipos</h3>
+                        <p class="service-description">
+                            Diagnóstico y reparación de computadoras, laptops, tablets y smartphones. 
+                            Técnicos especializados en todas las marcas.
+                        </p>
+                        <ul class="service-features">
+                            <li>Diagnóstico gratuito</li>
+                            <li>Reparación en el día</li>
+                            <li>Garantía de 6 meses</li>
+                            <li>Repuestos originales</li>
+                        </ul>
+                        <button class="btn btn-outline service-btn">Solicitar</button>
+                    </div>
+
+                    <!-- Soporte Técnico -->
+                    <div class="service-card" data-service="soporte">
+                        <div class="service-icon">🛠️</div>
+                        <h3 class="service-title">Soporte Técnico</h3>
+                        <p class="service-description">
+                            Soporte técnico remoto y presencial para resolver problemas de software, 
+                            configuración y optimización de sistemas.
+                        </p>
+                        <ul class="service-features">
+                            <li>Soporte 24/7</li>
+                            <li>Remoto y presencial</li>
+                            <li>Técnicos certificados</li>
+                            <li>Respuesta inmediata</li>
+                        </ul>
+                        <button class="btn btn-outline service-btn">Solicitar</button>
+                    </div>
+
+                    <!-- Mantenimiento Preventivo -->
+                    <div class="service-card" data-service="mantenimiento">
+                        <div class="service-icon">🔄</div>
+                        <h3 class="service-title">Mantenimiento Preventivo</h3>
+                        <p class="service-description">
+                            Mantenimiento regular para prevenir fallas y optimizar el rendimiento 
+                            de tus equipos tecnológicos.
+                        </p>
+                        <ul class="service-features">
+                            <li>Limpieza profunda</li>
+                            <li>Actualización de software</li>
+                            <li>Optimización de rendimiento</li>
+                            <li>Respaldo de datos</li>
+                        </ul>
+                        <button class="btn btn-outline service-btn">Solicitar</button>
+                    </div>
+
+                    <!-- Instalación y Configuración -->
+                    <div class="service-card" data-service="instalacion">
+                        <div class="service-icon">⚙️</div>
+                        <h3 class="service-title">Instalación y Configuración</h3>
+                        <p class="service-description">
+                            Instalación y configuración de equipos, software, redes y sistemas 
+                            para hogares y empresas.
+                        </p>
+                        <ul class="service-features">
+                            <li>Configuración completa</li>
+                            <li>Migración de datos</li>
+                            <li>Capacitación incluida</li>
+                            <li>Documentación técnica</li>
+                        </ul>
+                        <button class="btn btn-outline service-btn">Solicitar</button>
+                    </div>
+
+                    <!-- Recuperación de Datos -->
+                    <div class="service-card" data-service="recuperacion">
+                        <div class="service-icon">💾</div>
+                        <h3 class="service-title">Recuperación de Datos</h3>
+                        <p class="service-description">
+                            Recuperación de datos perdidos por fallas de hardware, eliminación 
+                            accidental o corrupción de archivos.
+                        </p>
+                        <ul class="service-features">
+                            <li>Evaluación sin costo</li>
+                            <li>Alta tasa de éxito</li>
+                            <li>Confidencialidad garantizada</li>
+                            <li>Entrega en 24-48hrs</li>
+                        </ul>
+                        <button class="btn btn-outline service-btn">Solicitar</button>
+                    </div>
+
+                    <!-- Consultoría IT -->
+                    <div class="service-card" data-service="consultoria">
+                        <div class="service-icon">💼</div>
+                        <h3 class="service-title">Consultoría IT</h3>
+                        <p class="service-description">
+                            Consultoría especializada para empresas que buscan optimizar 
+                            su infraestructura tecnológica y procesos digitales.
+                        </p>
+                        <ul class="service-features">
+                            <li>Análisis de infraestructura</li>
+                            <li>Plan de modernización</li>
+                            <li>Optimización de costos</li>
+                            <li>Seguimiento continuo</li>
+                        </ul>
+                        <button class="btn btn-outline service-btn">Solicitar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nuestro Proceso</h2>
+                    <p class="section-subtitle">
+                        Un proceso simple y transparente para brindarte el mejor servicio
+                    </p>
+                </div>
+
+                <div class="process-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Diagnóstico</h3>
+                            <p class="step-description">
+                                Evaluamos tu equipo o problema para identificar la mejor solución
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Cotización</h3>
+                            <p class="step-description">
+                                Te proporcionamos una cotización clara y sin costos ocultos
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Ejecución</h3>
+                            <p class="step-description">
+                                Realizamos el trabajo con los más altos estándares de calidad
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Entrega</h3>
+                            <p class="step-description">
+                                Te entregamos tu equipo funcionando perfectamente con garantía
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Areas Section -->
+        <section class="service-areas">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Áreas de Cobertura</h2>
+                    <p class="section-subtitle">
+                        Ofrecemos nuestros servicios en toda la ciudad metropolitana
+                    </p>
+                </div>
+
+                <div class="areas-grid">
+                    <div class="area-card">
+                        <h3 class="area-title">Servicio a Domicilio</h3>
+                        <p class="area-description">
+                            Visitamos tu hogar u oficina para brindarte el servicio que necesitas
+                        </p>
+                        <ul class="area-benefits">
+                            <li>Sin costo de traslado en zona metropolitana</li>
+                            <li>Horarios flexibles</li>
+                            <li>Servicio de urgencia disponible</li>
+                        </ul>
+                    </div>
+
+                    <div class="area-card">
+                        <h3 class="area-title">Centro de Servicio</h3>
+                        <p class="area-description">
+                            Taller especializado con todas las herramientas y equipos necesarios
+                        </p>
+                        <ul class="area-benefits">
+                            <li>Diagnóstico especializado</li>
+                            <li>Reparaciones complejas</li>
+                            <li>Banco de pruebas completo</li>
+                        </ul>
+                    </div>
+
+                    <div class="area-card">
+                        <h3 class="area-title">Soporte Remoto</h3>
+                        <p class="area-description">
+                            Solución inmediata de problemas a través de conexión remota segura
+                        </p>
+                        <ul class="area-benefits">
+                            <li>Respuesta inmediata</li>
+                            <li>Conexión segura</li>
+                            <li>Disponible 24/7</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="services-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">¿Necesitas ayuda técnica?</h2>
+                    <p class="cta-description">
+                        Contáctanos hoy mismo y recibe una cotización gratuita para tu proyecto
+                    </p>
+                    <div class="cta-actions">
+                        <button class="btn btn-primary" id="cta-contact">
+                            Contactar Ahora
+                        </button>
+                        <div class="cta-contact-info">
+                            <span class="contact-phone">📞 +51 987 654 321 </span>
+                            <span class="contact-email">✉️ servicios@uwutech.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>    <!-- Footer Component -->
+    <div data-component="footer" data-app="public-site"></div>
+
+    <!-- Service Request Modal -->
+    <div id="service-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Solicitar Servicio</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <form id="service-form" class="modal-body">
+                <div class="form-group">
+                    <label for="service-type">Tipo de Servicio</label>
+                    <select id="service-type" name="serviceType" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="reparacion">Reparación de Equipos</option>
+                        <option value="soporte">Soporte Técnico</option>
+                        <option value="mantenimiento">Mantenimiento Preventivo</option>
+                        <option value="instalacion">Instalación y Configuración</option>
+                        <option value="recuperacion">Recuperación de Datos</option>
+                        <option value="consultoria">Consultoría IT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="customer-name">Nombre Completo</label>
+                    <input type="text" id="customer-name" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-email">Correo Electrónico</label>
+                    <input type="email" id="customer-email" name="customerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Teléfono</label>
+                    <input type="tel" id="customer-phone" name="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="service-description">Descripción del Problema</label>
+                    <textarea id="service-description" name="serviceDescription" rows="4" required 
+                              placeholder="Describe detalladamente el problema o servicio que necesitas"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="service-urgency">Urgencia</label>
+                    <select id="service-urgency" name="serviceUrgency" required>
+                        <option value="baja">Baja - Dentro de una semana</option>
+                        <option value="media">Media - Dentro de 2-3 días</option>
+                        <option value="alta">Alta - Dentro de 24 horas</option>
+                        <option value="urgente">Urgente - Lo antes posible</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="form-cancel">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                </div>
+            </form>
+        </div>
+    </div>    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/global.js"></script>
+    <script src="../js/public-site.js"></script>
+    <script src="../js/pages/servicios.js"></script>
+</body>
+</html>

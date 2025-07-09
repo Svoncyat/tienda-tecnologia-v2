@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - uwuTech | Ponte en Contacto con Nosotros</title>
+    <meta name="description" content="Contáctanos para resolver tus dudas, solicitar servicios o cotizaciones. uwuTech - Tu aliado tecnológico de confianza. Múltiples canales de comunicación disponibles.">
+    <meta name="keywords" content="contacto uwuTech, soporte técnico, atención al cliente, ubicación, teléfono, email, tecnología">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Contacto - uwuTech">
+    <meta property="og:description" content="Ponte en contacto con uwuTech para resolver tus necesidades tecnológicas">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uwutech.com/contacto">
+    <meta property="og:image" content="../../shared/assets/logo.svg">
+      <!-- Favicon -->
+    <link rel="icon" href="../../shared/assets/favicon.svg" type="image/svg+xml">
+      <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/public-site.css">
+    <link rel="stylesheet" href="../css/pages/contacto.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</head>
+<body>    <!-- Header Component -->
+    <div data-component="header" data-app="public-site"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Ponte en Contacto</h1>
+                    <p class="hero-description">
+                        ¿Tienes preguntas, necesitas soporte técnico o quieres solicitar una cotización? 
+                        Estamos aquí para ayudarte. Contáctanos a través del canal que prefieras.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Methods -->
+        <section class="contact-methods">
+            <div class="container">
+                <div class="methods-grid">
+                    <!-- Phone Contact -->
+                    <div class="method-card">
+                        <div class="method-icon">📞</div>
+                        <h3 class="method-title">Teléfono</h3>
+                        <p class="method-description">Habla directamente con nuestros expertos</p>
+                        <div class="method-details">
+                            <a href="tel:+5551234567" class="contact-link">
+                                <strong>+51 987 654 321</strong>
+                            </a>
+                            <p class="method-hours">Lun - Vie: 8:00 AM - 8:00 PM<br>Sáb: 9:00 AM - 6:00 PM</p>
+                        </div>
+                        <button class="btn btn-outline method-btn" data-method="phone">
+                            Llamar Ahora
+                        </button>
+                    </div>
+
+                    <!-- Email Contact -->
+                    <div class="method-card">
+                        <div class="method-icon">✉️</div>
+                        <h3 class="method-title">Correo Electrónico</h3>
+                        <p class="method-description">Envíanos un mensaje detallado</p>
+                        <div class="method-details">
+                            <a href="mailto:info@uwutech.com" class="contact-link">
+                                <strong>info@uwutech.com</strong>
+                            </a>
+                            <p class="method-hours">Respuesta en menos de 24 horas</p>
+                        </div>
+                        <button class="btn btn-outline method-btn" data-method="email">
+                            Enviar Email
+                        </button>
+                    </div>
+
+                    <!-- WhatsApp Contact -->
+                    <div class="method-card">
+                        <div class="method-icon">💬</div>
+                        <h3 class="method-title">WhatsApp</h3>
+                        <p class="method-description">Chat directo para consultas rápidas</p>
+                        <div class="method-details">
+                            <a href="https://wa.me/51987654321" class="contact-link" target="_blank">
+                                <strong>+51 987 654 321</strong>
+                            </a>
+                            <p class="method-hours">Disponible 24/7</p>
+                        </div>
+                        <button class="btn btn-outline method-btn" data-method="whatsapp">
+                            Abrir WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form & Info -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <div class="form-header">
+                            <h2 class="form-title">Envíanos un Mensaje</h2>
+                            <p class="form-description">
+                                Completa el formulario y nos pondremos en contacto contigo lo antes posible
+                            </p>
+                        </div>
+
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Nombre Completo *</label>
+                                    <input type="text" id="contact-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Correo Electrónico *</label>
+                                    <input type="email" id="contact-email" name="email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-phone">Teléfono</label>
+                                    <input type="tel" id="contact-phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-subject">Asunto *</label>
+                                    <select id="contact-subject" name="subject" required>
+                                        <option value="">Selecciona un asunto</option>
+                                        <option value="consulta-general">Consulta General</option>
+                                        <option value="cotizacion">Solicitar Cotización</option>
+                                        <option value="soporte-tecnico">Soporte Técnico</option>
+                                        <option value="reparacion">Reparación de Equipos</option>
+                                        <option value="mantenimiento">Mantenimiento</option>
+                                        <option value="consultoria">Consultoría IT</option>
+                                        <option value="otros">Otros</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-message">Mensaje *</label>
+                                <textarea id="contact-message" name="message" rows="5" required 
+                                          placeholder="Describe tu consulta, problema o requerimiento de manera detallada..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-urgency">Nivel de Urgencia</label>
+                                <select id="contact-urgency" name="urgency">
+                                    <option value="baja">Baja - No es urgente</option>
+                                    <option value="media">Media - Dentro de unos días</option>
+                                    <option value="alta">Alta - Lo antes posible</option>
+                                    <option value="critica">Crítica - Urgente</option>
+                                </select>
+                            </div>
+
+                            <div class="form-checkbox">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="contact-newsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    Suscribirme al boletín de noticias y promociones
+                                </label>
+                            </div>
+
+                            <div class="form-checkbox">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="contact-privacy" name="privacy" required>
+                                    <span class="checkmark"></span>
+                                    Acepto la <a href="#" class="link">Política de Privacidad</a> y 
+                                    <a href="#" class="link">Términos de Servicio</a> *
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary btn-large">
+                                    Enviar Mensaje
+                                </button>
+                                <button type="reset" class="btn btn-outline">
+                                    Limpiar Formulario
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="contact-information">
+                        <div class="info-section">
+                            <h3 class="info-title">Información de Contacto</h3>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">📍</div>
+                                <div class="info-content">
+                                    <h4>Dirección</h4>
+                                    <p>Urb. Los Jardines 221<br>
+                                       Tarapoto, San Martín<br>
+                                       Perú</p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <div class="info-icon">📞</div>
+                                <div class="info-content">
+                                    <h4>Teléfonos</h4>
+                                    <p>Principal: <a href="tel:+51987654321">+51 987 654 321</a><br>
+                                       Soporte: <a href="tel:+51987654322">+51 987 654 322</a><br>
+                                       Emergencias: <a href="tel:+5551112222">(555) 111-2222</a></p>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <div class="info-icon">✉️</div>
+                                <div class="info-content">
+                                    <h4>Correos Electrónicos</h4>
+                                    <p>General: <a href="mailto:info@uwutech.com">info@uwutech.com</a><br>
+                                       Ventas: <a href="mailto:ventas@uwutech.com">ventas@uwutech.com</a><br>
+                                       Soporte: <a href="mailto:soporte@uwutech.com">soporte@uwutech.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3 class="info-title">Horarios de Atención</h3>
+                            
+                            <div class="schedule-grid">
+                                <div class="schedule-item">
+                                    <span class="schedule-day">Lunes - Viernes</span>
+                                    <span class="schedule-time">8:00 AM - 8:00 PM</span>
+                                </div>
+                                <div class="schedule-item">
+                                    <span class="schedule-day">Sábados</span>
+                                    <span class="schedule-time">9:00 AM - 6:00 PM</span>
+                                </div>
+                                <div class="schedule-item">
+                                    <span class="schedule-day">Domingos</span>
+                                    <span class="schedule-time">Solo emergencias</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="info-section">
+                            <h3 class="info-title">Síguenos</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link" data-platform="facebook">
+                                    <span class="social-icon">📘</span>
+                                    Facebook
+                                </a>
+                                <a href="#" class="social-link" data-platform="twitter">
+                                    <span class="social-icon">🐦</span>
+                                    Twitter
+                                </a>
+                                <a href="#" class="social-link" data-platform="linkedin">
+                                    <span class="social-icon">💼</span>
+                                    LinkedIn
+                                </a>
+                                <a href="#" class="social-link" data-platform="instagram">
+                                    <span class="social-icon">📷</span>
+                                    Instagram
+                                </a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Preguntas Frecuentes</h2>
+                    <p class="section-subtitle">
+                        Encuentra respuestas rápidas a las preguntas más comunes
+                    </p>
+                </div>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            ¿Cuál es el tiempo de respuesta para consultas?
+                            <span class="faq-toggle">+</span>
+                        </h3>
+                        <div class="faq-answer">
+                            <p>Respondemos a todas las consultas en un máximo de 24 horas durante días hábiles. 
+                               Para consultas urgentes, puedes contactarnos por teléfono o WhatsApp para recibir 
+                               atención inmediata.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            ¿Ofrecen servicios a domicilio?
+                            <span class="faq-toggle">+</span>
+                        </h3>
+                        <div class="faq-answer">
+                            <p>Sí, ofrecemos servicios técnicos a domicilio en toda la zona metropolitana. 
+                               El costo del traslado varía según la ubicación. Consulta nuestras tarifas 
+                               al momento de solicitar el servicio.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            ¿Qué garantía ofrecen en sus servicios?
+                            <span class="faq-toggle">+</span>
+                        </h3>
+                        <div class="faq-answer">
+                            <p>Todos nuestros servicios incluyen garantía. Las reparaciones tienen garantía 
+                               de 6 meses, el mantenimiento preventivo de 3 meses, y las instalaciones de 1 año. 
+                               Los términos específicos se detallan en cada contrato de servicio.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            ¿Manejan equipos de todas las marcas?
+                            <span class="faq-toggle">+</span>
+                        </h3>
+                        <div class="faq-answer">
+                            <p>Trabajamos con equipos de todas las marcas principales: Apple, Dell, HP, Lenovo, 
+                               ASUS, Samsung, Huawei, y muchas más. Nuestros técnicos están certificados en 
+                               múltiples plataformas y tecnologías.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            ¿Cuáles son sus métodos de pago?
+                            <span class="faq-toggle">+</span>
+                        </h3>
+                        <div class="faq-answer">
+                            <p>Aceptamos efectivo, tarjetas de crédito y débito, transferencias bancarias, 
+                               y pagos digitales (PayPal, Apple Pay, Google Pay). Para empresas ofrecemos 
+                               términos de crédito previa evaluación.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            ¿Tienen soporte de emergencia?
+                            <span class="faq-toggle">+</span>
+                        </h3>
+                        <div class="faq-answer">
+                            <p>Sí, ofrecemos soporte de emergencia 24/7 para clientes empresariales con 
+                               contrato de soporte. Para casos críticos fuera del horario normal, contamos 
+                               con un número de emergencias con tarifas especiales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>    <!-- Footer Component -->
+    <div data-component="footer" data-app="public-site"></div>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../shared/js/global.js"></script>
+    <script src="../js/public-site.js"></script>
+    <script src="../js/pages/contacto.js"></script>
+</body>
+</html>

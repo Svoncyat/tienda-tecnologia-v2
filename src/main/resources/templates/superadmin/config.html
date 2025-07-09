@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Sistema de Gestión de Tiendas</title>
+    <link rel="stylesheet" href="@{/css/superadmin/superadmin.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h1>Gestión de Tiendas</h1>
+            </div>
+            
+            <div class="sidebar-buttons">
+                <button class="sidebar-button">
+                    <i class="fas fa-save"></i>
+                    Guardar Cambios
+                </button>
+                <button class="sidebar-button">
+                    <i class="fas fa-undo"></i>
+                    Restaurar Valores
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="@{/superadmin/dashboard}" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    Tablero
+                </a>
+                <a href="@{/superadmin/Gestion}" class="nav-item">
+                    <i class="fas fa-store"></i>
+                    Tiendas
+                </a>
+                <a href="./mensajes.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    Usuarios
+                </a>
+                <a href="./reportes.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    Informes
+                </a>
+                <a href="./config.html" class="nav-item active">
+                    <i class="fas fa-cog"></i>
+                    Configuración
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h4 id="user-name">Usuario Admin</h4>
+                        <p id="user-role">Super Administrador</p>
+                    </div>
+                </div>
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mobile Header -->
+            <header class="mobile-header">
+                <button id="menu-toggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Configuración del Sistema</h1>
+                <div></div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">Configuración del Sistema</h1>
+                    <p class="page-subtitle">Administra la configuración general del sistema</p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <!-- Sidebar Tabs -->
+                    <div style="display: flex; flex-direction: column; lg:flex-direction: row; gap: 2rem;">
+                        <div style="lg:width: 16rem; flex-shrink: 0;">
+                            <div class="stat-card">
+                                <nav style="padding: 1rem;">
+                                    <button class="nav-item active" style="width: 100%; text-align: left; margin-bottom: 0.5rem; background: var(--background-color);">
+                                        <span style="margin-right: 0.75rem;">⚙️</span>
+                                        General
+                                    </button>
+                                    <button class="nav-item" style="width: 100%; text-align: left; margin-bottom: 0.5rem;">
+                                        <span style="margin-right: 0.75rem;">🔒</span>
+                                        Seguridad
+                                    </button>
+                                    <button class="nav-item" style="width: 100%; text-align: left; margin-bottom: 0.5rem;">
+                                        <span style="margin-right: 0.75rem;">🔔</span>
+                                        Notificaciones
+                                    </button>
+                                    <button class="nav-item" style="width: 100%; text-align: left;">
+                                        <span style="margin-right: 0.75rem;">💾</span>
+                                        Respaldo
+                                    </button>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div style="flex: 1;">
+                            <!-- General Settings -->
+                            <div class="stat-card">
+                                <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                                    <h2 style="font-size: 1.125rem; font-weight: 600;">Configuración General</h2>
+                                </div>
+                                
+                                <form style="padding: 1.5rem;">
+                                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                        <div>
+                                            <label class="form-label">Nombre del Sistema</label>
+                                            <input type="text" class="form-input" value="Sistema de Gestión de Tiendas">
+                                        </div>
+
+                                        <div>
+                                            <label class="form-label">Email del Administrador</label>
+                                            <input type="email" class="form-input" value="admin@sistema.com">
+                                        </div>
+
+                                        <div>
+                                            <label class="form-label">Zona Horaria</label>
+                                            <select class="form-select">
+                                                <option value="America/Mexico_City" selected>Ciudad de México (GMT-6)</option>
+                                                <option value="America/New_York">Nueva York (GMT-5)</option>
+                                                <option value="Europe/Madrid">Madrid (GMT+1)</option>
+                                                <option value="Asia/Tokyo">Tokio (GMT+9)</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label class="form-label">Idioma</label>
+                                            <select class="form-select">
+                                                <option value="es" selected>Español</option>
+                                                <option value="en">English</option>
+                                                <option value="fr">Français</option>
+                                            </select>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <input type="checkbox" id="maintenanceMode" style="width: 1rem; height: 1rem;">
+                                            <label for="maintenanceMode" style="font-size: 0.875rem;">Modo de Mantenimiento</label>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-save"></i>
+                                            Guardar Configuración
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Settings (Hidden by default) -->
+                    <div class="stat-card" style="display: none;">
+                        <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                            <h2 style="font-size: 1.125rem; font-weight: 600;">Configuración de Seguridad</h2>
+                        </div>
+                        
+                        <form style="padding: 1.5rem;">
+                            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div>
+                                    <label class="form-label">Tiempo de Sesión (minutos)</label>
+                                    <input type="number" class="form-input" value="30" min="5" max="480">
+                                </div>
+
+                                <div>
+                                    <label class="form-label">Longitud Mínima de Contraseña</label>
+                                    <input type="number" class="form-input" value="8" min="6" max="20">
+                                </div>
+
+                                <div>
+                                    <label class="form-label">Máximo Intentos de Login</label>
+                                    <input type="number" class="form-input" value="5" min="3" max="10">
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <input type="checkbox" id="requireTwoFactor" style="width: 1rem; height: 1rem;">
+                                        <label for="requireTwoFactor" style="font-size: 0.875rem;">Requerir Autenticación de Dos Factores</label>
+                                    </div>
+
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <input type="checkbox" id="allowPasswordReset" style="width: 1rem; height: 1rem;" checked>
+                                        <label for="allowPasswordReset" style="font-size: 0.875rem;">Permitir Restablecimiento de Contraseña</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Guardar Configuración
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Backup Settings -->
+                    <div class="stat-card">
+                        <div style="padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                            <h2 style="font-size: 1.125rem; font-weight: 600;">Gestión de Respaldos</h2>
+                        </div>
+                        
+                        <div style="padding: 1.5rem;">
+                            <div style="background: #dbeafe; border: 1px solid #93c5fd; border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1.5rem;">
+                                <h3 style="font-size: 0.875rem; font-weight: 500; color: #1e40af; margin-bottom: 0.5rem;">Información del Sistema</h3>
+                                <div style="font-size: 0.875rem; color: #1e40af; display: flex; flex-direction: column; gap: 0.25rem;">
+                                    <p>Último respaldo: 15 de Enero, 2024 - 10:30 AM</p>
+                                    <p>Tamaño de la base de datos: 2.4 GB</p>
+                                    <p>Próximo respaldo automático: 16 de Enero, 2024 - 2:00 AM</p>
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                                <button class="btn btn-primary" style="justify-content: center;">
+                                    <i class="fas fa-database"></i>
+                                    Crear Respaldo Ahora
+                                </button>
+
+                                <button class="btn" style="background: #f97316; color: white; justify-content: center;">
+                                    <i class="fas fa-upload"></i>
+                                    Restaurar Respaldo
+                                </button>
+                            </div>
+
+                            <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                                <h3 style="font-size: 1rem; font-weight: 500; margin-bottom: 1rem;">Historial de Respaldos</h3>
+                                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-color); border-radius: var(--border-radius);">
+                                        <div>
+                                            <p style="font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem;">15 Ene 2024 - 10:30 AM</p>
+                                            <p style="font-size: 0.75rem; color: var(--text-secondary);">Tamaño: 2.4 GB</p>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span class="status-badge active">Exitoso</span>
+                                            <button style="background: none; border: none; color: #3b82f6; cursor: pointer;">
+                                                <i class="fas fa-download"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-color); border-radius: var(--border-radius);">
+                                        <div>
+                                            <p style="font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem;">14 Ene 2024 - 02:00 AM</p>
+                                            <p style="font-size: 0.75rem; color: var(--text-secondary);">Tamaño: 2.3 GB</p>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span class="status-badge active">Exitoso</span>
+                                            <button style="background: none; border: none; color: #3b82f6; cursor: pointer;">
+                                                <i class="fas fa-download"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-color); border-radius: var(--border-radius);">
+                                        <div>
+                                            <p style="font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem;">12 Ene 2024 - 02:00 AM</p>
+                                            <p style="font-size: 0.75rem; color: var(--text-secondary);">Tamaño: 2.2 GB</p>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                            <span class="status-badge inactive">Error</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Backdrop -->
+    <div id="backdrop" class="modal hidden"></div>
+
+    <script src="./js/super-admin.js"></script>
+</body>
+</html>
