@@ -1,124 +1,128 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5W978QP8P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-Q5W978QP8P");
-  </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5W978QP8P"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-Q5W978QP8P");
+    </script>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Catálogo completo de productos uwuTech - Laptops, PCs, periféricos y componentes con la mejor calidad y precios." />
-  <meta name="keywords" content="laptops, computadores, PC gaming, periféricos, componentes, uwutech productos" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Catálogo completo de productos uwuTech - Laptops, PCs, periféricos y componentes con la mejor calidad y precios." />
+    <meta name="keywords" content="laptops, computadores, PC gaming, periféricos, componentes, uwutech productos" />
 
-  <title>Productos | uwuTech - Catálogo Completo</title>
+    <title>Productos | uwuTech - Catálogo Completo</title>
 
-  <link rel="icon" th:href="@{/images/favicon.svg}">
-  <link rel="stylesheet" th:href="@{/css/shared/normalize.css}">
-  <link rel="stylesheet" th:href="@{/css/shared/font-awesome.css}">
-  <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}">
-  <link rel="stylesheet" th:href="@{/css/public-site/productos.css}">
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" th:href="@{/css/shared/normalize.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/shared/variables.css}" />
+    <link rel="stylesheet" th:href="@{/css/shared/global.css}" />
+    <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}">
+    <link rel="stylesheet" th:href="@{/css/public-site/productos.css}">
 </head>
 
 <body>
-  <!-- Header -->
-  <div data-component="header" data-app="public-site"></div>
+    <!-- Header -->
+    <div th:replace="~{layouts/public-site/header :: header}"></div>
 
-  <main style="margin-top: 80px;">
-    <!-- Page Header -->
-    <section class="page-header">
-      <div class="container">
-        <div class="breadcrumb">
-          <a th:href="@{/}">Inicio</a>
-          <span>›</span>
-          <span>Productos</span>
-        </div>
-        <h1>Nuestros Productos</h1>
-        <p>Descubre nuestra amplia gama de productos tecnológicos de las mejores marcas</p>
-      </div>
-    </section>
+    <!-- Auth Modals -->
+    <div th:replace="~{layouts/public-site/auth-modals :: auth-modals}"></div>
 
-    <!-- Filters and Search -->
-    <section class="filters-section">
-      <div class="container">
-        <div class="filters-bar">
-          <div class="search-products">
-            <input type="text" id="product-search" placeholder="Buscar productos..." />
-            <button type="button" class="search-product-btn">🔍</button>
-          </div>
+    <main style="margin-top: 80px;">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a th:href="@{/public-site/}">Inicio</a>
+                    <span>›</span>
+                    <span>Productos</span>
+                </div>
+                <h1>Nuestros Productos</h1>
+                <p>Descubre nuestra amplia gama de productos tecnológicos de las mejores marcas</p>
+            </div>
+        </section>
 
-          <div class="filter-categories">
-            <button class="filter-btn active" data-category="all">Todos</button>
-            <button class="filter-btn" data-category="laptops">Laptops</button>
-            <button class="filter-btn" data-category="desktops">PCs</button>
-            <button class="filter-btn" data-category="gaming">Gaming</button>
-            <button class="filter-btn" data-category="peripherals">Periféricos</button>
-            <button class="filter-btn" data-category="components">Componentes</button>
-          </div>
+        <!-- Filters and Search -->
+        <section class="filters-section">
+            <div class="container">
+                <div class="filters-bar">
+                    <div class="search-products">
+                        <input type="text" id="product-search" placeholder="Buscar productos..." />
+                        <button type="button" class="search-product-btn">🔍</button>
+                    </div>
 
-          <div class="sort-options">
-            <select id="sort-products">
-              <option value="name">Ordenar por nombre</option>
-              <option value="price-low">Precio: menor a mayor</option>
-              <option value="price-high">Precio: mayor a menor</option>
-              <option value="rating">Mejor valorados</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </section>
+                    <div class="filter-categories">
+                        <button class="filter-btn active" data-category="all">Todos</button>
+                        <button class="filter-btn" data-category="laptops">Laptops</button>
+                        <button class="filter-btn" data-category="desktops">PCs</button>
+                        <button class="filter-btn" data-category="gaming">Gaming</button>
+                        <button class="filter-btn" data-category="peripherals">Periféricos</button>
+                        <button class="filter-btn" data-category="components">Componentes</button>
+                    </div>
 
-    <!-- Products Grid -->
-    <section class="products-catalog">
-      <div class="container">
-        <div class="products-grid" id="products-container">
-          <!-- Los productos se cargarán dinámicamente con JavaScript -->
-        </div>
+                    <div class="sort-options">
+                        <select id="sort-products">
+                            <option value="name">Ordenar por nombre</option>
+                            <option value="price-low">Precio: menor a mayor</option>
+                            <option value="price-high">Precio: mayor a menor</option>
+                            <option value="rating">Mejor valorados</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Pagination -->
-        <div class="pagination">
-          <button class="pagination-btn" data-page="prev">‹ Anterior</button>
-          <div class="pagination-numbers">
-            <button class="pagination-btn active" data-page="1">1</button>
-            <button class="pagination-btn" data-page="2">2</button>
-            <button class="pagination-btn" data-page="3">3</button>
-          </div>
-          <button class="pagination-btn" data-page="next">Siguiente ›</button>
-        </div>
-      </div>
-    </section>
+        <!-- Products Grid -->
+        <section class="products-catalog">
+            <div class="container">
+                <div class="products-grid" id="products-container">
+                    <!-- Los productos se cargarán dinámicamente con JavaScript -->
+                </div>
 
-    <!-- Newsletter Signup -->
-    <section class="newsletter-section">
-      <div class="container">
-        <div class="newsletter-content">
-          <h2>¿No encontraste lo que buscabas?</h2>
-          <p>Suscríbete a nuestro newsletter y sé el primero en conocer nuestros nuevos productos y ofertas especiales
-          </p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Tu email" required>
-            <button type="submit" class="btn btn-primary">Suscribirse</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" data-page="prev">‹ Anterior</button>
+                    <div class="pagination-numbers">
+                        <button class="pagination-btn active" data-page="1">1</button>
+                        <button class="pagination-btn" data-page="2">2</button>
+                        <button class="pagination-btn" data-page="3">3</button>
+                    </div>
+                    <button class="pagination-btn" data-page="next">Siguiente ›</button>
+                </div>
+            </div>
+        </section>
 
-  <!-- Footer -->
-  <div data-component="footer" data-app="public-site"></div>
+        <!-- Newsletter Signup -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>¿No encontraste lo que buscabas?</h2>
+                    <p>Suscríbete a nuestro newsletter y sé el primero en conocer nuestros nuevos productos y ofertas especiales
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu email" required>
+                        <button type="submit" class="btn btn-primary">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <script th:src="@{/js/shared/jquery-3.7.1.js}"></script>
-  <script th:src="@{/js/shared/global.js}"></script>
-  <script th:src="@{/js/public-site/public-site.js}"></script>
-  <script th:src="@{/js/public-site/productos.js}"></script>
+    <!-- Footer -->
+    <div th:replace="~{layouts/public-site/footer :: footer}"></div>
+
+    <!-- Scripts -->
+    <script th:src="@{/js/shared/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/public-site/productos.js}"></script>
 </body>
 
 </html>

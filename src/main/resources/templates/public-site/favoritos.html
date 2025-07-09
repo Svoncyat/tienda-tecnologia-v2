@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Google Analytics -->
@@ -16,38 +16,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Tus productos favoritos en uwuTech - Gestiona tu lista de deseos y productos que te interesan." />
-    <meta name="keywords" content="favoritos, lista de deseos, uwutech, productos tecnológicos" />
+        content="Tus productos favoritos en uwuTech - Guarda y gestiona los productos que más te interesan." />
+    <meta name="keywords" content="favoritos, lista de deseos, uwutech, productos guardados" />
 
     <title>Mis Favoritos | uwuTech</title>
 
     <link rel="icon" th:href="@{/images/favicon.svg}">
     <link rel="stylesheet" th:href="@{/css/shared/normalize.css}">
-    <link rel="stylesheet" th:href="@{/css/shared/font-awesome.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" th:href="@{/css/shared/variables.css}" />
     <link rel="stylesheet" th:href="@{/css/shared/global.css}" />
-    <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}" />
-    <link rel="stylesheet" th:href="@{/css/public-site/favoritos.css}" />
+    <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}">
+    <link rel="stylesheet" th:href="@{/css/public-site/favoritos.css}">
 </head>
 
 <body>
     <!-- Header -->
-    <div data-component="header" data-app="public-site"></div>
+    <div th:replace="~{layouts/public-site/header :: header}"></div>
 
     <!-- Auth Modals -->
-    <div data-component="auth-modals" data-app="public-site"></div>
+    <div th:replace="~{layouts/public-site/auth-modals :: auth-modals}"></div>
 
     <main style="margin-top: 80px;">
         <!-- Page Header -->
         <section class="page-header">
             <div class="container">
                 <div class="breadcrumb">
-                    <a th:href="@{/}">Inicio</a>
+                    <a th:href="@{/public-site/}">Inicio</a>
                     <span>›</span>
                     <span>Mis Favoritos</span>
                 </div>
-                <h1>Mis Productos Favoritos</h1>
-                <p>Guarda y gestiona los productos que más te interesan</p>
+                <h1>Mis Favoritos</h1>
+                <p>Productos que has guardado para ver más tarde</p>
             </div>
         </section>
 
@@ -179,10 +179,10 @@
     </main>
 
     <!-- Footer -->
-    <div data-component="footer" data-app="public-site"></div>
+    <div th:replace="~{layouts/public-site/footer :: footer}"></div>
 
     <!-- Scripts -->
-    <script th:src="@{/js/shared/jquery-3.7.1.js}"></script>
+    <script th:src="@{/js/shared/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/js/shared/global.js}"></script>
     <script th:src="@{/js/shared/notifications.js}"></script>
     <script th:src="@{/js/shared/auth.js}"></script>

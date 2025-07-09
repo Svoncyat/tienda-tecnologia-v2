@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Google Analytics -->
@@ -12,41 +12,42 @@
         gtag("js", new Date());
         gtag("config", "G-Q5W978QP8P");
     </script>
-    
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Tu perfil en uwuTech - Gestiona tu información personal, direcciones y preferencias." />
-    <meta name="keywords" content="perfil, cuenta, usuario, uwutech, configuración" />
-    
+    <meta name="description"
+        content="Tu perfil en uwuTech - Gestiona tu información personal, pedidos y preferencias." />
+    <meta name="keywords" content="perfil usuario, cuenta uwutech, gestión pedidos, datos personales" />
+
     <title>Mi Perfil | uwuTech</title>
 
     <link rel="icon" th:href="@{/images/favicon.svg}">
     <link rel="stylesheet" th:href="@{/css/shared/normalize.css}">
-    <link rel="stylesheet" th:href="@{/css/shared/font-awesome.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" th:href="@{/css/shared/variables.css}" />
     <link rel="stylesheet" th:href="@{/css/shared/global.css}" />
-    <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}" />
-    <link rel="stylesheet" th:href="@{/css/public-site/perfil.css}" />
+    <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}">
+    <link rel="stylesheet" th:href="@{/css/public-site/perfil.css}">
 </head>
 
 <body>
     <!-- Header -->
-    <div data-component="header" data-app="public-site"></div>
-    
+    <div th:replace="~{layouts/public-site/header :: header}"></div>
+
     <!-- Auth Modals -->
-    <div data-component="auth-modals" data-app="public-site"></div>
-    
+    <div th:replace="~{layouts/public-site/auth-modals :: auth-modals}"></div>
+
     <main style="margin-top: 80px;">
         <!-- Page Header -->
         <section class="page-header">
             <div class="container">
                 <div class="breadcrumb">
-                    <a th:href="@{/}">Inicio</a>
+                    <a th:href="@{/public-site/}">Inicio</a>
                     <span>›</span>
                     <span>Mi Perfil</span>
                 </div>
                 <h1>Mi Perfil</h1>
-                <p>Gestiona tu información personal y configuraciones de cuenta</p>
+                <p>Gestiona tu información personal y preferencias</p>
             </div>
         </section>
 
@@ -63,7 +64,7 @@
                             <h3 id="sidebar-user-name">Usuario</h3>
                             <p id="sidebar-user-email">usuario@email.com</p>
                         </div>
-                        
+
                         <nav class="profile-nav">
                             <a href="#" class="profile-nav-item active" data-section="personal-info">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -110,7 +111,7 @@
                             </a>
                         </nav>
                     </aside>
-                    
+
                     <!-- Main Content -->
                     <div class="profile-content">
                         <!-- Personal Information Section -->
@@ -119,7 +120,7 @@
                                 <h2>Información Personal</h2>
                                 <p>Actualiza tus datos personales y de contacto</p>
                             </div>
-                            
+
                             <form id="personal-info-form" class="profile-form">
                                 <div class="form-row">
                                     <div class="form-group">
@@ -133,24 +134,24 @@
                                         <span class="error-message" id="lastName-error"></span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="email">Correo Electrónico</label>
                                     <input type="email" id="email" name="email" required disabled>
                                     <small class="help-text">El correo electrónico no se puede modificar</small>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="phone">Teléfono</label>
                                     <input type="tel" id="phone" name="phone">
                                     <span class="error-message" id="phone-error"></span>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="birthDate">Fecha de Nacimiento</label>
                                     <input type="date" id="birthDate" name="birthDate">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="gender">Género</label>
                                     <select id="gender" name="gender">
@@ -161,14 +162,14 @@
                                         <option value="prefer-not-to-say">Prefiero no decir</option>
                                     </select>
                                 </div>
-                                
+
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                                     <button type="button" class="btn btn-outline" id="cancel-personal-info">Cancelar</button>
                                 </div>
                             </form>
                         </div>
-                        
+
                         <!-- Addresses Section -->
                         <div id="addresses" class="profile-section-content">
                             <div class="section-header">
@@ -182,11 +183,11 @@
                                     Añadir Dirección
                                 </button>
                             </div>
-                            
+
                             <div id="addresses-list" class="addresses-list">
                                 <!-- Las direcciones se cargarán dinámicamente -->
                             </div>
-                            
+
                             <!-- Address Form Modal -->
                             <div id="address-modal" class="modal">
                                 <div class="modal-content">
@@ -267,14 +268,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Security Section -->
                         <div id="security" class="profile-section-content">
                             <div class="section-header">
                                 <h2>Seguridad</h2>
                                 <p>Gestiona la seguridad de tu cuenta</p>
                             </div>
-                            
+
                             <div class="security-section">
                                 <h3>Cambiar Contraseña</h3>
                                 <form id="password-form" class="profile-form">
@@ -299,7 +300,7 @@
                                     </div>
                                 </form>
                             </div>
-                            
+
                             <div class="security-section">
                                 <h3>Configuración de Sesión</h3>
                                 <div class="security-option">
@@ -311,14 +312,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Preferences Section -->
                         <div id="preferences" class="profile-section-content">
                             <div class="section-header">
                                 <h2>Preferencias</h2>
                                 <p>Configura tus preferencias de la aplicación</p>
                             </div>
-                            
+
                             <div class="preferences-section">
                                 <h3>Notificaciones</h3>
                                 <div class="preference-group">
@@ -345,7 +346,7 @@
                                     </label>
                                 </div>
                             </div>
-                            
+
                             <div class="preferences-section">
                                 <h3>Privacidad</h3>
                                 <div class="preference-group">
@@ -365,7 +366,7 @@
                                     </label>
                                 </div>
                             </div>
-                            
+
                             <div class="form-actions">
                                 <button class="btn btn-primary" id="save-preferences">Guardar Preferencias</button>
                             </div>
@@ -377,10 +378,10 @@
     </main>
 
     <!-- Footer -->
-    <div data-component="footer" data-app="public-site"></div>
+    <div th:replace="~{layouts/public-site/footer :: footer}"></div>
 
     <!-- Scripts -->
-    <script th:src="@{/js/shared/jquery-3.7.1.js}"></script>
+    <script th:src="@{/js/shared/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/js/shared/global.js}"></script>
     <script th:src="@{/js/shared/notifications.js}"></script>
     <script th:src="@{/js/shared/auth.js}"></script>

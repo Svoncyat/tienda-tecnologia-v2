@@ -22,8 +22,21 @@ public class RolController {
 
     // Listar todos los roles con sus permisos
     @GetMapping
-    public List<Rol> getAllRoles() {
-        return rolRepository.findAll();
+    public ResponseEntity<Map<String, Object>> getAllRoles() {
+        try {
+            List<Rol> roles = rolRepository.findAll();
+            
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("data", roles);
+            response.put("message", "Roles obtenidos exitosamente");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", "Error al obtener roles: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
     // Crear un nuevo rol con permisos (recibe ids de permisos)

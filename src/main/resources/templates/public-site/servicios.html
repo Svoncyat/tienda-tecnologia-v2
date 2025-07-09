@@ -1,41 +1,56 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios Técnicos - uwuTech | Reparación y Soporte Especializado</title>
-    <meta name="description" content="Servicios técnicos especializados de uwuTech: reparación de equipos, soporte técnico, mantenimiento preventivo, instalación y configuración. Técnicos certificados.">
-    <meta name="keywords" content="servicios técnicos, reparación computadoras, soporte técnico, mantenimiento, instalación, configuración, uwuTech">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Servicios Técnicos - uwuTech">
-    <meta property="og:description" content="Servicios técnicos especializados: reparación, soporte, mantenimiento y más">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://uwutech.com/servicios">
-    <meta property="og:image" th:href="@{/images/logo.svg}">
-      <!-- Favicon -->
-    <link rel="icon" th:href="@{/images/favicon.svg}" type="image/svg+xml">
-      <!-- CSS --> 
-    <link rel="stylesheet" th:href="@{/css/shared/font-awesome.css}">
-    <link rel="stylesheet" th:href="@{/css/shared/variables.css}">
-    <link rel="stylesheet" th:href="@{/css/shared/global.css}">
-    <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}">
-    <link rel="stylesheet" th:href="@{/css/public-site/servicios.css}">
-    
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5W978QP8P"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-Q5W978QP8P");
     </script>
-</head>
-<body>    <!-- Header Component -->
-    <div data-component="header" data-app="public-site"></div>
 
-    <!-- Main Content -->
-    <main >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Servicios técnicos profesionales de uwuTech - Mantenimiento, reparación, y soporte para todos tus equipos tecnológicos." />
+    <meta name="keywords"
+        content="servicios técnicos, mantenimiento computadores, reparación laptops, soporte técnico, uwutech servicios" />
+
+    <title>Servicios Técnicos | uwuTech</title>
+
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" th:href="@{/css/shared/normalize.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/shared/variables.css}" />
+    <link rel="stylesheet" th:href="@{/css/shared/global.css}" />
+    <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}">
+    <link rel="stylesheet" th:href="@{/css/public-site/servicios.css}">
+</head>
+
+<body>
+    <!-- Header -->
+    <div th:replace="~{layouts/public-site/header :: header}"></div>
+
+    <!-- Auth Modals -->
+    <div th:replace="~{layouts/public-site/auth-modals :: auth-modals}"></div>
+
+    <main style="margin-top: 80px;">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a th:href="@{/public-site/}">Inicio</a>
+                    <span>›</span>
+                    <span>Servicios</span>
+                </div>
+                <h1>Nuestros Servicios Técnicos</h1>
+                <p>Soluciones profesionales para mantener tus equipos funcionando perfectamente</p>
+            </div>
+        </section>
+
         <!-- Hero Section -->
         <section class="services-hero">
             <div class="container">
@@ -312,8 +327,10 @@
                 </div>
             </div>
         </section>
-    </main>    <!-- Footer Component -->
-    <div data-component="footer" data-app="public-site"></div>
+    </main>
+
+    <!-- Footer -->
+    <div th:replace="~{layouts/public-site/footer :: footer}"></div>
 
     <!-- Service Request Modal -->
     <div id="service-modal" class="modal" style="display: none;">
@@ -367,10 +384,11 @@
                 </div>
             </form>
         </div>
-    </div>    <!-- JavaScript -->
-    <script th:src="@{/js/shared/jquery-3.7.1.js}"></script>
-    <script th:src="@{/js/shared/global.js}"></script>
-    <script th:src="@{/js/public-site/public-site.js}"></script>
+    </div>
+
+    <!-- Scripts -->
+    <script th:src="@{/js/shared/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/js/public-site/servicios.js}"></script>
 </body>
+
 </html>

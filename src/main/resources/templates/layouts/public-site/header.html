@@ -1,94 +1,103 @@
-<header class="header">
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <a th:href="@{/public-site}">
-                        <img src="@{/images/favicon.svg}" alt="uwuTech Logo" class="logo-img">
-                        <span class="logo-text">uwuTech</span>
-                    </a>
-                </div>
-
-                <ul class="nav-links">
-                    <li><a th:href="@{/public-site}" class="nav-link">Inicio</a></li>
-                    <li><a th:href="@{/public-site/productos}" class="nav-link">Productos</a></li>
-                    <li><a th:href="@{/public-site/servicios}" class="nav-link">Servicios</a></li>
-                    <li><a th:href="@{/public-site/contacto}" class="nav-link">Contacto</a></li>
-                </ul>
-
-                <div class="nav-actions">                    <!-- Auth buttons for unauthenticated users -->
-                    <div id="auth-buttons-guest">
-                        <button class="btn btn-secondary btn-sm" id="login-btn" data-modal="login-modal"> <i
-                                class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</button>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Header Fragment</title>
+</head>
+<body>
+    <header th:fragment="header" class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <a th:href="@{/public-site}">
+                            <img th:src="@{/images/favicon.svg}" alt="uwuTech Logo" class="logo-img">
+                            <span class="logo-text">uwuTech</span>
+                        </a>
                     </div>
 
-                    <!-- Favorites Button -->
-                    <a th:href="@{/public-site/favoritos}" class="icon-btn" id="favorites-btn" aria-label="Favoritos">
-                        <i class="fa-solid fa-heart"></i>
-                        <span class="counter" id="favorites-counter">0</span>
-                    </a>
+                    <ul class="nav-links">
+                        <li><a th:href="@{/public-site}" class="nav-link">Inicio</a></li>
+                        <li><a th:href="@{/public-site/productos}" class="nav-link">Productos</a></li>
+                        <li><a th:href="@{/public-site/servicios}" class="nav-link">Servicios</a></li>
+                        <li><a th:href="@{/public-site/contacto}" class="nav-link">Contacto</a></li>
+                    </ul>
 
-                    <div class="divider"></div>
+                    <div class="nav-actions">
+                        <!-- Auth buttons for unauthenticated users -->
+                        <div id="auth-buttons-guest">
+                            <button class="btn btn-secondary btn-sm" id="login-btn" data-modal="login-modal">
+                                <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión
+                            </button>
+                        </div>
 
-                    <!-- Cart Button -->
-                    <a th:href="@{/public-site/carrito}" class="icon-btn" id="cart-btn" aria-label="Carrito">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="counter" id="cart-counter">0</span>
-                    </a>
-                    
-                    <!-- User dropdown for authenticated users -->
-                    <div id="user-dropdown" class="user-dropdown" style="display: none;">
-                        <button class="user-avatar" id="user-menu-btn">
-                            <span id="user-name">Usuario</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <polyline points="6,9 12,15 18,9"></polyline>
-                            </svg>
-                        </button>
-                        <div class="dropdown-menu" id="user-menu">
-                            <a th:href="@{/public-site/perfil}" class="dropdown-item">Mi Perfil</a>
-                            <a th:href="@{/public-site/pedidos}" class="dropdown-item">Mis Pedidos</a>
-                            <a th:href="@{/public-site/favoritos}" class="dropdown-item">Mis Favoritos</a>
-                            <hr class="dropdown-divider">
-                            <button class="dropdown-item" id="logout-btn">Cerrar Sesión</button>
+                        <!-- Favorites Button -->
+                        <a th:href="@{/public-site/favoritos}" class="icon-btn" id="favorites-btn" aria-label="Favoritos">
+                            <i class="fa-solid fa-heart"></i>
+                            <span class="counter" id="favorites-counter">0</span>
+                        </a>
+
+                        <div class="divider"></div>
+
+                        <!-- Cart Button -->
+                        <a th:href="@{/public-site/carrito}" class="icon-btn" id="cart-btn" aria-label="Carrito">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="counter" id="cart-counter">0</span>
+                        </a>
+                        
+                        <!-- User dropdown for authenticated users -->
+                        <div id="user-dropdown" class="user-dropdown" style="display: none;">
+                            <button class="user-avatar" id="user-menu-btn">
+                                <span id="user-name">Usuario</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6,9 12,15 18,9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu" id="user-menu">
+                                <a th:href="@{/public-site/perfil}" class="dropdown-item">Mi Perfil</a>
+                                <a th:href="@{/public-site/pedidos}" class="dropdown-item">Mis Pedidos</a>
+                                <a th:href="@{/public-site/favoritos}" class="dropdown-item">Mis Favoritos</a>
+                                <hr class="dropdown-divider">
+                                <button class="dropdown-item" id="logout-btn">Cerrar Sesión</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <button class="mobile-menu-btn" aria-label="Menú">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="mobile-menu">
+                <div class="container">
+                    <ul class="mobile-nav-links">
+                        <li><a th:href="@{/public-site}" class="mobile-nav-link">Inicio</a></li>
+                        <li><a th:href="@{/public-site/productos}" class="mobile-nav-link">Productos</a></li>
+                        <li><a th:href="@{/public-site/servicios}" class="mobile-nav-link">Servicios</a></li>
+                        <li><a th:href="@{/public-site/contacto}" class="mobile-nav-link">Contacto</a></li>
+                        <li><a th:href="@{/public-site/favoritos}" class="mobile-nav-link">Mis Favoritos</a></li>
+                        <li><a th:href="@{/public-site/carrito}" class="mobile-nav-link">Mi Carrito</a></li>
+                    </ul>
+                    <div class="mobile-actions" id="mobile-auth-buttons-guest">
+                        <button class="btn btn-secondary mobile-btn" id="mobile-login-btn">Iniciar Sesión</button>
+                        <button class="btn btn-primary mobile-btn" id="mobile-register-btn">Registrarse</button>
+                    </div>
+                    <div class="mobile-user-menu" id="mobile-user-menu" style="display: none;">
+                        <div class="mobile-user-info">
+                            <span id="mobile-user-name">Usuario</span>
+                        </div>
+                        <div class="mobile-user-actions">
+                            <a th:href="@{/public-site/perfil}" class="btn btn-outline mobile-btn">Mi Perfil</a>
+                            <a th:href="@{/public-site/pedidos}" class="btn btn-outline mobile-btn">Mis Pedidos</a>
+                            <button class="btn btn-secondary mobile-btn" id="mobile-logout-btn">Cerrar Sesión</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Mobile menu button -->
-                <button class="mobile-menu-btn" aria-label="Menú">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
-        </div>
-        <!-- Mobile menu -->
-        <div class="mobile-menu">
-            <div class="container">
-                <ul class="mobile-nav-links">
-                    <li><a th:href="@{/public-site}" class="mobile-nav-link">Inicio</a></li>
-                    <li><a th:href="@{/public-site/productos}" class="mobile-nav-link">Productos</a></li>
-                    <li><a th:href="@{/public-site/servicios}" class="mobile-nav-link">Servicios</a></li>
-                    <li><a th:href="@{/public-site/contacto}" class="mobile-nav-link">Contacto</a></li>
-                    <li><a th:href="@{/public-site/favoritos}" class="mobile-nav-link">Mis Favoritos</a></li>
-                    <li><a th:href="@{/public-site/carrito}" class="mobile-nav-link">Mi Carrito</a></li>
-                </ul>
-                <div class="mobile-actions" id="mobile-auth-buttons-guest">
-                    <button class="btn btn-secondary mobile-btn" id="mobile-login-btn">Iniciar Sesión</button>
-                    <button class="btn btn-primary mobile-btn" id="mobile-register-btn">Registrarse</button>
-                </div>
-                <div class="mobile-user-menu" id="mobile-user-menu" style="display: none;">
-                    <div class="mobile-user-info">
-                        <span id="mobile-user-name">Usuario</span>
-                    </div>
-                    <div class="mobile-user-actions">
-                        <a th:href="@{/public-site/perfil}" class="btn btn-outline mobile-btn">Mi Perfil</a>
-                        <a th:href="@{/public-site/pedidos}" class="btn btn-outline mobile-btn">Mis Pedidos</a>
-                        <button class="btn btn-secondary mobile-btn" id="mobile-logout-btn">Cerrar Sesión</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
+</body>
+</html>

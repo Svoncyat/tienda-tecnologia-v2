@@ -396,60 +396,107 @@
 
 .acciones {
     display: flex;
-    gap: 4px;
-    align-items: center;
+    gap: 8px;
     justify-content: center;
+    align-items: center;
 }
 
 .btn-editar,
 .btn-eliminar,
 .btn-toggle-estado,
 .btn-accion {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border: none;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 12px;
-    border-radius: var(--radio-borde, 8px);
-    margin: 0 1px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-editar {
-    color: var(--color-negro);
+    background-color: #17a2b8;
+    color: white;
 }
 
 .btn-editar:hover {
-    background-color: rgba(255, 204, 0, 0.1) !important;
-    color: var(--amarillo);
+    background-color: #138496;
+    transform: translateY(-1px);
+}
+
+.btn-estado {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.btn-estado:hover {
+    background-color: #e0a800;
+    transform: translateY(-1px);
 }
 
 .btn-eliminar {
-    color: var(--color-negro);
+    background-color: #dc3545;
+    color: white;
 }
 
 .btn-eliminar:hover {
-    background-color: rgba(255, 59, 48, 0.1) !important;
-    color: var(--rojo);
+    background-color: #c82333;
+    transform: translateY(-1px);
 }
 
-.btn-toggle-estado {
-    color: var(--color-negro);
+/* Estilos para estados de usuario */
+.estado-activo {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+    border: 1px solid #c3e6cb;
 }
 
-.btn-toggle-estado:hover {
-    background-color: rgba(0, 122, 255, 0.1) !important;
-    color: var(--azul-hover);
+.estado-inactivo {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+    border: 1px solid #f5c6cb;
 }
 
-/* Configuración específica para alineación de líneas horizontales */
-.tabla th:last-child,
-.tabla td:last-child {
-    text-align: center;
-    width: 120px;
+/* Estilos para mensajes */
+.mensaje-success,
+.mensaje-error,
+.mensaje-info {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive para tabla */
+@media (max-width: 768px) {
+    .tabla table {
+        font-size: 12px;
+    }
+    
+    .tabla th,
+    .tabla td {
+        padding: 6px 4px;
+    }
+    
+    .btn-accion {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    
+    .acciones {
+        gap: 4px;
+    }
 }
 

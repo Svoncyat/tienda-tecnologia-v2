@@ -22,28 +22,27 @@
     <title>Mi Carrito | uwuTech</title>
 
     <link rel="icon" th:href="@{/images/favicon.svg}">
-    <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}">
     <link rel="stylesheet" th:href="@{/css/shared/normalize.css}">
-    <link rel="stylesheet" th:href="@{/css/shared/font-awesome.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" th:href="@{/css/shared/variables.css}" />
     <link rel="stylesheet" th:href="@{/css/shared/global.css}" />
     <link rel="stylesheet" th:href="@{/css/public-site/public-site.css}" />
-    <link rel="stylesheet" th:href="@{/css/pages/carrito.css}" />
+    <link rel="stylesheet" th:href="@{/css/public-site/carrito.css}" />
 </head>
 
 <body>
     <!-- Header -->
-    <div data-component="header" data-app="public-site"></div>
+    <div th:replace="~{layouts/public-site/header :: header}"></div>
 
     <!-- Auth Modals -->
-    <div data-component="auth-modals" data-app="public-site"></div>
+    <div th:replace="~{layouts/public-site/auth-modals :: auth-modals}"></div>
 
     <main style="margin-top: 80px;">
         <!-- Page Header -->
         <section class="page-header">
             <div class="container">
                 <div class="breadcrumb">
-                    <a th:href="../index.html">Inicio</a>
+                    <a th:href="@{/public-site/}">Inicio</a>
                     <span>›</span>
                     <span>Mi Carrito</span>
                 </div>
@@ -200,10 +199,10 @@
     </main>
 
     <!-- Footer -->
-    <div data-component="footer" data-app="public-site"></div>
+    <div th:replace="~{layouts/public-site/footer :: footer}"></div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/shared/jquery-3.7.1.min.js}"></script>
     <script src="../../shared/js/global.js"></script>
     <script src="../../shared/js/notifications.js"></script>
     <script src="../../shared/js/auth.js"></script>
@@ -211,6 +210,7 @@
     <script src="../../shared/js/favorites.js"></script>
     <script src="../js/public-site.js"></script>
     <script src="../js/pages/carrito.js"></script>
+    <script th:src="@{/js/public-site/carrito.js}"></script>
 </body>
 
 </html>

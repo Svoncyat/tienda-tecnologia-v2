@@ -1,66 +1,74 @@
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <img src="@{/images/favicon.svg}" alt="uwuTech Logo" class="footer-logo-img">
-                    <span class="footer-logo-text">uwuTech</span>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Footer Fragment</title>
+</head>
+<body>
+    <footer th:fragment="footer" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img th:src="@{/images/favicon.svg}" alt="uwuTech Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">uwuTech</span>
+                    </div>
+                    <p class="footer-description">
+                        Tu tienda de tecnología de confianza. Ofrecemos los mejores productos 
+                        y servicios tecnológicos con garantía y soporte especializado.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
-                <p class="footer-description">
-                    Tu tienda de tecnología de confianza. Ofrecemos los mejores productos 
-                    y servicios tecnológicos con garantía y soporte especializado.
-                </p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-link" aria-label="WhatsApp">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Productos</h4>
+                    <ul class="footer-links">
+                        <li><a th:href="@{/public-site/productos}">Laptops</a></li>
+                        <li><a th:href="@{/public-site/productos}">Computadores</a></li>
+                        <li><a th:href="@{/public-site/productos}">Periféricos</a></li>
+                        <li><a th:href="@{/public-site/productos}">Componentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a th:href="@{/public-site/servicios}">Soporte Técnico</a></li>
+                        <li><a th:href="@{/public-site/servicios}">Mantenimiento</a></li>
+                        <li><a th:href="@{/public-site/servicios}">Instalación</a></li>
+                        <li><a th:href="@{/public-site/servicios}">Consultoría</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Contacto</h4>
+                    <div class="contact-info">
+                        <p><i class="fa-solid fa-envelope"></i> info@uwutech.com</p>
+                        <p><i class="fa-solid fa-phone"></i> +51 987 654 321</p>
+                        <p><i class="fa-solid fa-location-dot"></i> Tarapoto, Perú</p>
+                        <p><i class="fa-solid fa-clock"></i> Lun - Vie: 8AM - 6PM</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="footer-section">
-                <h4 class="footer-title">Productos</h4>
-                <ul class="footer-links">
-                    <li><a th:href="@{/public-site/productos}">Laptops</a></li>
-                    <li><a th:href="@{/public-site/productos}">Computadores</a></li>
-                    <li><a th:href="@{/public-site/productos}">Periféricos</a></li>
-                    <li><a th:href="@{/public-site/productos}">Componentes</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4 class="footer-title">Servicios</h4>
-                <ul class="footer-links">
-                    <li><a th:href="@{/public-site/servicios}">Soporte Técnico</a></li>
-                    <li><a th:href="@{/public-site/servicios}">Mantenimiento</a></li>
-                    <li><a th:href="@{/public-site/servicios}">Instalación</a></li>
-                    <li><a th:href="@{/public-site/servicios}">Consultoría</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4 class="footer-title">Contacto</h4>
-                <div class="contact-info">
-                    <p><i class="fa-solid fa-envelope"></i> info@uwutech.com</p>
-                    <p><i class="fa-solid fa-phone"></i> +51 987 654 321</p>
-                    <p><i class="fa-solid fa-location-dot"></i> Tarapoto, Perú</p>
-                    <p><i class="fa-solid fa-clock"></i> Lun - Vie: 8AM - 6PM</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 uwuTech - Todos los derechos reservados</p>
+                <div class="footer-legal">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Política de Cookies</a>
                 </div>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 uwuTech - Todos los derechos reservados</p>
-            <div class="footer-legal">
-                <a href="#">Términos y Condiciones</a>
-                <a href="#">Política de Privacidad</a>
-                <a href="#">Política de Cookies</a>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
+</body>
+</html>
