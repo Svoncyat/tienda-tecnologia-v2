@@ -1,0 +1,342 @@
+/* ========================================
+    MODAL STYLES
+   ======================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--color-blanco);
+    margin: 1% auto;
+    padding: 0;
+    border-radius: 20px;
+    min-width: 300px;
+    width: max-content;
+    max-width: 96vw;
+    max-height: 96vh;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+    overflow-y: auto;
+    position: relative;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--neutral-800);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close {
+    color: var(--neutral-800);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--rojo);
+}
+
+/*.modal-body */
+
+.title-h4{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.modal-body-1 {
+    padding: 0px 20px 20px 20px;
+    color: var(--neutral-800);
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.modal-body-2 {
+    padding: 0px 20px 20px 20px;
+    color: var(--neutral-800);
+    overflow-y: auto;
+    display: flex;
+    gap: 30px;
+}
+
+.modal-body-3 {
+    padding: 0px 20px 20px 20px;
+    color: var(--neutral-800);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+.body-izquierda{
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: max-content;
+    gap: 15px;
+}
+
+.derecha-superior {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.body-derecha {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: max-content;
+    gap: 30px;
+}
+
+.campo-colum {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.campo-colum label,
+.campo-row label {
+    color: var(--neutral-800);
+    font-size: 14px;
+    font-weight: 500;
+    font-weight: bold;
+
+}
+
+.campo-colum input,
+.campo-row input,
+.campo-colum select,
+.campo-row select {
+    border-radius:10px;
+    border: 1px solid var(--Neutral-400, #AEAEB2);
+    background: var(--color-blanco, #FFF);
+    padding: 10px;
+}
+
+.campo-colum textarea {
+    border-radius:10px;
+    border: 1px solid var(--Neutral-400, #AEAEB2);
+    padding: 10px;
+    height: 90px;
+    resize: vertical;
+}
+
+.campo-colum input:focus,
+.campo-row input:focus,
+.campo-colum select:focus,
+.campo-row select:focus,
+.campo-colum textarea:focus{
+    outline: none;
+    border: 2px solid var(--azul);
+}
+
+.botones{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.botones2 {
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.botones2 input{
+    width: 100px;
+}
+
+.btn-modal-azul {
+    display: flex;
+    align-items: center;
+    background-color: var(--azul);
+    color: var(--color-blanco);
+    padding: 10px 20px;
+    border: 2px solid var(--azul);
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
+}
+
+.btn-modal-azul:hover {
+    background-color: var(--verde);
+    border: 2px solid var(--verde);
+}
+
+.btn-modal-blanco {
+    display: flex;
+    background-color: var(--color-blanco);
+    color: var(--azul);
+    padding: 10px 20px;
+    border: 2px solid var(--azul);
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
+    align-items: center;
+}
+.btn-modal-blanco:hover {
+    background-color: var(--rojo2);
+    color: var(--color-blanco);
+    border: 2px solid var(--rojo2);
+}
+
+/*Imagenes */
+
+.imagen-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 0px 20px;
+
+}
+
+.imagen-modal input {
+    display: none;
+}
+
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    border: 2px dashed var(--neutral-400);
+    border-radius: 10px;
+    background-color: var(--color-blanco);
+    cursor: pointer;
+    position: relative;
+}
+
+.upload-box.has-image {
+    border: none;
+}
+
+.upload-box .image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 50%;
+    border: none;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--azul);
+    color: var(--color-blanco);
+    z-index: 2;
+}
+
+.remove-image:hover {
+    background: var(--rojo);
+}
+
+.upload-box i{
+    font-size: 30px;
+    color: var(--neutral-400);
+}
+
+.text-img{
+    color: var(--neutral-400);
+    font-size: 14px;
+    font-weight: 500;
+    font-weight: bold;
+
+}
+
+/*Tabla de modales*/
+.tabla-modal-contenedor {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 20px;
+    background: var(--color-blanco, #FFF);
+}
+
+.tabla-modal {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    background: var(--color-blanco, #FFF);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
+.thead-modal th {
+    padding: 5px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--neutral-400);
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    border-bottom: solid 1px var(--neutral-300);
+    border-top: solid 1px var(--neutral-300);
+}
+
+.tbody td {
+    padding: 12px;
+    color: var(--neutral-700, #48484A);
+    vertical-align: middle;
+    background: var(--color-blanco, #FFF); 
+}

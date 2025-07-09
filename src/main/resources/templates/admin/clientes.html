@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/admin/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/clientes.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/General-Perfil.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/perfiles.css}">
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>uwu | Clientes</title>
+</head>
+<body>
+    <header></header>
+    
+    <aside class="sidebar">
+
+        <div class="aside">
+            <div class="aside-header">
+            <div class="logo-rol">
+                <a th:href="@{/admin/dashboard}" class="logo">
+                    <img th:src="@{/images/favicon.svg}" alt="">
+                    <p class="text-logo">uwuTech</p>
+                </a>
+                <div class="rol"><p>Administrador</p></div>
+            </div>
+            <div class="toggle">
+                <div class="toggle-button" id="toggle-button">
+                    <button><i class="fas fa-bars"></i></button>
+                </div> 
+            </div>
+            </div>
+            <nav class="sidebar-menu">
+            
+            <ul class="nav">
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/dashboard}" class="nav-link">
+                        <div>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/perfiles}" class="nav-link">
+                        <div>
+                            <i class="fas fa-id-card-clip nav-icon"></i>
+                            <span>Perfiles</span>
+                        </div>
+                        
+                    </a>
+                    
+                    
+                    </div>
+
+                    
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/clientes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-user-group nav-icon"></i>
+                                <span>Clientes</span>
+                            </div>
+                        </a>
+                        <div class="active"></div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/inventario}" class="nav-link">
+                            <div>
+                                <i class="fas fa-box nav-icon"></i>
+                                <span>Inventario</span>
+                            </div>
+                        </a>
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/inventario}" class="nav-link">Productos y Stock</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ofertas}" class="nav-link">Ofertas y Promociones</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/categorias}" class="nav-link">Categorías y Marcas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/despacho}" class="nav-link">Despacho</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/ventas}" class="nav-link">
+                            <div>
+                                <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                                <span>Ventas</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="sub-active"><a th:href="@{/admin/caja}" class="nav-link">Caja</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ventas}" class="nav-link">Punto de Venta</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/historial}" class="nav-link">Historial de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/pedidos}" class="nav-link">Pedidos</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/devoluciones}" class="nav-link">Devoluciones</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/compras}" class="nav-link">
+                            <div>
+                                <i class="fas fa-shopping-cart nav-icon"></i>
+                                <span>Compras</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/proveedores}" class="nav-link">Proveedores</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Órdenes de Compra</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Recepción de Mercadería</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/reportes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-chart-bar nav-icon"></i>
+                                <span>Reportes</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Inventario</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Clientes</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/configuracion}" class="nav-link">
+                            <div>
+                                <i class="fas fa-gear nav-icon"></i>
+                                <span>Configuración</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Datos de la Empresa</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Integraciones</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            </nav>
+        </div>
+
+
+        <div class="logout">
+                <a th:href="@{/admin/login}" class="nav-link">
+                    <div>
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <span>Cerrar Sesión</span>
+                    </div>
+                </a>
+        </div>
+
+    </aside>
+    
+    <main class="main-content">
+        <div class="title">
+            <p class="ubi">Módulos/Clientes</p>
+            <h1 class="ubi-titulo">Usuarios</h1>
+        </div>
+        
+        <div class="contenido">
+            <div class="gestionar-titulo">
+                <h2>Lista de Clientes</h2>
+            </div>
+            
+            <div class="filtros">
+                <div class="buscar">
+                    <input type="text" placeholder="Buscar Usuarios" id="search-input">
+                    <button class="btn-buscar" type="button">
+                        <i class="fas fa-search"></i>
+                        <span>Buscar</span>
+                    </button>
+                </div>
+                
+                <button class="btn-agregar-usuario">
+                    <i class="fas fa-plus"></i>
+                    <span>Agregar Cliente</span>
+                </button>
+            </div>
+            
+            <div class="tabla-container1">
+                <div class="tabla">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Usuario</th>
+                                <th>Email</th>
+                                <th>Estado</th>
+                                <th>Último acceso</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientesTableBody">
+                            <!-- Los datos se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!--<div class="pagination-container">
+                    <div class="pagination">
+                        <button class="pagination-btn prev-btn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="pagination-numbers">
+                            <button class="pagination-number active">1</button>
+                            <button class="pagination-number">2</button>
+                            <button class="pagination-number">3</button>
+                            <span class="pagination-dots">...</span>
+                            <button class="pagination-number">9</button>
+                        </div>
+                        <button class="pagination-btn next-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modales -->
+    <!-- Modal Nuevo Cliente -->
+    <div id="modalAgregarUsuario" class="modal-overlay">
+        <div class="modal-content-nuevo">
+            <div class="modal-header-nuevo">
+                <h2>Nuevo Cliente</h2>
+                <button class="modal-close-nuevo" id="closeModalUsuario">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body-nuevo">
+                <div class="seccion-principal">
+                    <h3>Datos Principales</h3>
+                    
+                    <div class="form-row-tres">
+                        <div class="form-group-nuevo">
+                            <label for="tipoCliente">Tipo de Cliente</label>
+                            <select id="tipoCliente" name="tipoCliente">
+                                <option value="" disabled selected>Seleccionar Tipo</option>
+                                <option value="persona-natural">Persona Natural</option>
+                                <option value="persona-juridica">Persona Jurídica</option>
+                                <option value="empresa">Empresa</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="tipoDocumento">Tipo de Documento</label>
+                            <select id="tipoDocumento" name="tipoDocumento">
+                                <option value="" disabled selected>Seleccionar</option>
+                                <option value="dni">DNI</option>
+                                <option value="ce">Carnet de Extranjería</option>
+                                <option value="ruc">RUC</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="numeroDocumento">Número de Documento</label>
+                            <input type="text" id="numeroDocumento" name="numeroDocumento">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label for="nombres">Nombres (Persona Natural)</label>
+                            <input type="text" id="nombres" name="nombres">
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="apellidos">Apellidos (Persona Natural)</label>
+                            <input type="text" id="apellidos" name="apellidos">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label for="razonSocial">Razón Social</label>
+                            <input type="text" id="razonSocial" name="razonSocial">
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label for="genero">Género:</label>
+                            <select id="genero" name="genero">
+                                <option value="" disabled selected>Seleccionar</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="estadoCivil">Estado Civil:</label>
+                            <select id="estadoCivil" name="estadoCivil">
+                                <option value="" disabled selected>Seleccionar</option>
+                                <option value="soltero">Soltero</option>
+                                <option value="casado">Casado</option>
+                                <option value="divorciado">Divorciado</option>
+                                <option value="viudo">Viudo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer-nuevo">
+                
+                <button type="button" class="btn-agregar-nuevo" id="btnAgregarUsuario">
+                    <i class="fas fa-plus"></i>
+                    Agregar
+                </button>
+                <button type="button" class="btn-cancelar-nuevo" id="btnCancelarUsuario">
+                    <i class="fas fa-times"></i>
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Cliente -->
+    <div id="modalEditarUsuario" class="modal-overlay">
+        <div class="modal-content-nuevo">
+            <div class="modal-header-nuevo">
+                <h2>Editar Cliente</h2>
+                <button class="modal-close-nuevo" id="closeModalEditarUsuario">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body-nuevo">
+                <div class="seccion-principal">
+                    <h3>Datos Principales</h3>
+                    
+                    <div class="form-row-tres">
+                        <div class="form-group-nuevo">
+                            <label for="editTipoCliente">Tipo de Cliente</label>
+                            <select id="editTipoCliente" name="editTipoCliente">
+                                <option value="" disabled>Seleccionar Tipo</option>
+                                <option value="persona-natural">Persona Natural</option>
+                                <option value="persona-juridica">Persona Jurídica</option>
+                                <option value="empresa">Empresa</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="editTipoDocumento">Tipo de Documento</label>
+                            <select id="editTipoDocumento" name="editTipoDocumento">
+                                <option value="" disabled>Seleccionar</option>
+                                <option value="dni">DNI</option>
+                                <option value="ce">Carnet de Extranjería</option>
+                                <option value="ruc">RUC</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="editNumeroDocumento">Número de Documento</label>
+                            <input type="text" id="editNumeroDocumento" name="editNumeroDocumento">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label for="editNombres">Nombres (Persona Natural)</label>
+                            <input type="text" id="editNombres" name="editNombres">
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="editApellidos">Apellidos (Persona Natural)</label>
+                            <input type="text" id="editApellidos" name="editApellidos">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label for="editRazonSocial">Razón Social</label>
+                            <input type="text" id="editRazonSocial" name="editRazonSocial">
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="editEmail">Correo Electrónico</label>
+                            <input type="email" id="editEmail" name="editEmail">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label for="editTelefono">Teléfono</label>
+                            <input type="tel" id="editTelefono" name="editTelefono">
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="editFechaNacimiento">Fecha de Nacimiento</label>
+                            <input type="date" id="editFechaNacimiento" name="editFechaNacimiento">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label for="editGenero">Género:</label>
+                            <select id="editGenero" name="editGenero">
+                                <option value="">Seleccionar</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label for="editEstadoCivil">Estado Civil:</label>
+                            <select id="editEstadoCivil" name="editEstadoCivil">
+                                <option value="">Seleccionar</option>
+                                <option value="soltero">Soltero</option>
+                                <option value="casado">Casado</option>
+                                <option value="divorciado">Divorciado</option>
+                                <option value="viudo">Viudo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer-nuevo">
+                
+                <button type="button" class="btn-agregar-nuevo" id="btnGuardarEditarUsuario">
+                    <i class="fas fa-save"></i>
+                    Guardar Cambios
+                </button>
+                <button type="button" class="btn-cancelar-nuevo" id="btnCancelarEditarUsuario">
+                    <i class="fas fa-times"></i>
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Visualizar Cliente -->
+    <div id="modalVisualizarUsuario" class="modal-overlay">
+        <div class="modal-content-nuevo">
+            <div class="modal-header-nuevo">
+                <h2>Detalles del Cliente</h2>
+                <button class="modal-close-nuevo" id="closeModalVisualizarUsuario">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body-nuevo">
+                <div class="seccion-principal">
+                    <h3>Datos Principales</h3>
+                    
+                    <div class="form-row-tres">
+                        <div class="form-group-nuevo">
+                            <label>Tipo de Cliente</label>
+                            <div class="info-field" id="viewTipoCliente">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Tipo de Documento</label>
+                            <div class="info-field" id="viewTipoDocumento">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Número de Documento</label>
+                            <div class="info-field" id="viewNumeroDocumento">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Nombres</label>
+                            <div class="info-field" id="viewNombres">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Apellidos</label>
+                            <div class="info-field" id="viewApellidos">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Razón Social</label>
+                            <div class="info-field" id="viewRazonSocial">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Correo Electrónico</label>
+                            <div class="info-field" id="viewEmail">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Teléfono</label>
+                            <div class="info-field" id="viewTelefono">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Fecha de Nacimiento</label>
+                            <div class="info-field" id="viewFechaNacimiento">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Género</label>
+                            <div class="info-field" id="viewGenero">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Estado Civil</label>
+                            <div class="info-field" id="viewEstadoCivil">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Estado</label>
+                            <div class="info-field" id="viewEstado">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Último Acceso</label>
+                            <div class="info-field" id="viewUltimoAcceso">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-uno">
+                        <div class="form-group-nuevo">
+                            <label>Fecha de Registro</label>
+                            <div class="info-field" id="viewFechaRegistro">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer-nuevo">
+                
+                <button type="button" class="btn-agregar-nuevo" id="btnEditarDesdeVisualizar">
+                    <i class="fas fa-edit"></i>
+                    Editar Cliente
+                </button>
+                <button type="button" class="btn-cancelar-nuevo" id="btnCerrarVisualizarUsuario">
+                    <i class="fas fa-times"></i>
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div data-component="footer" data-app="store-admin"></div>
+    
+    <script th:src="@{/js/admin/store-admin.js}"></script>
+    <script th:src="@{/js/admin/clientes.js}"></script>
+</body>
+</html>

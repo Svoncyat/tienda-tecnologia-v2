@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+
+    --neutral-100: #e5e5ea;
+    --neutral-200: #b4b4b4;
+    --neutral-300: #9b9b9b;
+    --neutral-400: #828282;
+    --neutral-500: #696969;
+    --neutral-600: #505050;
+    --neutral-700: #373737;
+    --neutral-800: #1e1e1e;
+    --neutral-900: #131313;    
+
+    --color-blanco: #ffffff;
+    --color-negro: #000000;
+
+    /* Azules*/
+    --azul: #007aff;
+    --azul-hover: #0040dd;
+    --azul2: #0a84ff;
+    --azul2-hover: #409cff;
+
+    /* Rojos*/
+    --rojo: #ff3b30;
+    --rojo-hover: #d70015;
+    --rojo2: #ff453a;
+    --rojo2-hover: #ff6961;
+    
+    /* Amarillos*/
+    --amarillo: #ffcc00;
+    --amarillo-hover: #b25000;
+    --amarillo2: #FFD60A;
+    --amarillo2-hover: #FFD426;
+
+    /* Verdes*/
+    --verde: #34C759;
+    --verde-hover: #248A3D;
+    --verde2: #32D74B;
+    --verde2-hover: #30DB5B;
+
+    /* Tipografía */
+    --font-family: 'Inter', sans-serif;
+    
+    /* Tamaños de fuente */
+    --font-metrica: 40px; /* 40pt */
+    --font-titulo: 32px; /* 32pt */
+    --font-titulo-mediano: 24px; /* 24pt */
+    --font-subtitulo: 20px; /* 20pt */
+    --font-texto: 15px; /* 15pt */
+    --font-boton: 16px; /* 16pt */
+    --font-navegacion-b: 15px; /* 15pt */
+    --font-navegacion: 15px; /* 15pt */
+    --font-boton-s: 14px; /* 14pt */
+    --font-etiqueta-b: 14px; /* 14pt */
+    --font-etiqueta: 14px; /* 14pt */
+    --font-metadato: 12px, ; /* 12pt */
+
+    /* Bordes */
+    --radio-borde: 8px;
+    --borde-delgado: 1px solid var(--neutral-600);
+    --borde-grueso: 2px solid var(--color-negro);
+
+    /* Sombras */
+    --sombra-suave: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --sombra-media: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --sombra-fuerte: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+    /* Transiciones */
+    --transicion-rapida: 0.2s ease-in-out;
+    --transicion-media: 0.3s ease;
+    --transicion-lenta: 0.5s ease;
+
+    /*media queries*/
+    --break-sm: 576px;
+    --break-md: 768px;
+    --break-lg: 992px;
+    --break-xl: 1200px;
+}

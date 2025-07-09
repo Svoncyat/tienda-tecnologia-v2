@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/admin/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/todolistas.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/ventas.css}">
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>uwu | Punto de Venta</title>
+</head>
+<body>
+    <header>
+    </header>
+    
+    <aside class="sidebar">
+
+        <div class="aside">
+            <div class="aside-header">
+            <div class="logo-rol">
+                <a th:href="@{/admin/dashboard}" class="logo">
+                    <img th:src="@{/images/favicon.svg}" alt="">
+                    <p class="text-logo">uwuTech</p>
+                </a>
+                <div class="rol"><p>Administrador</p></div>
+            </div>
+            <!--<div class="toggle">
+                <div class="toggle-button" id="toggle-button">
+                    <button><img src="/shared/assets/sidebar.svg" alt=""></button>
+                </div> 
+            </div>-->
+            </div>
+            <nav class="sidebar-menu">
+            
+            <ul class="nav">
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/dashboard}" class="nav-link">
+                        <div>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/perfiles}" class="nav-link">
+                        <div>
+                            <i class="fas fa-id-card-clip nav-icon"></i>
+                            <span>Perfiles</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/perfiles}" class="nav-link">Gestionar Usuarios</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/roles}" class="nav-link">Roles y Permisos</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/clientes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-user-group nav-icon"></i>
+                                <span>Clientes</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/inventario}" class="nav-link">
+                            <div>
+                                <i class="fas fa-box nav-icon"></i>
+                                <span>Inventario</span>
+                            </div>
+                        </a>
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/inventario}" class="nav-link">Productos y Stock</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ofertas}" class="nav-link">Ofertas y Promociones</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/categorias}" class="nav-link">Categorías y Marcas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/despacho}" class="nav-link">Despacho</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/ventas}" class="nav-link active-link">
+                            <div>
+                                <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                                <span>Ventas</span>
+                            </div>
+                        </a>
+                        <div class="active"></div>
+                    </div>
+                    <ul class="submenu-active">
+                        <li class="nav-submenu"><a th:href="@{/admin/caja}" class="nav-link">Caja</a></li>
+                        <li class="sub-active"><a th:href="@{/admin/ventas}" class="nav-link">Punto de Venta</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/historial}" class="nav-link">Historial de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/pedidos}" class="nav-link">Pedidos</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/devoluciones}" class="nav-link">Devoluciones</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/compras}" class="nav-link">
+                            <div>
+                                <i class="fas fa-shopping-cart nav-icon"></i>
+                                <span>Compras</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/proveedores}" class="nav-link">Proveedores</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Órdenes de Compra</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Recepción de Mercadería</a></li>
+                    </ul>
+                </li>
+
+                <!--<li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/reports/reportes.html" class="nav-link">
+                            <div>
+                                <i class="fas fa-chart-bar nav-icon"></i>
+                                <span>Reportes</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a href="/modules/reportes/ventas.html" class="nav-link">Reporte de Ventas</a></li>
+                        <li class="nav-submenu"><a href="/modules/reportes/inventario.html" class="nav-link">Reporte de Inventario</a></li>
+                        <li class="nav-submenu"><a href="/modules/reportes/clientes.html" class="nav-link">Reporte de Clientes</a></li>
+                    </ul>
+                </li> -->
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/configuracion}" class="nav-link">
+                            <div>
+                                <i class="fas fa-gear nav-icon"></i>
+                                <span>Configuración</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Datos de la Empresa</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Integraciones</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            </nav>
+        </div>
+
+
+        <div class="logout">
+                <a th:href="@{/admin/login}" class="nav-link">
+                    <div>
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <span>Cerrar Sesión</span>
+                    </div>
+                </a>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <div class="title">
+            <p class="ubi">Módulos / Ventas / Punto de Venta</p>
+            <h1 class="title-ubi">Punto de Venta</h1>
+        </div>
+
+        <div class="content-ventas">
+            <div class="comprobant-products">
+                <div class="comprobant">
+                    <div class="comprobant-title">
+                        <h2>Informacion del Comprobante</h2>
+                        <button class="btn-agregar">
+                            <i class="fas fa-plus"></i>
+                            <span>Agregar Cliente</span>
+                        </button>
+                    </div>
+
+                    <div class="comprobant-info">
+                        <div class="info">
+                            <div class="tipo">
+                                <label for="tipo-comprobante">Tipo de Comprobante</label>
+                                <select name="tipo-comprobante" id="tipo-comprobante">
+                                    <option value="Boleta">Boleta</option>
+                                    <option value="Factura">Factura</option>
+                                </select>
+                            </div>
+
+                            <div class="serie-numero">
+                                <div class="serie-numero-inputs">
+                                    <div class="tipo">
+                                        <label for="serie">Serie</label>
+                                        <input type="text" name="serie" id="serie" value="B001" readonly>
+                                    </div>
+                                    <div class="tipo">
+                                        <label for="numero">Número</label>
+                                        <input type="text" name="numero" id="numero" value="00001"readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="tipo">
+                                <label for="dni-ruc">DNI / RUC </label>
+                                <input type="text" name="dni-ruc" id="dni-ruc" placeholder="Ingrese DNI o RUC">
+                            </div>
+                            <div class="tipo">
+                                <label for="nombre">Nombre del Cliente</label>
+                                <input type="text" name="nombre" id="nombre" placeholder="Ingrese Nombre del Cliente">
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="tipo">
+                                <label for="razon-social">Razón Social</label>
+                                <input type="text" name="razon-social" id="razon-social" placeholder="Ingrese Razón Social">
+                            </div>
+
+                            <div class="tipo">
+                                <label for="direccion">Dirección</label>
+                                <input type="text" name="direccion" id="direccion" placeholder="Ingrese Dirección">
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="tipo">
+                                <label for="telefono">Teléfono</label>
+                                <input type="text" name="telefono" id="telefono" placeholder="Ingrese Teléfono">
+                            </div>
+
+                            <div class="tipo">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" name="email" id="email" placeholder="Ingrese Correo Electrónico">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="products">
+                    <div class="products-title">
+                        <h2>Productos</h2>
+                    </div>
+                    <div class="buscar-limpiar">
+                        <div class="buscar">
+                            <input type="text" name="buscar-producto" id="buscar-producto" placeholder="Buscar Producto">
+                            <button class="btn-buscar">
+                                <i class="fas fa-search"></i>
+                                <span>Buscar</span>
+                            </button>
+                        </div>
+                        <button class="btn-limpiar">
+                            <i class="fas fa-times"></i>
+                            <span>Limpiar</span>
+                        </button>
+                    </div>
+
+                    <div class="table-products">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Producto</th>
+                                    <th>Marca</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio_Unit</th>
+                                    <th>Subtotal</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Laptop HP Pavilion</td>
+                                    <td>HP</td>
+                                    <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                    <td>S/ 2,500.00</td>
+                                    <td>S/ 2,500.00</td>
+                                    <td>
+                                        <button class="btn-accion btn-ver">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-accion btn-eliminar">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pago">
+                <div class="pago-title">
+                    <h2>Resumen y Pago</h2>
+                </div>
+                <div class="metodo-pago">
+                    <button>
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Efectivo</span>
+                    </button>
+                    <button>
+                        <i class="fas fa-credit-card"></i>
+                        <span>Tarjeta de Crédito</span>
+                    </button>
+                    <button>
+                        <i class="fas fa-receipt"></i>
+                        <span>Transferencia</span>
+                    </button>
+                </div>
+                <div class="total">
+                    <div class="linea">
+                        <label for="subtotal">Subtotal</label>
+                        <input type="text" name="subtotal" id="subtotal" value="0.00" readonly>
+                    </div>
+                    
+                    <div class="linea">
+                        <label for="">Descuento</label>
+                        <input type="text" name="descuento" id="descuento" value="0.00" readonly>
+                    </div>
+                    <div class="linea">
+                        <label for="igv">IGV(18%)</label>
+                        <input type="text" name="igv" id="igv" value="0.00" readonly>
+                    </div>
+                    <div class="linea">
+                        <label for="Total">Total</label>
+                        <input type="text" name="total" id="total" value="0.00" readonly>
+                    </div>
+                    
+                </div>
+
+                <div class="vuelto">
+                    <div class="linea">
+                        <label for="recibido">Monto recibido</label>
+                        <input type="text" name="recibido" id="recibido" placeholder="Ingrese monto recibido">
+                    </div>
+                    
+                    <div class="linea">
+                        <label for="vuelto">Vuelto</label>
+                        <input type="text" name="vuelto" id="vuelto" value="0.00" readonly>
+                    </div>
+                    
+                </div>
+
+                <div class="acciones">
+                    <button class="btn-guardar">
+                        <i class="fas fa-save"></i>
+                        <span>Guardar</span>
+                    </button>
+                    <button class="btn-cancelar">
+                        <i class="fas fa-times"></i>
+                        <span>Cancelar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div data-component="footer" data-app="store-admin"></div>
+    <script th:src="@{/js/admin/sotore-admin.js}"></script>
+</body>
+</html>

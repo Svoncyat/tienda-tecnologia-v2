@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/admin/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/todolistas.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/compras.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/modals.css}">
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>uwu | Proveedores</title>
+</head>
+<body>
+    <header>
+        
+    </header>
+
+    <aside class="sidebar">
+        <div class="aside">
+            <div class="aside-header">
+            <div class="logo-rol">
+                <a th:href="@{/admin/dashboard}" class="logo">
+                    <img th:src="@{/images/favicon.svg}" alt="">
+                    <p class="text-logo">uwuTech</p>
+                </a>
+                <div class="rol"><p>Administrador</p></div>
+            </div>
+            <!--<div class="toggle">
+                <div class="toggle-button" id="toggle-button">
+                    <button><img src="/shared/assets/sidebar.svg" alt=""></button>
+                </div> 
+            </div>-->
+            </div>
+            <nav class="sidebar-menu">
+            
+            <ul class="nav">
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/dashboard}" class="nav-link">
+                        <div>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/perfiles}" class="nav-link">
+                        <div>
+                            <i class="fas fa-id-card-clip nav-icon"></i>
+                            <span>Perfiles</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/perfiles}" class="nav-link">Gestionar Usuarios</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/Roles}" class="nav-link">Roles y Permisos</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/clientes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-user-group nav-icon"></i>
+                                <span>Clientes</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/inventario}" class="nav-link">
+                            <div>
+                                <i class="fas fa-box nav-icon"></i>
+                                <span>Inventario</span>
+                            </div>
+                        </a>
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/inventario}" class="nav-link">Productos y Stock</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ofertas}" class="nav-link">Ofertas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/categorias}" class="nav-link">Categorías y Marcas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/despacho}" class="nav-link">Despacho</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/ventas}" class="nav-link">
+                            <div>
+                                <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                                <span>Ventas</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/caja}" class="nav-link">Caja</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ventas}" class="nav-link">Punto de Venta</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/historial}" class="nav-link">Historial de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/pedidos}" class="nav-link">Pedidos</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/devoluciones}" class="nav-link">Devoluciones</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/compras}" class="nav-link active-link">
+                            <div>
+                                <i class="fas fa-shopping-cart nav-icon"></i>
+                                <span>Compras</span>
+                            </div>
+                        </a>
+                        <div class="active"></div>
+                        
+                    </div>
+                    <ul class="submenu-active">
+                        <li class="sub-active"><a th:href="@{/admin/proveedores}" class="nav-link">Proveedores</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Órdenes de Compra</a></li>
+                        <!--<li class="nav-submenu"><a href="/modules/compras/recepcion/recepcion.html" class="nav-link">Recepción de Mercadería</a></li> -->
+                    </ul>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/reportes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-chart-bar nav-icon"></i>
+                                <span>Reportes</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Inventario</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Clientes</a></li>
+                    </ul>
+                </li> -->
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/configuracion}" class="nav-link">
+                            <div>
+                                <i class="fas fa-gear nav-icon"></i>
+                                <span>Configuración</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Datos de la Empresa</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Integraciones</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            </nav>
+        </div>
+
+
+        <div class="logout">
+                <a th:href="@{/admin/login}" class="nav-link">
+                    <div>
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <span>Cerrar Sesión</span>
+                    </div>
+                </a>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+        <div class="title">
+            <p class="ubi">Módulos / Compras / Proveedores</p>
+            <h1 class="title-ubi">Proveedores</h1>
+        </div>
+        <div class="content">
+            <div class="modulo-header">
+                <div class="modulo-title"><h2>Lista de Proveedores</h2></div>
+                <button class="btn-agregar" id="agregar-proveedor" type="button"><i class="fas fa-plus"></i><span>Nuevo Proveedor</span></button>
+            </div>
+            <div class="buscar-filtros">
+                <div class="buscar">
+                    <input type="text" placeholder="Buscar proveedor" id="search-input">
+                    <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
+                </div>
+
+                <div class="filtros">
+                    <select name="estado" id="estado">
+                        <option value="">Estado</option>
+                        <option value="disponible">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                        <option value="proximamente">Próximamente</option>
+                    </select>
+    
+                    <select name="ordenar" id="ordenar">
+                        <option value="">Ordenar por</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="precio">Precio</option>
+                        <option value="stock">Stock</option>
+                    </select>
+                </div>
+                
+
+            </div>
+
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>RUC</th>
+                            <th>Razón Social</th>
+                            <th>Proveedor</th>
+                            <th>Correo</th>
+                            <th>telefono</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="proveedores-list">
+                        <!-- Aquí se cargarán los productos dinámicamente -->
+                        <tr>
+                            <td>1</td>
+                            <td>24568975869</td>
+                            <td>Razzz</td>
+                            <td>GRUPO INFOTEC S</td>
+                            <td>gerencia@gmail.com</td>
+                            <td>01 738-2332</td>
+                            <td><span class="estado-completo">completa</span></td>
+                            <td class="acciones">
+                                <button class="btn-accion btn-ver" onclick="verProveedor(1)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-accion btn-editar" onclick="editarProveedor(1)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-accion btn-eliminar" onclick="eliminarProveedor(1)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="paginacion">
+                <button class="btn-paginacion" id="prev-page" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button><span id="page-info">1</span></button>
+                <button><span id="page-info">2</span></button>  
+                <button><span id="page-info">3</span></button>
+                <p>...</p>
+                <button><span id="page-info">10</span></button>
+
+                <button class="btn-paginacion" id="next-page">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+        </div>
+    </main>
+
+    
+    <!--modal para agregar-proveedor-->
+    <div id="modal-agregar-proveedor" class="modal">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Agregar Proveedor</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body-2">
+            
+                    <div class="body-derecha">
+                        <div class="derecha-superior">
+                            <div class="campo-colum">
+                                <label for="ruc-proveedor">RUC:</label>
+                                <input type="text" id="ruc-proveedor" placeholder="ruc del Proveedor" disabled>
+                            </div>
+                            <div class="campo-colum">
+                                <label for="proveedor">Proveedor:</label>
+                                <input type="text" id="proveedor" placeholder="Proveedor">
+                            </div>
+                            <div class="campo-colum">
+                                <label for="razon">Razon Social:</label>
+                                <input type="text" id="razon" placeholder="~">
+                            </div>
+                            <div class="campo-colum">
+                                <label for="nombre-encargado">Nombre Encargado:</label>
+                                <input type="text" id="encargado" placeholder="encargado">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="correo-proveedor">Correo:</label>
+                                <input type="text" id="correo-proveedor" placeholder="~">
+                            </div>
+                            <div class="campo-colum">
+                                <label for="telefono-proveedor">Telefono:</label>
+                                <input type="text" id="telefono-proveedor" placeholder="~">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for= direccion-proveedor">Dirección: </label>
+                                <input type="text" id="direccion-proveedor" placeholder="~">
+                            </div>
+                        </div>
+
+                        <div class="botones">
+                            <button class="btn-modal-azul" id="guardar-proveedor"><i class="fas fa-save"></i><span>Guardar</span></button>
+                        </div>
+
+
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div data-component="footer" data-app="store-admin"></div>
+    <script th:src="@{/js/admin/store-admin.js}"></script>
+    <script th:src="@{/js/admin/proveedor.js}"></script>
+</body>
+</html>

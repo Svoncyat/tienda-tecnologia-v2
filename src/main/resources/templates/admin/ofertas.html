@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/admin/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/todolistas.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/modals.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/inventario.css}">
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>uwu | Ofertas</title>
+</head>
+<body>
+    <header>
+        
+    </header>
+
+    <aside class="sidebar">
+        <div class="aside">
+            <div class="aside-header">
+            <div class="logo-rol">
+                <a th:href="@{/admin/dashboard}" class="logo">
+                    <img th:src="@{/images/favicon.svg}" alt="">
+                    <p class="text-logo">uwuTech</p>
+                </a>
+                <div class="rol"><p>Administrador</p></div>
+            </div>
+            <!--<div class="toggle">
+                <div class="toggle-button" id="toggle-button">
+                    <button><img src="/shared/assets/sidebar.svg" alt=""></button>
+                </div> 
+            </div>-->
+            </div>
+            <nav class="sidebar-menu">
+            
+            <ul class="nav">
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/dashboard}" class="nav-link">
+                        <div>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/perfiles}" class="nav-link">
+                        <div>
+                            <i class="fas fa-id-card-clip nav-icon"></i>
+                            <span>Perfiles</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/perfiles}" class="nav-link">Gestionar Usuarios</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/Roles}" class="nav-link">Roles y Permisos</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/clientes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-user-group nav-icon"></i>
+                                <span>Clientes</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/inventario}" class="nav-link active-link">
+                            <div>
+                                <i class="fas fa-box nav-icon"></i>
+                                <span>Inventario</span>
+                            </div>
+                        </a>
+                        <div class="active"></div>
+                    </div>
+                    <ul class="submenu-active">
+                        <li class="nav-submenu"><a th:href="@{/admin/inventario}" class="nav-link">Productos y Stock</a></li>
+                        <li class="sub-active"><a th:href="@{/admin/ofertas}" class="nav-link">Ofertas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/categorias}" class="nav-link">Categorías y Marcas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/despacho}" class="nav-link">Despacho</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/ventas}" class="nav-link">
+                            <div>
+                                <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                                <span>Ventas</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/caja}" class="nav-link">Caja</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ventas}" class="nav-link">Punto de Venta</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/historial}" class="nav-link">Historial de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/pedidos}" class="nav-link">Pedidos</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/devoluciones}" class="nav-link">Devoluciones</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/compras}" class="nav-link">
+                            <div>
+                                <i class="fas fa-shopping-cart nav-icon"></i>
+                                <span>Compras</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/proveedores}" class="nav-link">Proveedores</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Órdenes de Compra</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Recepción de Mercadería</a></li>
+                    </ul>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/reports/reportes.html" class="nav-link">
+                            <div>
+                                <i class="fas fa-chart-bar nav-icon"></i>
+                                <span>Reportes</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a href="/modules/reportes/ventas.html" class="nav-link">Reporte de Ventas</a></li>
+                        <li class="nav-submenu"><a href="/modules/reportes/inventario.html" class="nav-link">Reporte de Inventario</a></li>
+                        <li class="nav-submenu"><a href="/modules/reportes/clientes.html" class="nav-link">Reporte de Clientes</a></li>
+                    </ul>
+                </li> -->
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/configuracion}" class="nav-link">
+                            <div>
+                                <i class="fas fa-gear nav-icon"></i>
+                                <span>Configuración</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Datos de la Empresa</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Integraciones</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            </nav>
+        </div>
+
+
+        <div class="logout">
+                <a th:href="@{/admin/login}" class="nav-link">
+                    <div>
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <span>Cerrar Sesión</span>
+                    </div>
+                </a>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+        <div class="title">
+            <p class="ubi">Módulos / Inventario / Ofertas</p>
+            <h1 class="title-ubi">Ofertas</h1>
+        </div>
+        <div class="content">
+            <div class="modulo-header">
+                <div class="modulo-title"><h2>Lista de Ofertas</h2></div>
+                <button class="btn-agregar" id="agregar-oferta" type="button"><i class="fas fa-plus"></i><span>Agregar Oferta</span></button>
+            </div>
+            <div class="buscar-filtros">
+                <div class="buscar">
+                    <input type="text" placeholder="Buscar-oferta" id="search-input">
+                    <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
+                </div>
+
+                <div class="filtros">
+                    <select name="alcance" id="alcance">
+                        <option value="">Alcance</option>
+                        <option value="marca">Marca</option>
+                        <option value="categoria">Categoría</option>
+                        <option value="producto">Producto</option>
+                        <option value="todos">Todos</option>
+                        
+                    </select>
+                    <select name="tipo" id="tipo-oferta">
+                        <option value="">Tipo de Oferta</option>
+                        <option value="descuento">Descuento</option>
+                        <option value="combo">Combo</option>
+                        <option value="envio-gratis">Envío Gratis</option>
+                    </select>
+    
+                    <select name="estado" id="estado-oferta">
+                        <option value="">Estado</option>
+                        <option value="disponible">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                        <option value="proximamente">Próximamente</option>
+                    </select>
+                </div>
+                
+
+            </div>
+
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Alcance</th>
+                            <th>Tipo</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="proveedor-list">
+                        <!-- Aquí se cargarán los productos dinámicamente -->
+                        <tr>
+                            <td>1</td>
+                            <td>OT-00001</td>
+                            <td>Descuento por el dia del Padre</td>
+                            <td>Toda la Tienda</td>
+                            <td>20 %</td>
+                            <td>10/06/2025</td>
+                            <td>30/06/2025</td>
+                            <td><span class="estado-activo">Activo</span></td>
+                            <td class="acciones">
+                                <button class="btn-accion btn-ver" onclick="verOferta(1)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-accion btn-editar" onclick="editarOferta(1)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-accion btn-eliminar" onclick="eliminarOferta(1)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="paginacion">
+                <button class="btn-paginacion" id="prev-page" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button><span id="page-info">1</span></button>
+                <button><span id="page-info">2</span></button>  
+                <button><span id="page-info">3</span></button>
+                <p>...</p>
+                <button><span id="page-info">10</span></button>
+
+                <button class="btn-paginacion" id="next-page">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+        </div>
+    </main>
+
+    <div id="modal-agregar-oferta" class="modal">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Agregar Oferta</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body-2">
+                    <div class="body-izquierda">
+                        <div class="campo-colum">
+                            <label for="cod-oferta">Código de Oferta:</label>
+                            <input type="text" id="cod-oferta" placeholder="Código de Oferta" disabled>
+                        </div>
+                        <div class="campo-colum">
+                            <label for="nombre-oferta">Nombre:</label>
+                            <input type="text" id="nombre-oferta" placeholder="Nombre de la oferta">
+                        </div>
+                        <div class="campo-colum">
+                            <label for="alcance-oferta">Alcance:</label>
+                            <select name="alcance-oferta" id="alcance-oferta">
+                                <option value="">Seleccionar Alcance</option>
+                                <option value="marca">Marca</option>
+                                <option value="categoria">Categoría</option>
+                                <option value="producto">Producto</option>
+                                <option value="todos">Todos los Productos</option>
+                            </select>
+                        </div>
+                        <div id="campo-marca" class="campo-colum" style="display:none;">
+                            <label for="marcas">Marca</label>
+                            <select name="marcas" id="marcas"></select>
+                        </div>
+                        <div id="campo-categoria" class="campo-colum" style="display:none;">
+                            <label for="categorias">Categoría</label>
+                            <select name="categorias" id="categorias"></select>
+                        </div>
+                        <div id="campo-producto" class="campo-colum" style="display:none;">
+                            <label for="productos">Producto</label>
+                            <select name="productos" id="productos"></select>
+                        </div>
+                    </div>
+                    <div class="body-derecha">
+                        <div class="derecha-superior">
+                            <div class="campo-colum">
+                                <label for="Tipo de Oferta">Tipo de Oferta:</label>
+                                <select name="tipo-oferta" id="tipo-oferta">
+                                    <option value="">Seleccionar Tipo de Oferta</option>
+                                    <option value="unidad">Porcentaje</option>
+                                    <option value="kilogramo">Costo</option>
+                                    <option value="litro">Combo</option>
+                                </select>
+                            </div>
+    
+                            <div class="campo-row">
+                                <label for="descuento">Porcentaje:</label>
+                                <input type="number" id="precio-product" placeholder="Descuento">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="inicio-oferta">Fecha Inicio:</label>
+                                <input type="date" id="fecha-inicio" name="fecha-inicio">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="fin-oferta">Fecha Fin:</label>
+                                <input type="date" id="fecha-fin" name="fecha-fin">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="descripcion-oferta">Descripcion:
+                                </label>
+                                <textarea id="descripcion-oferta" placeholder="Descripción de la oferta"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="botones">
+                            <button class="btn-modal-azul" id="guardar-oferta"><i class="fas fa-save"></i><span>Guardar</span></button>
+                            <button class="btn-modal-blanco" id="cancelar-oferta"><i class="fas fa-times"></i><span>Cancelar</span></button>
+                        </div>
+
+
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+    <div data-component="footer" data-app="store-admin"></div>
+    <script th:src="@{/js/admin/store-admin.js}"></script>
+    <script th:src="@{/js/admin/ofertas.js}"></script>
+    
+
+</body>
+</html>

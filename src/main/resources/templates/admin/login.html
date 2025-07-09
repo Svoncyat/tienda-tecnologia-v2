@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uwu | Login</title>
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/admin/seguridad.css}">
+</head>
+<body>
+    <header class="cabezera">
+        <a href="#"><img th:src="@{/images/favicon.svg}" alt="logito"></a>
+        <h1>Iniciar Sesión</h1>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <div class="login-header">
+                <p>Por favor, ingresa tus credenciales para continuar.</p>
+            </div>
+            <form id="loginForm" action="#" method="POST">
+                <div class="campo-colum">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario">
+                </div>
+    
+                <div class="campo-colum">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
+                </div>
+            </form>
+
+            <!--Por ahora-->
+            <div class="boton">
+                <a th:href="@{/admin/ventas}">
+                    <button class="btn-azul" id="ingresar">
+                        <i class="fas fa-right-to-bracket"></i>
+                        <span>Iniciar Sesión</span>
+                    </button>
+                </a>
+            </div>
+    
+            <div class="recuperar">
+                <a th:href="@{/admin/login}">¿Olvidaste tu contraseña?</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+    <script th:src="@{/js/admin/login.js}"></script>
+</body>
+</html>

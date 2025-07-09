@@ -1,0 +1,92 @@
+.contenido{
+    display: flex;
+    padding: 20px 30px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: var(--color-blanco, #FFF);
+    margin-top: 15px;
+}
+.titulo-roles,
+.gestionar-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.filtros {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-self: stretch;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    
+}
+.buscar{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.buscar input,
+.filtros select,
+.filtros input,
+.estado select,
+.estado input {
+    display: flex;
+    padding: 12px 16px;
+    align-items: center;
+    border-radius: 16px;
+    border: 1px solid var(--neutral-300, #C7C7CC);
+    background: var(--color-blancoaro, #FFF);
+    font-size: 14px;
+    outline: none;
+    min-width: 140px;
+    box-sizing: border-box;
+}
+
+.estado{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-agregar-rol:hover,
+.search-button:hover,
+.btn-agregar-usuario:hover,
+.btn-buscar:hover {
+    background: var(--azul-hover, #0056CC);
+    border-color: var(--azul-hover, #0056CC);
+    cursor: pointer;
+}
+
+
+
+.search-button,
+.btn-agregar-rol,
+.btn-agregar-usuario,
+.btn-buscar {
+    display: flex;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    border-radius: 16px;
+    background: var(--azul, #007AFF);
+    border: 2px solid var(--azul, #007AFF);
+    color: var(--color-blanco, #FFF);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 120px;
+    box-sizing: border-box;
+}

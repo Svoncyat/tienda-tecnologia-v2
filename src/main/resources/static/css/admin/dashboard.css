@@ -1,0 +1,20 @@
+@import url(../../css/variables.css);
+
+.juan{
+    background: red;
+    padding: 70px;
+    margin: 10px 40px 10px 1px;
+}
+
+.juan h1{
+    color: #ffffff;
+    padding: 20px;
+    background: var(--azul);
+}
+
+.efrain{
+    background: blue;
+    padding: 10px;
+    margin-top: 10px;
+}
+

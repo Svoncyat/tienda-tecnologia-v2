@@ -1,0 +1,380 @@
+.contenido-1 {
+    display: flex;
+    padding: 20px 30px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-radius: 20px;
+    gap: 20px;
+    margin-top: 15px;
+    background:var(--neutral-100);
+}
+
+ .role-card{
+    background: var(--color-blanco);
+    border: 1px solid #e5e5e7;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    
+}
+
+
+.role-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.role-header span {
+    
+    color:var(--verde);
+    border: 3px solid var(--verde);
+    border-radius: 20px;
+    padding: 12px 16px;
+    
+}
+
+.role-header h3 {
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--color-negro);
+    margin: 0;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-badge.active {
+    background-color: #e8f5e8;
+    color: #2d7738;
+}
+
+.role-description {
+    margin-bottom: 16px;
+}
+
+.role-description p {
+    color: var(--neutral-900);
+    font-size: 14px;
+    margin: 0;
+}
+
+.role-users {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: var(--neutral-900);
+    font-size: 12px;
+}
+
+
+.last-modified {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--neutral-900);
+}
+.last-modified i,
+.role-users i {
+    color: var(--azul);
+}
+.permissions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.permission-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+
+
+.permission-item.allowed i {
+    color: var(--verde);
+}
+
+
+
+.permission-item.denied i {
+    color: var(--rojo);
+}
+
+.role-actions {
+    display: flex;
+    gap: 60px;
+    flex-direction: row;
+}
+
+.btn-edit, .btn-delete {
+    flex: 1;
+    display: flex;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 16px;
+    font-size: 14px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    width: auto;
+    min-width: 80px;
+    
+}
+
+.btn-edit {
+    background-color: #fafafa;
+    border: var(--azul, #007AFF);
+    color: var(--azul, #007AFF);
+    background: var(--neutral-100);
+    border: 2px solid var(--azul);
+}
+
+.btn-edit:hover {
+    
+    color: white;
+    background: var(--azul-hover);
+}
+
+.btn-delete {
+    color: white;
+    background: var(--rojo);
+    border: 2px solid var(--rojo);
+}
+
+.btn-delete:hover {
+    background-color: var(--rojo-hover, #d70015);
+    color: white;
+}
+
+/* =============================================== 
+   ESTILOS PARA MODAL
+   =============================================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--color-blanco);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: var(--sombra-fuerte);
+    position: relative;
+    margin: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--neutral-100);
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: var(--font-titulo-mediano);
+    font-weight: 600;
+    color: var(--color-negro);
+    font-family: var(--font-family);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: var(--font-titulo-mediano);
+    cursor: pointer;
+    color: var(--neutral-600);
+    padding: 5px;
+    border-radius: 50%;
+    transition: var(--transicion-rapida);
+}
+
+.modal-close:hover {
+    background-color: var(--neutral-100);
+    color: var(--color-negro);
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-negro);
+    font-size: var(--font-etiqueta-b);
+    font-family: var(--font-family);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--neutral-100);
+    border-radius: var(--radio-borde);
+    font-size: var(--font-texto);
+    font-family: var(--font-family);
+    transition: var(--transicion-rapida);
+    box-sizing: border-box;
+    color: var(--color-negro);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--azul);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.permissions-section {
+    margin-bottom: 20px;
+}
+
+.permissions-section h3 {
+    margin-bottom: 15px;
+    font-size: var(--font-subtitulo);
+    font-weight: 600;
+    color: var(--color-negro);
+    font-family: var(--font-family);
+}
+
+.permissions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    margin-bottom: 20px;
+}
+
+.permission-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--neutral-100);
+    border-radius: var(--radio-borde);
+    transition: var(--transicion-rapida);
+    background: var(--color-blanco);
+}
+
+.permission-checkbox:hover {
+    background-color: var(--neutral-100);
+    border-color: var(--azul);
+    transform: translateY(-1px);
+    box-shadow: var(--sombra-media);
+}
+
+.permission-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--azul);
+    cursor: pointer;
+}
+
+.permission-checkbox label {
+    margin: 0;
+    cursor: pointer;
+    flex: 1;
+    font-size: var(--font-etiqueta);
+    font-weight: 500;
+    color: var(--color-negro);
+    font-family: var(--font-family);
+}
+
+.modal-footer {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding-top: 20px;
+    border-top: 1px solid var(--neutral-100);
+}
+
+.btn-cancel {
+    padding: 12px 24px;
+    border: 2px solid var(--neutral-200);
+    border-radius: var(--radio-borde);
+    background: var(--color-blanco);
+    color: var(--neutral-600);
+    cursor: pointer;
+    font-size: var(--font-boton-s);
+    font-family: var(--font-family);
+    font-weight: 500;
+    transition: var(--transicion-rapida);
+}
+
+.btn-cancel:hover {
+    background-color: var(--neutral-100);
+    border-color: var(--neutral-300);
+    color: var(--color-negro);
+}
+
+.btn-save {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radio-borde);
+    background: var(--azul);
+    color: var(--color-blanco);
+    cursor: pointer;
+    font-size: var(--font-boton-s);
+    font-family: var(--font-family);
+    font-weight: 500;
+    transition: var(--transicion-rapida);
+}
+
+.btn-save:hover {
+    background: var(--azul-hover);
+}
+
+.btn-save:disabled {
+    background: var(--neutral-300);
+    cursor: not-allowed;
+}

@@ -1,0 +1,492 @@
+/* ====== ESTILOS PARA CAMPOS DE VISUALIZACIÓN ====== */
+.info-field {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--neutral-400);
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--neutral-800);
+    font-size: var(--font-etiqueta);
+    min-height: 20px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.info-field:empty::before {
+    content: "Sin información";
+    color: var(--neutral-400);
+    font-style: italic;
+}
+
+.info-field.empty {
+    color: var(--neutral-400);
+    font-style: italic;
+}
+
+/* ====== ESTILOS PARA BADGES DE ESTADO ====== */
+.estado-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border: 1px solid;
+}
+
+.estado-activo {
+    background-color: var(--verde);
+    color: var(--color-blanco);
+    border-color: var(--verde);
+}
+
+.estado-inactivo {
+    background-color: var(--rojo);
+    color: var(--color-blanco);
+    border-color: var(--rojo);
+}
+
+/* ====== ESTILOS PARA BOTONES DE ACCIÓN ====== */
+.acciones {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-accion {
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radio-borde);
+    transition: all var(--transicion-rapida);
+    margin: 0 1px;
+}
+
+.btn-accion i {
+    color: var(--neutral-800);
+    font-size: 12px;
+}
+
+.btn-accion:hover {
+    background-color: var(--neutral-100) !important;
+    transform: translateY(-1px);
+}
+
+.btn-ver:hover {
+    background-color: rgba(0, 122, 255, 0.1) !important;
+}
+
+.btn-ver:hover i {
+    color: var(--azul);
+}
+
+.btn-editar:hover {
+    background-color: rgba(255, 204, 0, 0.1) !important;
+}
+
+.btn-editar:hover i {
+    color: var(--amarillo);
+}
+
+.btn-eliminar:hover {
+    background-color: rgba(255, 59, 48, 0.1) !important;
+}
+
+.btn-eliminar:hover i {
+    color: var(--rojo);
+}
+
+.btn-agregar-nuevo{
+    display: flex;
+    align-items: center;
+    background-color: var(--azul);
+    color: var(--color-blanco);
+    padding: 15px 20px;
+    border: 2px solid var(--azul);
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
+}
+.btn-cancelar-nuevo{
+    display: flex;
+    align-items: center;
+    background: var(--color-blanco);
+    color: var(--rojo);
+    border: 2px solid var(--rojo);
+    border-radius: 15px;
+    padding: 15px 20px;
+    font-size: 14px;
+    gap: 10px;
+    cursor: pointer;
+}
+.btn-cancelar-nuevo:hover{
+    background: var(--rojo-hover);
+    color: var(--color-blanco);
+    border: 2px solid var(--rojo-hover);
+}
+
+.btn-agregar-nuevo:hover {
+    background-color: var(--verde-hover);
+    border: 2px solid var(--verde-hover);
+}
+
+.modal-footer-nuevo{
+    display: flex;
+    float: right;
+    padding: 0px 30px 20px 0px;
+    flex-direction: row;
+    gap: 20px;
+}
+/* ====== MODALES USANDO ESTILOS DEL SISTEMA ====== */
+
+/* Modal overlay usando estilos del sistema */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal content usando estructura del sistema */
+.modal-content-nuevo {
+    background-color: var(--color-blanco);
+    margin: 1% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 96vh;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+    overflow-y: auto;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal header usando estilos del sistema */
+.modal-header-nuevo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.modal-header-nuevo h2 {
+    margin: 0;
+    color: var(--neutral-800);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.modal-close-nuevo {
+    color: var(--neutral-800);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-close-nuevo:hover,
+.modal-close-nuevo:focus {
+    color: var(--rojo);
+}
+
+/* Modal body usando estructura del sistema */
+.modal-body-nuevo {
+    padding: 0px 20px 20px 20px;
+    color: var(--neutral-800);
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+/* Estilos de campos usando sistema */
+.campo-colum {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.campo-colum label,
+.campo-row label {
+    color: var(--neutral-800);
+    font-size: 14px;
+    font-weight: 500;
+    font-weight: bold;
+}
+
+.campo-colum input,
+.campo-row input,
+.campo-colum select,
+.campo-row select {
+    border-radius: 10px;
+    border: 1px solid var(--neutral-400);
+    background: var(--color-blanco);
+    padding: 10px;
+}
+
+.campo-colum textarea {
+    border-radius: 10px;
+    border: 1px solid var(--neutral-400);
+    padding: 10px;
+    height: 90px;
+    resize: vertical;
+}
+
+.campo-colum input:focus,
+.campo-row input:focus,
+.campo-colum select:focus,
+.campo-row select:focus,
+.campo-colum textarea:focus {
+    outline: none;
+    border: 2px solid var(--azul);
+}
+
+/* Botones del modal usando estilos del sistema */
+.botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px 30px;
+}
+
+.btn-modal-azul {
+    display: flex;
+    align-items: center;
+    background-color: var(--azul);
+    color: var(--color-blanco);
+    padding: 10px 20px;
+    border: 2px solid var(--azul);
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
+}
+
+.btn-modal-azul:hover {
+    background-color: var(--verde);
+    border: 2px solid var(--verde);
+}
+
+.btn-modal-blanco {
+    display: flex;
+    background-color: var(--color-blanco);
+    color: var(--azul);
+    padding: 10px 20px;
+    border: 2px solid var(--azul);
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-modal-blanco:hover {
+    background-color: var(--rojo2);
+    color: var(--color-blanco);
+    border: 2px solid var(--rojo2);
+}
+
+/* Estilos para layout de formulario en dos columnas */
+.modal-body-2 {
+    padding: 0px 20px 20px 20px;
+    color: var(--neutral-800);
+    overflow-y: auto;
+    display: flex;
+    gap: 30px;
+}
+
+.body-izquierda {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 15px;
+}
+
+.body-derecha {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Layouts de formulario compatibles con sistema */
+.form-row-uno {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row-dos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row-tres {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* Grupos de formulario usando estilos del sistema */
+.form-group-nuevo {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-nuevo label {
+    color: var(--neutral-800);
+    font-size: 14px;
+    font-weight: 500;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group-nuevo input,
+.form-group-nuevo select,
+.form-group-nuevo textarea {
+    border-radius: 10px;
+    border: 1px solid var(--neutral-400);
+    background: var(--color-blanco);
+    padding: 10px;
+}
+
+.form-group-nuevo input:focus,
+.form-group-nuevo select:focus,
+.form-group-nuevo textarea:focus {
+    outline: none;
+    border: 2px solid var(--azul);
+}
+
+/* Estados de validación usando colores del sistema */
+.form-group-nuevo input.error,
+.form-group-nuevo select.error {
+    border-color: var(--rojo);
+}
+
+.form-group-nuevo input.success,
+.form-group-nuevo select.success {
+    border-color: var(--verde);
+}
+
+/* Responsive para modales */
+@media (max-width: 768px) {
+    .modal-content-nuevo {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .modal-body-2 {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .body-izquierda {
+        width: 100%;
+    }
+    
+    .form-row-tres,
+    .form-row-dos {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content-nuevo {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+}
+/* ====== FIN ESTILOS CONTENEDOR DE TABLA Y PAGINACIÓN ====== */
+/* ====== RESPONSIVE MANTENIENDO ANCHO DE TABLA ====== */
+@media (max-width: 768px) {
+    .tabla-container1 {
+        overflow: visible;
+        padding: 10px;
+    }
+    
+    .tabla th,
+    .tabla td {
+        padding: 6px 4px;
+        font-size: 11px;
+    }
+    
+    .estado-badge {
+        font-size: 9px;
+        padding: 1px 6px;
+    }
+    
+    .btn-accion {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .btn-accion i {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabla-container1 {
+        overflow: visible;
+        padding: 8px;
+        margin-top: 15px;
+    }
+    
+    .tabla th,
+    .tabla td {
+        padding: 4px 2px;
+        font-size: 10px;
+    }
+    
+    .estado-badge {
+        font-size: 8px;
+        padding: 1px 4px;
+    }
+    
+    .btn-accion {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+    }
+    
+    .btn-accion i {
+        font-size: 8px;
+    }
+    
+    .acciones {
+        gap: 2px;
+    }
+}

@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<aside class="sidebar">
+
+    <div class="aside">
+        <div class="aside-header">
+        <div class="logo-rol">
+            <a href="/admin/dashboard" class="logo">
+                <img src="/images/favicon.svg" alt="">
+                <p class="text-logo">uwuTech</p>
+            </a>
+            <div class="rol"><p>Administrador</p></div>
+        </div>
+        <div class="toggle">
+            <div class="toggle-button" id="toggle-button">
+                <button><img src="/shared/assets/sidebar.svg" alt=""></button>
+            </div> 
+        </div>
+        </div>
+        <nav class="sidebar-menu">
+        
+        <ul class="nav">
+            <li class="nav-item">
+                <div class="modulo">
+                    <a href="/admin/dashboard" class="nav-link">
+                    <div>
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+                <div class="active"></div>
+                </div>
+                
+            </li>
+            
+            <li class="nav-item">
+                <div class="modulo">
+                    <a href="/admin/perfiles" class="nav-link">
+                    <div>
+                        <i class="fas fa-id-card-clip nav-icon"></i>
+                        <span>Perfiles</span>
+                    </div>
+                </a>
+                <div class="active"></div>
+                </div>
+
+                <ul class="submenu">
+                    <li class="nav-submenu"><a href="/admin/perfiles" class="nav-link">Gestionar Usuarios</a></li>
+                    <li class="nav-submenu"><a href="/admin/roles" class="nav-link">Roles y Permisos</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <div class="modulo">
+                    <a href="/admin/clientes" class="nav-link">
+                        <div>
+                            <i class="fas fa-user-group nav-icon"></i>
+                            <span>Clientes</span>
+                        </div>
+                    </a>
+                    <div class="active"></div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <div class="modulo">
+                    <a href="/admin/inventario" class="nav-link">
+                        <div>
+                            <i class="fas fa-box nav-icon"></i>
+                            <span>Inventario</span>
+                        </div>
+                    </a>
+                    <div class="active"></div>
+                </div>
+                <ul class="submenu">
+                    <li class="nav-submenu"><a href="/admin/inventario" class="nav-link">Productos y Stock</a></li>
+                    <li class="nav-submenu"><a href="/admin/ofertas" class="nav-link">Ofertas y Promociones</a></li>
+                    <li class="nav-submenu"><a href="/admin/categorias" class="nav-link">Categorías y Marcas</a></li>
+                    <li class="nav-submenu"><a href="/admin/despacho" class="nav-link">Despacho</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item">
+                <div class="modulo">
+                    <a href="/admin/ventas" class="nav-link">
+                        <div>
+                            <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                            <span>Ventas</span>
+                        </div>
+                    </a>
+                    <div class="active"></div>
+                </div>
+                <ul class="submenu">
+                    <li class="nav-submenu"><a href="/admin/caja" class="nav-link">Caja</a></li>
+                    <li class="nav-submenu"><a href="/admin/pos" class="nav-link">Punto de Venta</a></li>
+                    <li class="nav-submenu"><a href="/admin/historial" class="nav-link">Historial de Ventas</a></li>
+                    <li class="nav-submenu"><a href="/admin/pedidos" class="nav-link">Pedidos</a></li>
+                    <li class="nav-submenu"><a href="/admin/devoluciones" class="nav-link">Devoluciones</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item">
+                <div class="modulo">
+                    <a href="/admin/compras" class="nav-link">
+                        <div>
+                            <i class="fas fa-shopping-cart nav-icon"></i>
+                            <span>Compras</span>
+                        </div>
+                    </a>
+                    <div class="active"></div>
+                </div>
+                <ul class="submenu">
+                    <li class="nav-submenu"><a href="/admin/proveedores" class="nav-link">Proveedores</a></li>
+                    <li class="nav-submenu"><a href="/admin/ordenes" class="nav-link">Órdenes de Compra</a></li>
+                    <li class="nav-submenu"><a href="/admin/recepcion" class="nav-link">Recepción de Mercadería</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <div class="modulo">
+                    <a href="/admin/reportes" class="nav-link">
+                        <div>
+                            <i class="fas fa-chart-bar nav-icon"></i>
+                            <span>Reportes</span>
+                        </div>
+                    </a>
+                    <div class="active"></div>
+                </div>
+                <ul class="submenu">
+                    <li class="nav-submenu"><a href="/admin/reportes" class="nav-link">Reporte de Ventas</a></li>
+                    <li class="nav-submenu"><a href="/admin/reportes" class="nav-link">Reporte de Inventario</a></li>
+                    <li class="nav-submenu"><a href="/admin/reportes" class="nav-link">Reporte de Clientes</a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item">
+                <div class="modulo">
+                    <a href="/admin/configuracion" class="nav-link">
+                        <div>
+                            <i class="fas fa-gear nav-icon"></i>
+                            <span>Configuración</span>
+                        </div>
+                    </a>
+                    <div class="active"></div>
+                </div>
+                <ul class="submenu">
+                    <li class="nav-submenu"><a href="/admin/configuracion" class="nav-link">Datos de la Empresa</a></li>
+                    <li class="nav-submenu"><a href="/admin/configuracion" class="nav-link">Integraciones</a></li>
+                </ul>
+            </li>
+        </ul>
+        
+        </nav>
+    </div>
+
+
+    <div class="logout">
+            <a href="/admin/login" class="nav-link">
+                <div>
+                    <i class="fas fa-sign-out-alt nav-icon"></i>
+                    <span>Cerrar Sesión</span>
+                </div>
+            </a>
+    </div>
+
+</aside>

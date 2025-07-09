@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/admin/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/General-Perfil.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/roles.css}">
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>uwu | Roles</title>
+</head>
+<body>
+    <aside class="sidebar">
+
+        <div class="aside">
+            <div class="aside-header">
+            <div class="logo-rol">
+                <a th:href="@{/admin/dashboard}" class="logo">
+                    <img th:src="@{/images/favicon.svg}" alt="">
+                    <p class="text-logo">uwuTech</p>
+                </a>
+                <div class="rol"><p>Administrador</p></div>
+            </div>
+            <div class="toggle">
+                <div class="toggle-button" id="toggle-button">
+                    <button><i class="fas fa-bars"></i></button>
+                </div> 
+            </div>
+            </div>
+            <nav class="sidebar-menu">
+            
+            <ul class="nav">
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/dashboard}" class="nav-link">
+                        <div>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/perfiles}" class="nav-link">
+                        <div>
+                            <i class="fas fa-id-card-clip nav-icon"></i>
+                            <span>Perfiles</span>
+                        </div>
+                        
+                    </a>
+                    <div class="active"></div>
+                    
+                    </div>
+
+                    <ul class="submenu-active">
+                        <li class="nav-submenu"><a th:href="@{/admin/perfiles}" class="nav-link">Gestionar Usuarios</a></li>
+                        <li class="sub-active"><a th:href="@{/admin/Roles}" class="nav-link">Roles y Permisos</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/clientes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-user-group nav-icon"></i>
+                                <span>Clientes</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/inventario}" class="nav-link">
+                            <div>
+                                <i class="fas fa-box nav-icon"></i>
+                                <span>Inventario</span>
+                            </div>
+                        </a>
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/inventario}" class="nav-link">Productos y Stock</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ofertas}" class="nav-link">Ofertas y Promociones</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/categorias}" class="nav-link">Categorías y Marcas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/despacho}" class="nav-link">Despacho</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/ventas}" class="nav-link">
+                            <div>
+                                <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                                <span>Ventas</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/caja}" class="nav-link">Caja</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ventas}" class="nav-link">Punto de Venta</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/historial}" class="nav-link">Historial de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/pedidos}" class="nav-link">Pedidos</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/devoluciones}" class="nav-link">Devoluciones</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/compras}" class="nav-link">
+                            <div>
+                                <i class="fas fa-shopping-cart nav-icon"></i>
+                                <span>Compras</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/proveedores}" class="nav-link">Proveedores</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Órdenes de Compra</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Recepción de Mercadería</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/reportes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-chart-bar nav-icon"></i>
+                                <span>Reportes</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Inventario</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Clientes</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/configuracion}" class="nav-link">
+                            <div>
+                                <i class="fas fa-gear nav-icon"></i>
+                                <span>Configuración</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Datos de la Empresa</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Integraciones</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            </nav>
+        </div>
+
+
+        <div class="logout">
+                <a th:href="@{/admin/login}" class="nav-link">
+                    <div>
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <span>Cerrar Sesión</span>
+                    </div>
+                </a>
+        </div>
+
+    </aside>
+    <main class="main-content">
+        <div class="title">
+            
+        <p>Módulos/Perfiles/Gestionar Roles</p>
+        <h1>Roles</h1>
+        
+        </div>
+        <div class="contenido">
+            <div class="titulo-roles">
+                <h2>Roles y Permisos</h2>
+            </div>
+            <div class="filtros">
+                <div class="buscar">
+                <input type="text" placeholder="Buscar rol" class="search-input">
+                <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
+                </div>
+                <div class="estado">
+                    <span>Estado</span>
+                    <select name="estado" id="id-estado">
+                        <option value="">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <button class="btn-agregar-rol">
+                            <i class="fas fa-plus"></i>
+                            <span>Agregar Rol</span>
+                </button>
+            </div>            
+            <div class="contenido-1">
+                <div class="role-card">
+                    <div class="role-header">
+                        <h3>Vendedor</h3>
+                        <span>Activo</span>
+                    </div>
+                    <div class="role-description">
+                        <p>Acceso a clientes, ventas y Reportes</p>
+                    </div>
+                    <div class="role-users">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>5 Usuarios</span>
+                        <div class="last-modified">
+                            <i class="fas fa-clock"></i>
+                            <span>Última modificación: hace 2 días</span>
+                        </div>
+                    </div>
+                    <div class="permissions-list">
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Perfiles</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Clientes</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Inventario</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Ventas</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Compras</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Documentos</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Reportes</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Configuración</span>
+                        </div>
+                    </div>
+                    <div class="role-actions">
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                            <span>Editar</span>
+                        </button>
+                        <button class="btn-delete">
+                            <i class="fa-solid fa-xmark"></i>
+                            <span>Eliminar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-header">
+                        <h3>Administrador</h3>
+                        <span>Activo</span>
+                    </div>
+                    <div class="role-description">
+                        <p>Acceso completo al sistema con todos los permisos</p>
+                    </div>
+                    <div class="role-users">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>5 Usuarios</span>
+                        <div class="last-modified">
+                            <i class="fas fa-clock"></i>
+                            <span>Última modificación: hace 2 días</span>
+                        </div>
+                    </div>
+                    <div class="permissions-list">
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Perfiles</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Clientes</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Inventario</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Ventas</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Compras</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Documentos</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Reportes</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Configuración</span>
+                        </div>
+                    </div>
+                    <div class="role-actions">
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                            <span>Editar</span>
+                        </button>
+                        <button class="btn-delete">
+                            <i class="fa-solid fa-xmark"></i>
+                            <span>Eliminar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-header">
+                        <h3>Almacenero</h3>
+                        <span>Activo</span>
+                    </div>
+                    <div class="role-description">
+                        <p>Acceso a inventario y reportes</p>
+                    </div>
+                    <div class="role-users">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>5 Usuarios</span>
+                        <div class="last-modified">
+                            <i class="fas fa-clock"></i>
+                            <span>Última modificación: hace 2 días</span>
+                        </div>
+                    </div>
+                    <div class="permissions-list">
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Perfiles</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Clientes</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Inventario</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Ventas</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Compras</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Documentos</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Reportes</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Configuración</span>
+                        </div>
+                    </div>
+                    <div class="role-actions">
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                            <span>Editar</span>
+                        </button>
+                        <button class="btn-delete">
+                            <i class="fa-solid fa-xmark"></i>
+                            <span>Eliminar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+
+
+        </div>
+        
+    </main>
+    
+    <!-- Modal Agregar Rol -->
+    <div id="modalAgregarRol" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Agregar Rol</h2>
+                <span class="modal-close" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-section">
+                    <h3>Información Básica</h3>
+                    
+                    <div class="form-group">
+                        <label for="codigoRol">Código del Rol:</label>
+                        <input type="text" id="codigoRol" name="codigoRol" placeholder="Ingrese el código del rol">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nombreRol">Nombre del Rol:</label>
+                        <input type="text" id="nombreRol" name="nombreRol" placeholder="Ingrese el nombre del rol">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="descripcionRol">Descripción:</label>
+                        <textarea id="descripcionRol" name="descripcionRol" placeholder="Describe las responsabilidades principales del rol..." rows="4"></textarea>
+                    </div>
+                </div>
+                
+                <div class="permissions-section">
+                    <h3>Permisos:</h3>
+                    <div class="permissions-grid">
+                        <div class="permission-checkbox">
+                            <input type="checkbox" id="permisoPerfiles" name="permisos" value="perfiles">
+                            <label for="permisoPerfiles">Módulo Perfiles</label>
+                        </div>
+                        <div class="permission-checkbox">
+                            <input type="checkbox" id="permisoDocumentos" name="permisos" value="documentos">
+                            <label for="permisoDocumentos">Módulo Documentos</label>
+                        </div>
+                        <div class="permission-checkbox">
+                            <input type="checkbox" id="permisoClientes" name="permisos" value="clientes">
+                            <label for="permisoClientes">Módulo Clientes</label>
+                        </div>
+                        <div class="permission-checkbox">
+                            <input type="checkbox" id="permisoCompras" name="permisos" value="compras">
+                            <label for="permisoCompras">Módulo Compras</label>
+                        </div>
+                        <div class="permission-checkbox">
+                            <input type="checkbox" id="permisoInventario" name="permisos" value="inventario">
+                            <label for="permisoInventario">Módulo Inventario</label>
+                        </div>
+                        <div class="permission-checkbox">
+                            <input type="checkbox" id="permisoReportes" name="permisos" value="reportes">
+                            <label for="permisoReportes">Módulo Reportes</label>
+                        </div>
+                        <div class="permission-checkbox">
+                            <input type="checkbox" id="permisoVentas" name="permisos" value="ventas">
+                            <label for="permisoVentas">Módulo Ventas</label>
+                        </div>
+                        <div class="permission-checkbox">
+                            <input type="checkbox" id="permisoConfiguracion" name="permisos" value="configuracion">
+                            <label for="permisoConfiguracion">Módulo Configuración</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" id="btnCancelar">Cancelar</button>
+                <button type="button" class="btn-save" id="btnAgregar">
+                    <i class="fas fa-plus"></i>
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <div data-component="footer" data-app="store-admin"></div>
+    <script th:src="@{/js/admin/store-admin.js}"></script>
+    <script th:src="@{/js/admin/roles.js}"></script>
+</body>
+</html>

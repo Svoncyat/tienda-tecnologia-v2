@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/admin/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/General-Perfil.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/perfiles.css}">
+    <link rel="icon" th:href="@{/images/favicon.svg}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>uwu | Usuarios</title>
+</head>
+<body>
+    <header>
+    </header>
+    <aside class="sidebar">
+
+        <div class="aside">
+            <div class="aside-header">
+            <div class="logo-rol">
+                <a th:href="@{/admin/dashboard}" class="logo">
+                    <img th:src="@{/images/favicon.svg}" alt="">
+                    <p class="text-logo">uwuTech</p>
+                </a>
+                <div class="rol"><p>Administrador</p></div>
+            </div>
+            <!--<div class="toggle">
+                <div class="toggle-button" id="toggle-button">
+                    <button><img th:src="@{/shared/assets/sidebar.svg}" alt=""></button>
+                </div> 
+            </div>-->
+            </div>
+            <nav class="sidebar-menu">
+            
+            <ul class="nav">
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/dashboard}" class="nav-link">
+                        <div>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/perfiles}" class="nav-link">
+                        <div>
+                            <i class="fas fa-id-card-clip nav-icon"></i>
+                            <span>Perfiles</span>
+                        </div>
+                        
+                    </a>
+                    <div class="active"></div>
+                    
+                    </div>
+
+                    <ul class="submenu-active">
+                        <li class="sub-active   "><a th:href="@{/admin/perfiles}" class="nav-link">Gestionar Usuarios</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/Roles}" class="nav-link">Roles y Permisos</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/clientes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-user-group nav-icon"></i>
+                                <span>Clientes</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/inventario}" class="nav-link">
+                            <div>
+                                <i class="fas fa-box nav-icon"></i>
+                                <span>Inventario</span>
+                            </div>
+                        </a>
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/inventario}" class="nav-link">Productos y Stock</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ofertas}" class="nav-link">Ofertas y Promociones</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/categorias}" class="nav-link">Categorías y Marcas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/despacho}" class="nav-link">Despacho</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/ventas}" class="nav-link">
+                            <div>
+                                <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                                <span>Ventas</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/caja}" class="nav-link">Caja</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/ventas}" class="nav-link">Punto de Venta</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/historial}" class="nav-link">Historial de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/pedidos}" class="nav-link">Pedidos</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/devoluciones}" class="nav-link">Devoluciones</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/compras}" class="nav-link">
+                            <div>
+                                <i class="fas fa-shopping-cart nav-icon"></i>
+                                <span>Compras</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/proveedores}" class="nav-link">Proveedores</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/compras}" class="nav-link">Órdenes de Compra</a></li>
+                        <!--<li class="nav-submenu"><a th:href="@{/admin/recepcion}" class="nav-link">Recepción de Mercadería</a></li>-->
+                    </ul>
+                </li>
+
+                <!--<li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/reportes}" class="nav-link">
+                            <div>
+                                <i class="fas fa-chart-bar nav-icon"></i>
+                                <span>Reportes</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Ventas</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Inventario</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/reportes}" class="nav-link">Reporte de Clientes</a></li>
+                    </ul>
+                </li>-->
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a th:href="@{/admin/configuracion}" class="nav-link">
+                            <div>
+                                <i class="fas fa-gear nav-icon"></i>
+                                <span>Configuración</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Datos de la Empresa</a></li>
+                        <li class="nav-submenu"><a th:href="@{/admin/configuracion}" class="nav-link">Integraciones</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            </nav>
+        </div>
+
+
+        <div class="logout">
+                <a th:href="@{/admin/login}" class="nav-link">
+                    <div>
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <span>Cerrar Sesión</span>
+                    </div>
+                </a>
+        </div>
+
+    </aside>
+    
+    <main class="main-content">
+        <div class="title">
+            <p class="ubi">Módulos/Perfiles/Gestión Usuarios</p>
+            <h1 class="ubi-titulo">Usuarios</h1>
+        </div>
+        <div class="contenido">
+            
+                <div class="gestionar-titulo">
+                    <h2>Lista de Usuarios</h2>
+                </div>
+                <div class="filtros">
+                    <div class="buscar">
+                        <input type="text" placeholder="Buscar Usuarios" id="search-input">
+                        <button class="btn-buscar" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
+                    </div>
+
+                    <select name="roles" id="id-roles">
+                    <option value="">Todos los roles</option>
+                    <option value="administrador">Administrador</option>
+                    <option value="vendedor">Vendedor</option>
+                    </select>
+
+                    <select name="estado" id="id-estado">
+                        <option value="">Todos los estados</option>
+                        <option value="Activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+                    
+                    <button class="btn-agregar-usuario">
+                            <i class="fas fa-plus"></i>
+                            <span>Agregar Usuario</span>
+                    </button>
+                    
+                </div>
+                <div class="tabla-container1">
+                    <div class="tabla">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Usuario</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                            <th>Último acceso</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-usuarios">
+                        <!-- Los usuarios se cargarán aquí dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+                </div>
+            
+        </div>
+    </main>
+    
+    <!-- Modal Agregar Usuario -->
+    <div id="modalAgregarUsuario" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nuevo Usuario</h2>
+                <span class="modal-close" id="closeModalUsuario">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-sections">
+                    <!-- Datos Personales -->
+                    <div class="form-section">
+                        <h3>Datos Personales</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombres">Nombres:</label>
+                                <input type="text" id="nombres" name="nombres" placeholder="Ingrese los nombres">
+                            </div>
+                            <div class="form-group">
+                                <label for="apellidos">Apellidos:</label>
+                                <input type="text" id="apellidos" name="apellidos" placeholder="Ingrese los apellidos">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dni">DNI:</label>
+                                <input type="text" id="dni" name="dni" placeholder="8 dígitos" maxlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                                <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="genero">Género:</label>
+                                <select id="genero" name="genero">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="estadoCivil">Estado Civil:</label>
+                                <select id="estadoCivil" name="estadoCivil">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="soltero">Soltero</option>
+                                    <option value="casado">Casado</option>
+                                    <option value="divorciado">Divorciado</option>
+                                    <option value="viudo">Viudo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div class="form-section">
+                        <h3>Contacto:</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="Número de teléfono">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" placeholder="Correo electrónico">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información Laboral -->
+                    <div class="form-section">
+                        <h3>Información Laboral:</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="usuario">Usuario:</label>
+                                <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasena">Contraseña:</label>
+                                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="repetirContrasena">Repetir Contraseña:</label>
+                                <input type="password" id="repetirContrasena" name="repetirContrasena" placeholder="Repetir contraseña">
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaIngreso">Fecha de Ingreso:</label>
+                                <input type="date" id="fechaIngreso" name="fechaIngreso">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rol">Rol:</label>
+                                <select id="rol" name="rol">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="vendedor">Vendedor</option>
+                                    <option value="almacenero">Almacenero</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row image-upload-section">
+                            <div class="upload-container">
+                                <div class="upload-box" id="perfilUpload">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Perfil</span>
+                                </div>
+                                <input type="file" id="perfilImage" accept="image/*" style="display: none;">
+                            </div>
+                            <div class="upload-container">
+                                <div class="upload-box" id="imagenUpload">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Subir Imagen</span>
+                                </div>
+                                <input type="file" id="userImage" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn-save" id="btnAgregarUsuario">
+                    <i class="fas fa-plus"></i>
+                    Agregar
+                </button>
+                <button type="button" class="btn-cancel" id="btnCancelarUsuario">
+                    <i class="fas fa-times"></i>
+                    Cancelar</button>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Usuario -->
+    <div id="modalEditarUsuario" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Usuario</h2>
+                <span class="modal-close" id="closeModalEditarUsuario">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-sections">
+                    <!-- Datos Personales -->
+                    <div class="form-section">
+                        <h3>Datos Personales</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editNombres">Nombres:</label>
+                                <input type="text" id="editNombres" name="editNombres" placeholder="Ingrese los nombres">
+                            </div>
+                            <div class="form-group">
+                                <label for="editApellidos">Apellidos:</label>
+                                <input type="text" id="editApellidos" name="editApellidos" placeholder="Ingrese los apellidos">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editDni">DNI:</label>
+                                <input type="text" id="editDni" name="editDni" placeholder="8 dígitos" maxlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label for="editFechaNacimiento">Fecha de Nacimiento:</label>
+                                <input type="date" id="editFechaNacimiento" name="editFechaNacimiento">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editGenero">Género:</label>
+                                <select id="editGenero" name="editGenero">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEstadoCivil">Estado Civil:</label>
+                                <select id="editEstadoCivil" name="editEstadoCivil">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="soltero">Soltero</option>
+                                    <option value="casado">Casado</option>
+                                    <option value="divorciado">Divorciado</option>
+                                    <option value="viudo">Viudo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div class="form-section">
+                        <h3>Contacto:</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editTelefono">Teléfono:</label>
+                                <input type="tel" id="editTelefono" name="editTelefono" placeholder="Número de teléfono">
+                            </div>
+                            <div class="form-group">
+                                <label for="editEmail">Email:</label>
+                                <input type="email" id="editEmail" name="editEmail" placeholder="Correo electrónico">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información Laboral -->
+                    <div class="form-section">
+                        <h3>Información Laboral:</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editUsuario">Usuario:</label>
+                                <input type="text" id="editUsuario" name="editUsuario" placeholder="Nombre de usuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="editFechaIngreso">Fecha de Ingreso:</label>
+                                <input type="date" id="editFechaIngreso" name="editFechaIngreso">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editRol">Rol:</label>
+                                <select id="editRol" name="editRol">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="vendedor">Vendedor</option>
+                                    <option value="almacenero">Almacenero</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEstado">Estado:</label>
+                                <select id="editEstado" name="editEstado">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row image-upload-section">
+                            <div class="upload-container">
+                                <div class="upload-box" id="editPerfilUpload">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Perfil</span>
+                                </div>
+                                <input type="file" id="editPerfilImage" accept="image/*" style="display: none;">
+                            </div>
+                            <div class="upload-container">
+                                <div class="upload-box" id="editImagenUpload">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Subir Imagen</span>
+                                </div>
+                                <input type="file" id="editUserImage" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn-save" id="btnActualizarUsuario">
+                    <i class="fas fa-save"></i>
+                    Actualizar
+                </button>
+                <button type="button" class="btn-cancel" id="btnCancelarEditar">
+                    <i class="fas fa-times"></i>
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div data-component="footer" data-app="store-admin"></div>
+    
+    <script th:src="@{/js/admin/store-admin.js}"></script>
+    <script th:src="@{/js/admin/perfiles.js}"></script>
+</body>
+</html>
